@@ -1,0 +1,3 @@
+"0","knit_hooks$set(crop = hook_pdfcrop)"
+"2","Error: object 'knit_hooks' not found
+"

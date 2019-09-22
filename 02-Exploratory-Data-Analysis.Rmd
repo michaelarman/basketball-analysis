@@ -1,0 +1,474 @@
+# Exploratory Data Analysis
+
+Exploratory Data Analysis is valuable to data projects because it helps in understanding the data, making sure it is worth investigating, and checking for anomalies. The raw data needs to be validated to ensure that the data set was collected without errors.
+
+## Distribution/Variation of Variables
+
+Distributions are often described in terms of their density or density functions.
+
+Density functions are functions that describe how the proportion of data or likelihood of the proportion of observations change over the range of the distribution. Certain analyses require certain distributions, and if they require all variables to be independently and identically distributed, then standardization will need to be used.
+
+### Play Types
+
+Below are basic summary statistics of the Play Types dataset, i.e. the minimum, quartiles, mean, median, and maximum of all the variables. In order to best interpret this data, the reader should refer to Table 1.1 where each of the below features and their descriptions are given.
+
+On average, there are 92.05 possessions ("Possessions" highlighted below) per game, among all 1452 regular season games in the dataset. The Spot-Up is the playtype with the highest average (i.e. most frequent during a game) of 22.35 Spot-Ups per game. A Spot-Up is when a player is set in a position to shoot and gets the ball to take the shot. Typically, this is a player waiting at the 3-point line. An Off-Screen possession results from an offensive player getting the ball when a screen was set by one of their teammates allowing them to be open for a pass. It is important to note these two types of possessions can never happen simultaneously, as a Spot-Up requires no screen being used before the player catches the ball. Examples of a player spotting up are: standing in the corner before catching-and-shooting, relocating to the 3-point line, or fading to the corner and getting the ball on a kick out. These possessions are not just catching and shooting. They can be catching-and-shooting, but attacking a close-out by dribbling into a pull-up, dribbling into a floater, or driving to the rim. It is worthwhile to analyze this playtype as it has the highest frequency among games, and thus coaches improving Spot-Up techniques can be used to a team's advantage.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, comment=NA}
+library(knitr)
+library(psych)
+library(kableExtra)
+library(tidyverse)
+library(dplyr)
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+playtypes<-read.csv('C:/Basketball/PlayTypes.csv', header = T)
+playtypes$Win<-as.factor(playtypes$Win)
+colnames(playtypes)[colnames(playtypes)=="Isolation...Defense.Commits"] <- "Isolation.Defense.Commits"
+colnames(playtypes)[colnames(playtypes)=="Isolation...Single.Covered"] <- "Isolation.Single.Covered"
+colnames(playtypes)[colnames(playtypes)=="Off..Reb....Put.Backs"] <- "Off.Reb.Put.Backs"
+colnames(playtypes)[colnames(playtypes)=="Off..Reb....Reset.Offense"] <- "Off.Reb.Reset.Offense"
+colnames(playtypes)[colnames(playtypes)=="Isolation...Single.Covered"] <- "Isolation.Single.Covered"
+colnames(playtypes)[colnames(playtypes)=="P.R.Ball.Handler...Defense.Commits"] <- "PR.Ball.Handler.Defense.Commit"
+colnames(playtypes)[colnames(playtypes)=="P.R.Ball.Handler...Single.Covered"] <- "PR.Ball.Handler.Single.Covered"
+colnames(playtypes)[colnames(playtypes)=="P.R.Ball.Handler...Traps"] <- "PR.Ball.Handler.Traps"
+colnames(playtypes)[colnames(playtypes)=="Post.Up...Defense.Commits"] <- "Post.Up.Defense.Commits"
+colnames(playtypes)[colnames(playtypes)=="Post.Up...Hard.Double.Team"] <- "Post.Up.Hard.Double.Team"
+colnames(playtypes)[colnames(playtypes)=="Post.Up...Single.Covered"] <- "Post.Up.Single.Covered"
+colnames(playtypes)[colnames(playtypes)=="AllPossessionClips"] <- "Possessions"
+#summary(playtypes[3:27])
+t<-describe(playtypes[3:27])
+nt<-t[,c(3:5,8:10)]
+kable(nt, caption = "Summary Statistics for the variables in the Play Types Dataset. Note: an asterisk denotes a factor variable.") %>%
+  kable_styling(font_size = 7)
+```
+
+
+
+```{r include=FALSE}
+library(purrr)
+library(tidyr)
+library(ggplot2)
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+playtypes[2:14] %>%
+  keep(is.numeric) %>% 
+  gather() %>% 
+  ggplot(aes(value)) +
+    facet_wrap(~ key, scales = "free", nrow = 8, ncol = 3) +
+    geom_density()
+```
+
+
+```{r echo=FALSE,fig.cap="Distribution of PlayTypes Features."}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+playtypes[15:27] %>%
+  keep(is.numeric) %>% 
+  gather() %>% 
+  ggplot(aes(value)) +
+    facet_wrap(~ key, scales = "free", nrow = 8, ncol = 3) + geom_density()
+```
+
+The distributions of most of the Isolation, Post-Up and Pick and Roll plays are skewed to the right, along with Handoffs, Offscreens and Miscellaneous Posssessions. The rest of the plays are approximately normal.
+
+Note: There is a difference in number of games per season because the number of games played per season increased from 19-20 games to 23-24 games in 2017/2018.
+
+### Outliers
+
+An outlier is defined as a sample or event that is very inconsistent with the rest of the data set. However, in sports outliers are not due to measurement errors, they are due to teams playing differently against other teams.
+
+### Win/Loss Associations
+
+```{r include=FALSE}
+library(gridExtra)
+library(ggplot2)
+g1<-ggplot(playtypes, aes(x=seq_along(playtypes$Cuts), y=playtypes$Cuts, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Cuts") + labs(color='Win', caption = "(i)") 
+g2<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$Transitions), y=playtypes$Transitions, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Transitions") + labs(color='Win', caption = "(ii)") 
+g3<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$AllIsolation), y=playtypes$AllIsolation, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Isolation") + labs(color='Win', caption = "(iii)") 
+g4<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$AllOffensiveRebounds), y=playtypes$AllOffensiveRebounds, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Offensive Rebounds") + labs(color='Win', caption = "(iv)") 
+g5<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$AllP.RBallHandler), y=playtypes$AllP.RBallHandler, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Pick&Roll") + labs(color='Win', caption = "(v)") 
+g6<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$AllPost.Up), y=playtypes$AllPost.Up, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Post-Up") + labs(color='Win', caption = "(vi)") 
+g7<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$Handoffs), y=playtypes$Handoffs, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Handoffs") + labs(color='Win', caption = "(vii)") 
+g8<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$OffScreens), y=playtypes$OffScreens, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Off-Screens") + labs(color='Win', caption = "(viii)") 
+g9<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$MiscellaneousPossessions), y=playtypes$MiscellaneousPossessions, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Misc. Possessions") + labs(color='Win', caption = "(ix)") 
+g10<-ggplot(playtypes[,c(4:17)], aes(x=seq_along(playtypes$SpotUps), y=playtypes$SpotUps, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Spot-Ups") + labs(color='Win', caption = "(x)") 
+```
+
+### Covariation 
+
+```{r echo=FALSE}
+grid.arrange(g1,g2,g3,g4,ncol=2,nrow=2)
+```
+
+```{r echo=FALSE}
+grid.arrange(g5,g6,g7,g8,ncol=2,nrow=2)
+```
+
+```{r echo=FALSE, fig.cap = "Scatterplots of certain Play Types vs. Wins (1) or Losses (0)"}
+grid.arrange(g9,g10,ncol=2,nrow=2)
+```
+
+There is no clear pattern of any individual play type in respect to wins. This makes sense since different teams have different styles of play and have to adjust to their opponents' style of play. It would make more sense to see the differentials for each game. For instance, if a team is not as tall as another team, the taller team may want to post-up more since they would have the advantage. This advantage may make the team more likely to win. 
+
+Below is an app that can be used to see where teams won or lost and the difference in play types they made in that game compared to their opponent. There are dropdown menus for the type of play, team and the season.
+
+```{r}
+knitr::include_app("https://michaelarman.shinyapps.io/PlayTypeDifferences/", 
+  height = "600px")
+```
+
+
+
+### Sets
+
+Below are the basic summary statistics of the Sets dataset which shows the number of times a team sets up their offense and where and when they do. Again, the reader can refer to Table 1.2 for the features and their associated descriptions.
+It may seem like there is an anomaly with the half-court vs zone variables but this is due to zone defense not being a popular defensive style in the league so when a team plays zone defense for the entire game then the opposing team will have to set their offense against it.
+We can see that zone defenses have right skewed distributions which further shows that zone defense is not a popular defensive style in U Sports Basketball.
+
+```{r echo=FALSE, comment = NA}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+sets<-read.csv('C:/Basketball/Sets.csv', header = T)
+#summary(sets[,c(3:19)])
+t<-describe(sets[,c(3:19)])
+nt<-t[,c(3:5,8:10)]
+kable(nt, caption = "Summary Statistics for the variables in the Sets Dataset. Note: an asterisk denotes a factor variable.") %>% kable_styling(font_size = 8)
+```
+
+
+```{r include=FALSE}
+library(GGally)
+library(knitr)
+```
+
+
+```{r echo=FALSE, fig.cap="Plot Matrix of Sets Dataset.", fig.height=8, fig.width=10, message=FALSE, warning=FALSE}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+names(sets[,c(3:19)]) <- strtrim(names(sets[,c(3:19)]), 3)
+g<-ggpairs(sets[,c(3:19)])+theme(axis.text.x = element_text(size = 5,angle=90, vjust=0.3),axis.text.y = element_text(size=0))
+g + theme_grey(base_size = 5)
+```
+
+
+### Shots
+
+Below are summary statistics of the Shots dataset (features and associated description are given in Table 1.3). From this we can see that on average, teams take more guarded shots than unguarded shots. Teams also take more long jump shots on average compared to short or medium jump shots. The average FG% from all teams from all 1488 games in the dataset is 27.75/68.1 = 40.75%. Teams on average attempt 25 3-Pointers and make about 8 per game which gives an average 3FG% of 32%; 2-Pointers have a higher efficiency on average because they are easier to score.
+Total Points are negatively correlated to guarded jump shots, short jump shots and medium jump shots, and are positively correlated to long jump shots (3 Pointers). It is self-explanatory that total points are negatively correlated to guarded shots as these have a higher likelihood of being missed. On the other hand, it is interesting to note that teams with players that take more short and medium jump shots as opposed to long shots have less total points, while teams with players taking more long jump shots have more total points. This shows that players with good 3-point shooting efficiency are highly valuable to a team and may in fact be an important factor to a team's season performance.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, comment=NA}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+shots<-read.csv('C:/Basketball/Shots.csv' , header = T)
+#summary(shots[,c(3:21)])
+t<-describe(shots[,c(3:21)])
+nt<-t[,c(3:5,8:10)]
+kable(nt,caption = "Summary Statistics for Play Type Variables. Note: an asterisk denotes a factor variable.")  %>% kable_styling(font_size = 8)
+```
+
+
+```{r echo=FALSE,fig.height=8, message=FALSE, warning=FALSE, fig.cap="Plot Matrix for Shots Dataset"}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+g<-ggpairs(shots[,c(4,7,9,11,13,15:21)])+theme(axis.text.x = element_text(size = 5,angle=90, vjust=0.3),axis.text.y = element_text(size=0,vjust = 0.2))
+g+theme_grey(base_size = 5)
+```
+
+
+### Visualizations
+
+```{r include=FALSE}
+g1<-ggplot(shots, aes(x=seq_along(shots$Long.Jump.Shots..3.point.shots.), y=shots$Long.Jump.Shots..3.point.shots., color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Long Jump Shots") + labs(color='Win', caption = "(v)") 
+g2<-ggplot(shots, aes(x=seq_along(shots$X3FG.Made), y=shots$X3FG.Made, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("3FGs Made") + labs(color='Win') 
+g3<-ggplot(shots, aes(x=seq_along(shots$X3FG.Missed), y=shots$X3FG.Missed, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("3FGs Missed") + labs(color='Win', caption = "(i)") 
+g4<-ggplot(shots, aes(x=seq_along(shots$Medium.Jump.Shots..17..to..3.point.line.), y=shots$Medium.Jump.Shots..17..to..3.point.line., color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Medium Jump Shots") + labs(color='Win', caption = "(vi)") 
+g5<-ggplot(shots, aes(x=seq_along(shots$Short.Jump.Shots...17..), y=shots$Short.Jump.Shots...17.., color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Short Jump Shots") + labs(color='Win', caption = "(vii)") 
+g6<-ggplot(shots, aes(x=seq_along(shots$X2FG.Made), y=shots$X2FG.Made, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("2FGs Made") + labs(color='Win', caption = "(ii)") 
+g7<-ggplot(shots, aes(x=seq_along(shots$Unguarded.Jump.Shots), y=shots$Unguarded.Jump.Shots, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Unguarded Jump Shots") + labs(color='Win', caption = "(iii)") 
+g8<-ggplot(shots, aes(x=seq_along(shots$Guarded.Jump.Shots), y=shots$Guarded.Jump.Shots, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Guarded Jump Shots ") + labs(color='Win', caption = "(iv)") 
+g9<-ggplot(shots, aes(x=seq_along(shots$All.Free.Throws), y=shots$All.Free.Throws, color=playtypes$Win)) + geom_point()+ theme(axis.text.x = element_text(angle=90, vjust=0.3)) +
+  xlab("Game") +
+  ylab("Free Throws") + labs(color='Win', caption = "(viii)") 
+
+```
+
+```{r echo=FALSE}
+grid.arrange(g2,g6,g7,g8,ncol=2,nrow=2)
+```
+
+```{r echo=FALSE,fig.cap="Comparing Shot Types vs. Wins(1) or Losses(0)"}
+grid.arrange(g1,g4,g5,g9,ncol=2,nrow=2)
+```
+
+From the above figure, we can see that more unguarded shots (iii) is more highly associated to wins compared to guarded shots (iv).
+In this figure we can see that taking a lower number of medium jump shots (vi) contribute to more wins as opposed to the other types of shots (v & vii) that are taken.
+
+### Transitions
+
+
+Below are summary statistics of the Transitions dataset (features and associated descriptions are given in Table 1.4). Total Points is most positively correlated to Transition Offense with 0.36 where Transition Offense occurs when a team gains possession of the ball and quickly pushes it to the opposing team's basket. Total Points is most negatively correlated to Press Offense. Press Offense is when the offense (the team having possession of the ball) is being pressed by the other team, i.e. they are being defensively pressured in which members of the defense cover their opponents throughout the court and not just near their own basket. Being pressured would make it harder to score, thus why it is the most negatively correlated to points. The outliers (shown in the boxplots) are all on the upper tails and may be due to the pace of game having a big variance. For example, a team may have a higher Transition Offense rate when the pace of the game is fast, but if the pace is slow, they may not transition from defense to offense as often.
+The outliers should not be removed from the dataset since they are not measurement errors and provide useful information where the data points largely deviate from the average.
+
+```{r echo=FALSE,message=FALSE, warning=FALSE, fig.height=7, fig.cap="Plot Matrix of the Transitions Dataset"}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+transitions<-read.csv('C:/Basketball/Transitions.csv', header = T)
+g<-ggpairs(transitions[3:12])+theme(axis.text.x = element_text(size = 5,angle=90, vjust=0.3),axis.text.y = element_text(size=0,vjust = 0.2))
+g+theme_grey(base_size = 5)
+```
+
+### General Statistics
+
+```{r include=FALSE}
+library(reticulate)
+df<-read.csv('C:/Basketball/RegularSeason.csv', header = T)
+df<-as.data.frame(df)
+```
+
+### Home Vs. Away
+
+
+```{r echo=FALSE, fig.cap="Distribution of Variables; Away vs. Home", fig.height=8, fig.width=6}
+home<-df %>% filter(Home == 1)
+away<-df %>% filter(Home == 0)
+par(mfrow=c(4,2))
+hist(away$X3Point., main = '3 Point% Away', xlab = '3FG%')
+hist(home$X3Point., main = '3 Point% Home', xlab = '3FG%')
+hist(away$FG., main = 'Field Goal% Away', xlab = 'FG%')
+hist(home$FG., main = 'Field Goal% Home', xlab = 'FG%')
+hist(away$FT., main = 'FreeThrow% Away', xlab = 'FT%')
+hist(home$FT., main = 'FreeThrow% Home', xlab = 'FT%')
+hist(away$Turnovers, main = 'Turnovers Away', xlab = 'Turnovers')
+hist(home$Turnovers, main = 'Turnovers Home', xlab = 'Turnovers')
+```
+
+The distributions for the home variables vs the away ones are very similar, however there is a slight difference between the Field Goal Percentage.
+
+
+|      | Average  | Statistic|
+|------|:--------:|---------:|
+|Away  | 0.4092   | FG%      |
+|Home  | 0.4228   | FG%      |
+|Away  | 0.3123   | 3FG%     |
+|Home  | 0.3281   | 3FG%     |
+
+Table: (\#tab:home-away) Home Shooting Efficiency vs. Away Shooting Efficiency
+
+There is a very slight difference between the home and away field goal percentages but does this mean that there is a home court advantage?
+
+Home Wins|Away Wins
+---------|-------------
+   402   |   328
+         
+         
+Table: (\#tab:homewins-awaywins) Home Wins vs. Away Wins
+
+This shows there is a difference between the number of times a home team wins compared to an away team. 
+
+### Risk Ratios and Odd Ratios
+
+#### What are Risk Ratios and Odd Ratios
+
+Risk Ratio (RR) or Relative Risk is a measurement often used in epidemiology. It is used to estimate the outcome between factors and outcomes. In our case we will use this measurement to see whether there is a statistically significant difference between teams playing at home versus away. A risk ratio of 1 means there is no difference, greater than 1 means there is a higher chance of winning if the team is playing at home, and less than 1 means the opposite [4].
+An Odds Ratio (OR) is a ratio of ratios. It also quantifies the strength of the association between two events. If the odds ratio equals 1 then the odds of the events are the same. If the odds ratio is greater than 1 then the events are correlated in the sense that if compared to the absence of the second event, the presence of the second raises the odds of the first event, and symmetrically the presence of the first event raises the odds of the second event.
+In our case we will obtain both measurements to see the strength of association between teams playing at home versus teams playing away.
+
+```{r include=FALSE}
+library(Epi)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, comment=NA}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+c.table<-array(data = c(402,328,328,402), dim = c(2,2), 
+          dimnames = list(Group = c("Home", "Away"),
+                          Outcome = c("Win", "Lose")))
+twoby2(c.table, alpha = 0.05)
+```
+The probability of winning at home is 55% whereas the probability of winning away is 45%. The Sample Odds Ratio tells us that odds of a team winning is 1.5 higher given they are playing at home compared to playing away. The Relative Risk tells us that home teams have 1.22 times the 'risk' of winning compared to away teams.
+
+A coach may be more interested in which teams in particular play better at home, and how much better they play.
+
+#### Home vs. Away by Team
+
+![(\#fig:homevsaway) Difference of Home Statistics vs. Away Statistics of the 2018-2019 Season for each team.](images/HomeCourt.png)
+
+Above is a table of the every team from the 2018-2019 season where the Home statistics are all subtracted by the
+Away Statistics, i.e. the statistics of a team when they were playing at home subtracted by statistics when they were playing away. A positive number indicates that the team performed better at home (except for turnovers). For example, Carleton shot their free throws 8.91% higher at home.
+
+##### Insights
+
+The top 3 teams that shot their free thows better at home are Western (12.32%), Carleton (8.91%), and Lakehead (5.58%). The top 3 teams that shot field goals better at home are Ottawa (6.44%), Toronto (5.59%), and Windsor (4.88%). The top 3 teams that shot 3 pointers better at home are Ottawa (11.20%), Laurentian (8.18%), Nipissing (5.69%). The top 3 teams that turnover the ball the least when playing at home are Algoma (-3.17), Western (-2.75), and Laurentian (-2.65). The top 3 teams that rebound the ball more at home are Ryerson (10.64), Brock (9.08), and Laurentian (6.11). The top 3 teams that scored more points at home are Ottawa (12.11), Toronto (10.89), and Laurentian (9.74).
+On average, the teams turned over the ball 6 less times at home, 
+
+##### Conclusion
+
+In conclusion, many teams benefit from playing at home, and different teams excel differently. According to a Bleacher Report study [5], referee bias and the psychological impact of playing at home are two of the biggest factors of why there is a large difference between home and away statistics. Studies have show that when a crowd is vocal, it impacts the way referees call a game. Also, referees have historically favored home teams. In addition, the psychological impact of playing at home is a self-sustaining placebo effect: Home-court advantage gives the home team an edge simply because players believe that it does.
+
+
+### Wins Per Season
+
+```{r echo=FALSE, fig.cap="Wins per Season for all teams in the OUA division"}
+allteamavg<-read.csv('C:/Basketball/AllTeamsAvgReg.csv',header = T)
+ggplot(allteamavg, aes(fill=Season, y=Wins, x=Team)) + 
+  geom_bar(position="dodge", stat="identity") +
+  theme(axis.text.x = element_text(angle=90, vjust=0.3))
+```
+The above shows that Brock, Carleton, Laurentian, UofT, and Western all steadily improved and peaked at the 2017-2018 season. The Ryerson Rams stayed consistent and peaked 2018-2019 season. There are few teams that are consistently not winning more than 10 games a season such as Algoma, Nipissing and York.
+
+\pagebreak
+
+## Correlations
+
+The table below gives the correlations between different Play Types and Total Points scored in a game. Note that a negative number represents a negative correlation between the two features while a positive number represents a positive correlation. A correlation measurement closer to 0 represents a non-linear relationship as opposed to a correlation measurement further from 0.
+
+  Play Type                     | Correlation to Total Points
+--------------------------------|----------------------------
+All Isolation                   | -0.046532124 
+**All Offensive Rebounds**      |**0.154450763**
+All PR Ball Handler             |  0.042544034
+All Post-Up                     | -0.040890549
+**Cuts**                        |**0.227413916**
+Handoffs                        | -0.017105738
+Isolation Defense Commits       | -0.045338194
+Isolation Single Covered        | -0.032922237
+Miscellaneous Possessions       | -0.075670507 
+**OffScreens**                  |**-0.135119217**
+Offensive Rebound Putback       |  0.154161317
+Offensive Rebound Reset Offense |  0.067340925
+PR Ball Handler Defense Commits |  0.053122283
+PR Ball Handler Single Covered  |  0.013881865
+PR Ball Handler Traps           | -0.020176743
+PR Roll Man                     |  0.101940646
+Post Up Defense Commits         | -0.056702755
+Post Up Hard Double Team        | -0.090199983
+Post Up Single Covered          |  0.013534056
+Spot Ups                        | -0.007428537
+**Transitions**                 |**0.317687812**
+
+Table: (\#tab:corr-pts) Correlation between Play Types and Total Points scored in a game.
+
+
+The plays that are most positively correlated to total points are transitions, cuts, and offensive rebounds. This could mean that transitions, cuts and offensive rebounds contribute to the most points compared to all other plays. The play that is most negatively correlated to total points is offscreens.
+
+To account for outliers and since some teams have played more a game or two more than others, the dataset was transformed by averaging the statistics per game per season, and the wins were summed.
+
+```{r include=FALSE}
+allfeatsavg<-read.csv('C:/Basketball/allfeatavg.csv', header = T)
+```
+  Features                      | Correlation to Number of Wins
+--------------------------------|----------------------------
+Press Offense                   | -0.175526612 
+Push Ball From Shot Attempt     |  0.091290517
+**Push Ball From Turnover**     |**0.484877383**
+Push Ball to Half Court         |  0.115357730
+Free Throws                     | -0.092037012
+Guarded Jump Shots              | -0.153775302
+**Unguarded Jump Shots**        |**0.592888473** 
+**Long Jump Shots**             |**0.331422037**
+Medium Jump Shots               | -0.365731181 
+Short Jump Shots                | -0.197920494
+**Cuts**                        |**0.373973357**
+Handoffs                        | -0.072249207
+Isolation Single Covered        | -0.354371026
+Isolation Defense Commits       | -0.006820286 
+Miscellaneous Possessions       | -0.406512329
+OffScreens                      | -0.280720057
+Offensive Rebound PutBack       |  0.166641468
+**Offensive Rebound Reset**     |**0.368757978** 
+**PR Ball Handler Defense Commit**|**0.338107184**
+PR Ball Handler Single Covered  |  0.072595284
+PR Ball Handler Traps           |  0.115888712
+**PR Roll Man**                   |**0.311420152**
+Post Up Defense Commits         | -0.171605486
+Post Up Hard Double Team        | -0.067993980 
+Post Up Single Covered          | -0.183923948
+**Spot Ups**                      |**0.247910273** 
+**Transitions**                   |**0.231836305**
+**Assists**                       |**0.653151380**
+**Blocks**                       |**0.337827582**
+**Steals**                        |**0.490803284**
+**Total Rebounds**                |**0.447741075**
+Turnovers                       | -0.319146688
+
+Table: (\#tab:corr-wins) Correlation between Game Statistics and Number of Wins.
+
+
+
+### The most positively correlated variables to wins
+
+The most positively correlated variable to number of wins is assists with a correlation of 0.65. Next to that are unguarded jump shots with a correlation of 0.59. 
+The play types that are positively correlated to wins are Offensive Rebound Reset Offense, P&R Ball Handler Defense Commits, P&R Roll Man, Cuts, Transitions and Spot-Ups. Offensive Rebound Reset Offense gives the team another chance to score, P&R Ball Handler Defense Commits would leave a man open to score, P&R Roll Man can lead a man to an unguarded shot and same for Cuts, Transitions and Spot-Ups.
+The shot types with the highest correlation are the Long Jump Shot (3 Pointers), and of course, the Unguarded Jump Shots.
+Furthermore, Push Ball from Turnover is also highly correlated with wins which makes sense because if another team turns over the ball then they wasted a possession and the other team is able to score (most usually in a fastbreak).
+The general statistics that are most positively correlated to wins are assists, blocks, steals and rebounds. Blocks, steals and rebounds create more possessions to teams while creating less for the other team, i.e. the more you steal, block or rebound the ball, the more chances you have to score while putting your opponent at a disadvantage.
+
+```{r include=FALSE}
+library(ggcorrplot)
+```
+
+
+```{r echo=FALSE, fig.cap="Correlogram of Game Statistics", fig.width=8}
+knit_hooks$set(crop = hook_pdfcrop)
+opts_chunk$set(crop = TRUE)
+unguard<-read.csv('C:/Basketball/unguardedcorr.csv', header = T)
+corr <- round(cor(unguard), 2)
+
+# Plot
+ggcorrplot(corr, hc.order = TRUE, 
+           type = "lower", 
+           lab = TRUE, 
+           lab_size = 2, 
+           method="circle", 
+           colors = c("tomato2", "white", "springgreen3"), 
+           title="Correlogram of Game Stats", 
+           ggtheme=theme_bw)+theme(axis.text.x= element_text(size=8), axis.text.y = element_text(size=8))
+```
+This figure shows that the most positively correlated statistics to unguarded jump shots are long jump shots, P&R Roll Man, Spot-Ups, P&R Ball Handler Defense Commits, and Push Ball from Turnover.
+
+### The most negatively correlated variables to wins
+The most negatively correlated variable to number of wins is Miscellaneous Possessions with a correlation of -0.40. Miscellaneous Possessions are undefined plays, possibly due to confusion, sloppy play, or bad decisions. The shot types that are negatively correlated are medium jump shots, short jump shots and guarded jump shots. The negatively correlated play types are Isolation Single Covered, Post-Up Single Covered, and OffScreens. This may suggest that these plays are easier to defend or harder to score from.
+And of course, the most negatively correlated general statistic is turnovers.
+

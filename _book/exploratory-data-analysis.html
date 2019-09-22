@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Exploratory Data Analysis | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Exploratory Data Analysis | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Exploratory Data Analysis | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="datasets.html"/>
+<link rel="next" href="player-analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Exploratory Data Analysis</h1>
+<p>Exploratory Data Analysis is valuable to data projects because it helps in understanding the data, making sure it is worth investigating, and checking for anomalies. The raw data needs to be validated to ensure that the data set was collected without errors.</p>
+<div id="distributionvariation-of-variables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Distribution/Variation of Variables</h2>
+<p>Distributions are often described in terms of their density or density functions.</p>
+<p>Density functions are functions that describe how the proportion of data or likelihood of the proportion of observations change over the range of the distribution. Certain analyses require certain distributions, and if they require all variables to be independently and identically distributed, then standardization will need to be used.</p>
+<div id="play-types-1" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Play Types</h3>
+<p>Below are basic summary statistics of the Play Types dataset, i.e. the minimum, quartiles, mean, median, and maximum of all the variables. In order to best interpret this data, the reader should refer to Table 1.1 where each of the below features and their descriptions are given.</p>
+<p>On average, there are 92.05 possessions (“Possessions” highlighted below) per game, among all 1452 regular season games in the dataset. The Spot-Up is the playtype with the highest average (i.e. most frequent during a game) of 22.35 Spot-Ups per game. A Spot-Up is when a player is set in a position to shoot and gets the ball to take the shot. Typically, this is a player waiting at the 3-point line. An Off-Screen possession results from an offensive player getting the ball when a screen was set by one of their teammates allowing them to be open for a pass. It is important to note these two types of possessions can never happen simultaneously, as a Spot-Up requires no screen being used before the player catches the ball. Examples of a player spotting up are: standing in the corner before catching-and-shooting, relocating to the 3-point line, or fading to the corner and getting the ball on a kick out. These possessions are not just catching and shooting. They can be catching-and-shooting, but attacking a close-out by dribbling into a pull-up, dribbling into a floater, or driving to the rim. It is worthwhile to analyze this playtype as it has the highest frequency among games, and thus coaches improving Spot-Up techniques can be used to a team’s advantage.</p>
+<table class="table" style="font-size: 7px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-1">Table 2.1: </span>Summary Statistics for the variables in the Play Types Dataset. Note: an asterisk denotes a factor variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+range
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+TotalPoints
+</td>
+<td style="text-align:right;">
+77.4400826
+</td>
+<td style="text-align:right;">
+13.5884622
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Win*
+</td>
+<td style="text-align:right;">
+1.5000000
+</td>
+<td style="text-align:right;">
+0.5001723
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Season*
+</td>
+<td style="text-align:right;">
+2.6033058
+</td>
+<td style="text-align:right;">
+1.1111564
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AllIsolation
+</td>
+<td style="text-align:right;">
+8.6053719
+</td>
+<td style="text-align:right;">
+4.5569282
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AllOffensiveRebounds
+</td>
+<td style="text-align:right;">
+11.0723140
+</td>
+<td style="text-align:right;">
+4.0369936
+</td>
+<td style="text-align:right;">
+11.0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AllP.RBallHandler
+</td>
+<td style="text-align:right;">
+19.0847107
+</td>
+<td style="text-align:right;">
+7.3219072
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Possessions
+</td>
+<td style="text-align:right;">
+92.0516529
+</td>
+<td style="text-align:right;">
+7.6249584
+</td>
+<td style="text-align:right;">
+92.0
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AllPost.Up
+</td>
+<td style="text-align:right;">
+8.4531680
+</td>
+<td style="text-align:right;">
+5.2572562
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cuts
+</td>
+<td style="text-align:right;">
+7.1122590
+</td>
+<td style="text-align:right;">
+3.4954634
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Handoffs
+</td>
+<td style="text-align:right;">
+2.5716253
+</td>
+<td style="text-align:right;">
+2.1355756
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Isolation.DefenseCommits
+</td>
+<td style="text-align:right;">
+2.6508264
+</td>
+<td style="text-align:right;">
+2.0962322
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Isolation.SingleCovered
+</td>
+<td style="text-align:right;">
+5.9545455
+</td>
+<td style="text-align:right;">
+3.5539555
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MiscellaneousPossessions
+</td>
+<td style="text-align:right;">
+6.7520661
+</td>
+<td style="text-align:right;">
+3.2296379
+</td>
+<td style="text-align:right;">
+6.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffScreens
+</td>
+<td style="text-align:right;">
+4.0378788
+</td>
+<td style="text-align:right;">
+2.7003990
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Off.Reb..PutBacks
+</td>
+<td style="text-align:right;">
+5.9035813
+</td>
+<td style="text-align:right;">
+2.9562047
+</td>
+<td style="text-align:right;">
+6.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Off.Reb..ResetOffense
+</td>
+<td style="text-align:right;">
+5.1687328
+</td>
+<td style="text-align:right;">
+2.4915654
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P.RBallHandler.DefenseCommits
+</td>
+<td style="text-align:right;">
+10.9931129
+</td>
+<td style="text-align:right;">
+5.0872424
+</td>
+<td style="text-align:right;">
+11.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P.RBallHandler.SingleCovered
+</td>
+<td style="text-align:right;">
+7.7217631
+</td>
+<td style="text-align:right;">
+4.2227431
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P.RBallHandler.Traps
+</td>
+<td style="text-align:right;">
+0.3698347
+</td>
+<td style="text-align:right;">
+0.8604964
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P.RRollMan
+</td>
+<td style="text-align:right;">
+3.1666667
+</td>
+<td style="text-align:right;">
+2.3649850
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Post.Up.DefenseCommits
+</td>
+<td style="text-align:right;">
+1.6763085
+</td>
+<td style="text-align:right;">
+1.7005016
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Post.Up.HardDoubleTeam
+</td>
+<td style="text-align:right;">
+1.4407713
+</td>
+<td style="text-align:right;">
+1.8879549
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Post.Up.SingleCovered
+</td>
+<td style="text-align:right;">
+5.3360882
+</td>
+<td style="text-align:right;">
+3.8232836
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SpotUps
+</td>
+<td style="text-align:right;">
+22.3519284
+</td>
+<td style="text-align:right;">
+5.7683973
+</td>
+<td style="text-align:right;">
+22.0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Transitions
+</td>
+<td style="text-align:right;">
+18.0172176
+</td>
+<td style="text-align:right;">
+6.1807470
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Basketball-Analysis_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-4-1.png" alt="Distribution of PlayTypes Features." width="672" />
+<p class="caption">
+Figure 2.1: Distribution of PlayTypes Features.
+</p>
+</div>
+<p>The distributions of most of the Isolation, Post-Up and Pick and Roll plays are skewed to the right, along with Handoffs, Offscreens and Miscellaneous Posssessions. The rest of the plays are approximately normal.</p>
+<p>Note: There is a difference in number of games per season because the number of games played per season increased from 19-20 games to 23-24 games in 2017/2018.</p>
+</div>
+<div id="outliers" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Outliers</h3>
+<p>An outlier is defined as a sample or event that is very inconsistent with the rest of the data set. However, in sports outliers are not due to measurement errors, they are due to teams playing differently against other teams.</p>
+</div>
+<div id="winloss-associations" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Win/Loss Associations</h3>
+</div>
+<div id="covariation" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Covariation</h3>
+<p><img src="Basketball-Analysis_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Basketball-Analysis_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplots of certain Play Types vs. Wins (1) or Losses (0)" width="672" />
+<p class="caption">
+Figure 2.2: Scatterplots of certain Play Types vs. Wins (1) or Losses (0)
+</p>
+</div>
+<p>There is no clear pattern of any individual play type in respect to wins. This makes sense since different teams have different styles of play and have to adjust to their opponents’ style of play. It would make more sense to see the differentials for each game. For instance, if a team is not as tall as another team, the taller team may want to post-up more since they would have the advantage. This advantage may make the team more likely to win.</p>
+<p>Below is an app that can be used to see where teams won or lost and the difference in play types they made in that game compared to their opponent. There are dropdown menus for the type of play, team and the season.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="exploratory-data-analysis.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">include_app</span>(<span class="st">&quot;https://michaelarman.shinyapps.io/PlayTypeDifferences/&quot;</span>, </span>
+<span id="cb1-2"><a href="exploratory-data-analysis.html#cb1-2"></a>  <span class="dt">height =</span> <span class="st">&quot;600px&quot;</span>)</span></code></pre></div>
+<iframe src="https://michaelarman.shinyapps.io/PlayTypeDifferences/?showcase=0" width="672" height="600px">
+</iframe>
+</div>
+<div id="sets-1" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Sets</h3>
+<p>Below are the basic summary statistics of the Sets dataset which shows the number of times a team sets up their offense and where and when they do. Again, the reader can refer to Table 1.2 for the features and their associated descriptions.
+It may seem like there is an anomaly with the half-court vs zone variables but this is due to zone defense not being a popular defensive style in the league so when a team plays zone defense for the entire game then the opposing team will have to set their offense against it.
+We can see that zone defenses have right skewed distributions which further shows that zone defense is not a popular defensive style in U Sports Basketball.</p>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-10">Table 2.2: </span>Summary Statistics for the variables in the Sets Dataset. Note: an asterisk denotes a factor variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+range
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AfterTimeOuts.ATO.
+</td>
+<td style="text-align:right;">
+8.637741
+</td>
+<td style="text-align:right;">
+2.0509452
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetAll
+</td>
+<td style="text-align:right;">
+74.034435
+</td>
+<td style="text-align:right;">
+7.3461373
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetAll.NoPts
+</td>
+<td style="text-align:right;">
+46.580579
+</td>
+<td style="text-align:right;">
+7.0841925
+</td>
+<td style="text-align:right;">
+46.0
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetAll.Pts
+</td>
+<td style="text-align:right;">
+27.453857
+</td>
+<td style="text-align:right;">
+5.2931895
+</td>
+<td style="text-align:right;">
+27.0
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Zone.NoPts
+</td>
+<td style="text-align:right;">
+2.807851
+</td>
+<td style="text-align:right;">
+5.7575283
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Man
+</td>
+<td style="text-align:right;">
+69.700413
+</td>
+<td style="text-align:right;">
+10.8398110
+</td>
+<td style="text-align:right;">
+71.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:right;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Man.NoPts
+</td>
+<td style="text-align:right;">
+43.772727
+</td>
+<td style="text-align:right;">
+8.7634901
+</td>
+<td style="text-align:right;">
+44.0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Man.Pts
+</td>
+<td style="text-align:right;">
+25.927686
+</td>
+<td style="text-align:right;">
+5.7791545
+</td>
+<td style="text-align:right;">
+26.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Zone
+</td>
+<td style="text-align:right;">
+4.334022
+</td>
+<td style="text-align:right;">
+8.5731538
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HalfCourtSetvs.Zone.Pts
+</td>
+<td style="text-align:right;">
+1.526171
+</td>
+<td style="text-align:right;">
+3.0937572
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Last4Sec.ofShotClock
+</td>
+<td style="text-align:right;">
+7.323003
+</td>
+<td style="text-align:right;">
+3.4618639
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OutofBounds
+</td>
+<td style="text-align:right;">
+9.828512
+</td>
+<td style="text-align:right;">
+3.1749254
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OutofBounds.End.
+</td>
+<td style="text-align:right;">
+5.244490
+</td>
+<td style="text-align:right;">
+2.4351274
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OutofBounds.Side.
+</td>
+<td style="text-align:right;">
+4.584022
+</td>
+<td style="text-align:right;">
+2.2218062
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TotalPoints
+</td>
+<td style="text-align:right;">
+77.440083
+</td>
+<td style="text-align:right;">
+13.5884622
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Win
+</td>
+<td style="text-align:right;">
+0.500000
+</td>
+<td style="text-align:right;">
+0.5001723
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Season*
+</td>
+<td style="text-align:right;">
+2.603306
+</td>
+<td style="text-align:right;">
+1.1111564
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-12-1.png" alt="Plot Matrix of Sets Dataset." width="960" />
+<p class="caption">
+Figure 2.3: Plot Matrix of Sets Dataset.
+</p>
+</div>
+</div>
+<div id="shots-1" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> Shots</h3>
+<p>Below are summary statistics of the Shots dataset (features and associated description are given in Table 1.3). From this we can see that on average, teams take more guarded shots than unguarded shots. Teams also take more long jump shots on average compared to short or medium jump shots. The average FG% from all teams from all 1488 games in the dataset is 27.75/68.1 = 40.75%. Teams on average attempt 25 3-Pointers and make about 8 per game which gives an average 3FG% of 32%; 2-Pointers have a higher efficiency on average because they are easier to score.
+Total Points are negatively correlated to guarded jump shots, short jump shots and medium jump shots, and are positively correlated to long jump shots (3 Pointers). It is self-explanatory that total points are negatively correlated to guarded shots as these have a higher likelihood of being missed. On the other hand, it is interesting to note that teams with players that take more short and medium jump shots as opposed to long shots have less total points, while teams with players taking more long jump shots have more total points. This shows that players with good 3-point shooting efficiency are highly valuable to a team and may in fact be an important factor to a team’s season performance.</p>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-13">Table 2.3: </span>Summary Statistics for Play Type Variables. Note: an asterisk denotes a factor variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+range
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+X2FG.Attempts
+</td>
+<td style="text-align:right;">
+43.172865
+</td>
+<td style="text-align:right;">
+7.9905014
+</td>
+<td style="text-align:right;">
+43.0
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X2FG.Made
+</td>
+<td style="text-align:right;">
+19.894628
+</td>
+<td style="text-align:right;">
+5.2749932
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X2FG.Missed
+</td>
+<td style="text-align:right;">
+23.278237
+</td>
+<td style="text-align:right;">
+6.1437855
+</td>
+<td style="text-align:right;">
+23.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X3FG.Attempts
+</td>
+<td style="text-align:right;">
+25.135675
+</td>
+<td style="text-align:right;">
+6.5643332
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X3FG.Made
+</td>
+<td style="text-align:right;">
+7.883609
+</td>
+<td style="text-align:right;">
+3.2277794
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X3FG.Missed
+</td>
+<td style="text-align:right;">
+17.252066
+</td>
+<td style="text-align:right;">
+5.0190364
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+All.Free.Throws
+</td>
+<td style="text-align:right;">
+19.064738
+</td>
+<td style="text-align:right;">
+7.0358888
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG.Attempts
+</td>
+<td style="text-align:right;">
+68.308540
+</td>
+<td style="text-align:right;">
+7.8644519
+</td>
+<td style="text-align:right;">
+68.0
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG.Made
+</td>
+<td style="text-align:right;">
+27.778237
+</td>
+<td style="text-align:right;">
+5.7206141
+</td>
+<td style="text-align:right;">
+28.0
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG.Missed
+</td>
+<td style="text-align:right;">
+40.530303
+</td>
+<td style="text-align:right;">
+7.0999397
+</td>
+<td style="text-align:right;">
+40.0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guarded.Jump.Shots
+</td>
+<td style="text-align:right;">
+12.511708
+</td>
+<td style="text-align:right;">
+5.5112691
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Live.Free.Throws
+</td>
+<td style="text-align:right;">
+10.068870
+</td>
+<td style="text-align:right;">
+3.6851550
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Long.Jump.Shots..3.point.shots.
+</td>
+<td style="text-align:right;">
+25.351240
+</td>
+<td style="text-align:right;">
+6.5999639
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Medium.Jump.Shots..17..to..3.point.line.
+</td>
+<td style="text-align:right;">
+4.294766
+</td>
+<td style="text-align:right;">
+2.8733717
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short.Jump.Shots…17..
+</td>
+<td style="text-align:right;">
+4.687328
+</td>
+<td style="text-align:right;">
+2.9039348
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total.Points
+</td>
+<td style="text-align:right;">
+77.440083
+</td>
+<td style="text-align:right;">
+13.5884622
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Unguarded.Jump.Shots
+</td>
+<td style="text-align:right;">
+8.913223
+</td>
+<td style="text-align:right;">
+4.8063152
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Win
+</td>
+<td style="text-align:right;">
+0.500000
+</td>
+<td style="text-align:right;">
+0.5001723
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Season*
+</td>
+<td style="text-align:right;">
+2.603306
+</td>
+<td style="text-align:right;">
+1.1111564
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-14-1.png" alt="Plot Matrix for Shots Dataset" width="672" />
+<p class="caption">
+Figure 2.4: Plot Matrix for Shots Dataset
+</p>
+</div>
+</div>
+<div id="visualizations" class="section level3">
+<h3><span class="header-section-number">2.1.7</span> Visualizations</h3>
+<p><img src="Basketball-Analysis_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-17"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-17-1.png" alt="Comparing Shot Types vs. Wins(1) or Losses(0)" width="672" />
+<p class="caption">
+Figure 2.5: Comparing Shot Types vs. Wins(1) or Losses(0)
+</p>
+</div>
+<p>From the above figure, we can see that more unguarded shots (iii) is more highly associated to wins compared to guarded shots (iv).
+In this figure we can see that taking a lower number of medium jump shots (vi) contribute to more wins as opposed to the other types of shots (v &amp; vii) that are taken.</p>
+</div>
+<div id="transitions-1" class="section level3">
+<h3><span class="header-section-number">2.1.8</span> Transitions</h3>
+<p>Below are summary statistics of the Transitions dataset (features and associated descriptions are given in Table 1.4). Total Points is most positively correlated to Transition Offense with 0.36 where Transition Offense occurs when a team gains possession of the ball and quickly pushes it to the opposing team’s basket. Total Points is most negatively correlated to Press Offense. Press Offense is when the offense (the team having possession of the ball) is being pressed by the other team, i.e. they are being defensively pressured in which members of the defense cover their opponents throughout the court and not just near their own basket. Being pressured would make it harder to score, thus why it is the most negatively correlated to points. The outliers (shown in the boxplots) are all on the upper tails and may be due to the pace of game having a big variance. For example, a team may have a higher Transition Offense rate when the pace of the game is fast, but if the pace is slow, they may not transition from defense to offense as often.
+The outliers should not be removed from the dataset since they are not measurement errors and provide useful information where the data points largely deviate from the average.</p>
+<div class="figure"><span id="fig:unnamed-chunk-18"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-18-1.png" alt="Plot Matrix of the Transitions Dataset" width="672" />
+<p class="caption">
+Figure 2.6: Plot Matrix of the Transitions Dataset
+</p>
+</div>
+</div>
+<div id="general-statistics-1" class="section level3">
+<h3><span class="header-section-number">2.1.9</span> General Statistics</h3>
+</div>
+<div id="home-vs.-away" class="section level3">
+<h3><span class="header-section-number">2.1.10</span> Home Vs. Away</h3>
+<div class="figure"><span id="fig:unnamed-chunk-20"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-20-1.png" alt="Distribution of Variables; Away vs. Home" width="576" />
+<p class="caption">
+Figure 2.7: Distribution of Variables; Away vs. Home
+</p>
+</div>
+<p>The distributions for the home variables vs the away ones are very similar, however there is a slight difference between the Field Goal Percentage.</p>
+<table>
+<caption><span id="tab:home-away">Table 2.4: </span> Home Shooting Efficiency vs. Away Shooting Efficiency</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Average</th>
+<th align="right">Statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Away</td>
+<td align="center">0.4092</td>
+<td align="right">FG%</td>
+</tr>
+<tr class="even">
+<td>Home</td>
+<td align="center">0.4228</td>
+<td align="right">FG%</td>
+</tr>
+<tr class="odd">
+<td>Away</td>
+<td align="center">0.3123</td>
+<td align="right">3FG%</td>
+</tr>
+<tr class="even">
+<td>Home</td>
+<td align="center">0.3281</td>
+<td align="right">3FG%</td>
+</tr>
+</tbody>
+</table>
+<p>There is a very slight difference between the home and away field goal percentages but does this mean that there is a home court advantage?</p>
+<table>
+<caption><span id="tab:homewins-awaywins">Table 2.5: </span> Home Wins vs. Away Wins</caption>
+<thead>
+<tr class="header">
+<th>Home Wins</th>
+<th>Away Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>402</td>
+<td>328</td>
+</tr>
+</tbody>
+</table>
+<p>This shows there is a difference between the number of times a home team wins compared to an away team.</p>
+</div>
+<div id="risk-ratios-and-odd-ratios" class="section level3">
+<h3><span class="header-section-number">2.1.11</span> Risk Ratios and Odd Ratios</h3>
+<div id="what-are-risk-ratios-and-odd-ratios" class="section level4">
+<h4><span class="header-section-number">2.1.11.1</span> What are Risk Ratios and Odd Ratios</h4>
+<p>Risk Ratio (RR) or Relative Risk is a measurement often used in epidemiology. It is used to estimate the outcome between factors and outcomes. In our case we will use this measurement to see whether there is a statistically significant difference between teams playing at home versus away. A risk ratio of 1 means there is no difference, greater than 1 means there is a higher chance of winning if the team is playing at home, and less than 1 means the opposite [4].
+An Odds Ratio (OR) is a ratio of ratios. It also quantifies the strength of the association between two events. If the odds ratio equals 1 then the odds of the events are the same. If the odds ratio is greater than 1 then the events are correlated in the sense that if compared to the absence of the second event, the presence of the second raises the odds of the first event, and symmetrically the presence of the first event raises the odds of the second event.
+In our case we will obtain both measurements to see the strength of association between teams playing at home versus teams playing away.</p>
+<pre><code>2 by 2 table analysis: 
+------------------------------------------------------ 
+Outcome   : Win 
+Comparing : Home vs. Away 
+
+     Win Lose    P(Win) 95% conf. interval
+Home 402  328    0.5507    0.5144   0.5864
+Away 328  402    0.4493    0.4136   0.4856
+
+                                   95% conf. interval
+             Relative Risk: 1.2256    1.1049   1.3595
+         Sample Odds Ratio: 1.5021    1.2222   1.8462
+Conditional MLE Odds Ratio: 1.5017    1.2156   1.8562
+    Probability difference: 0.1014    0.0501   0.1519
+
+             Exact P-value: 0.0001 
+        Asymptotic P-value: 0.0001 
+------------------------------------------------------</code></pre>
+<p>The probability of winning at home is 55% whereas the probability of winning away is 45%. The Sample Odds Ratio tells us that odds of a team winning is 1.5 higher given they are playing at home compared to playing away. The Relative Risk tells us that home teams have 1.22 times the ‘risk’ of winning compared to away teams.</p>
+<p>A coach may be more interested in which teams in particular play better at home, and how much better they play.</p>
+</div>
+<div id="home-vs.-away-by-team" class="section level4">
+<h4><span class="header-section-number">2.1.11.2</span> Home vs. Away by Team</h4>
+<div class="figure"><span id="fig:homevsaway"></span>
+<img src="images/HomeCourt.png" alt="" />
+<p class="caption">Figure 2.8:  Difference of Home Statistics vs. Away Statistics of the 2018-2019 Season for each team.</p>
+</div>
+<p>Above is a table of the every team from the 2018-2019 season where the Home statistics are all subtracted by the
+Away Statistics, i.e. the statistics of a team when they were playing at home subtracted by statistics when they were playing away. A positive number indicates that the team performed better at home (except for turnovers). For example, Carleton shot their free throws 8.91% higher at home.</p>
+<div id="insights" class="section level5">
+<h5><span class="header-section-number">2.1.11.2.1</span> Insights</h5>
+<p>The top 3 teams that shot their free thows better at home are Western (12.32%), Carleton (8.91%), and Lakehead (5.58%). The top 3 teams that shot field goals better at home are Ottawa (6.44%), Toronto (5.59%), and Windsor (4.88%). The top 3 teams that shot 3 pointers better at home are Ottawa (11.20%), Laurentian (8.18%), Nipissing (5.69%). The top 3 teams that turnover the ball the least when playing at home are Algoma (-3.17), Western (-2.75), and Laurentian (-2.65). The top 3 teams that rebound the ball more at home are Ryerson (10.64), Brock (9.08), and Laurentian (6.11). The top 3 teams that scored more points at home are Ottawa (12.11), Toronto (10.89), and Laurentian (9.74).
+On average, the teams turned over the ball 6 less times at home,</p>
+</div>
+<div id="conclusion" class="section level5">
+<h5><span class="header-section-number">2.1.11.2.2</span> Conclusion</h5>
+<p>In conclusion, many teams benefit from playing at home, and different teams excel differently. According to a Bleacher Report study [5], referee bias and the psychological impact of playing at home are two of the biggest factors of why there is a large difference between home and away statistics. Studies have show that when a crowd is vocal, it impacts the way referees call a game. Also, referees have historically favored home teams. In addition, the psychological impact of playing at home is a self-sustaining placebo effect: Home-court advantage gives the home team an edge simply because players believe that it does.</p>
+</div>
+</div>
+</div>
+<div id="wins-per-season" class="section level3">
+<h3><span class="header-section-number">2.1.12</span> Wins Per Season</h3>
+<div class="figure"><span id="fig:unnamed-chunk-23"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-23-1.png" alt="Wins per Season for all teams in the OUA division" width="672" />
+<p class="caption">
+Figure 2.9: Wins per Season for all teams in the OUA division
+</p>
+</div>
+<p>The above shows that Brock, Carleton, Laurentian, UofT, and Western all steadily improved and peaked at the 2017-2018 season. The Ryerson Rams stayed consistent and peaked 2018-2019 season. There are few teams that are consistently not winning more than 10 games a season such as Algoma, Nipissing and York.</p>
+
+</div>
+</div>
+<div id="correlations" class="section level2">
+<h2><span class="header-section-number">2.2</span> Correlations</h2>
+<p>The table below gives the correlations between different Play Types and Total Points scored in a game. Note that a negative number represents a negative correlation between the two features while a positive number represents a positive correlation. A correlation measurement closer to 0 represents a non-linear relationship as opposed to a correlation measurement further from 0.</p>
+<table>
+<caption><span id="tab:corr-pts">Table 2.6: </span> Correlation between Play Types and Total Points scored in a game.</caption>
+<thead>
+<tr class="header">
+<th>Play Type</th>
+<th>Correlation to Total Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All Isolation</td>
+<td>-0.046532124</td>
+</tr>
+<tr class="even">
+<td><strong>All Offensive Rebounds</strong></td>
+<td><strong>0.154450763</strong></td>
+</tr>
+<tr class="odd">
+<td>All PR Ball Handler</td>
+<td>0.042544034</td>
+</tr>
+<tr class="even">
+<td>All Post-Up</td>
+<td>-0.040890549</td>
+</tr>
+<tr class="odd">
+<td><strong>Cuts</strong></td>
+<td><strong>0.227413916</strong></td>
+</tr>
+<tr class="even">
+<td>Handoffs</td>
+<td>-0.017105738</td>
+</tr>
+<tr class="odd">
+<td>Isolation Defense Commits</td>
+<td>-0.045338194</td>
+</tr>
+<tr class="even">
+<td>Isolation Single Covered</td>
+<td>-0.032922237</td>
+</tr>
+<tr class="odd">
+<td>Miscellaneous Possessions</td>
+<td>-0.075670507</td>
+</tr>
+<tr class="even">
+<td><strong>OffScreens</strong></td>
+<td><strong>-0.135119217</strong></td>
+</tr>
+<tr class="odd">
+<td>Offensive Rebound Putback</td>
+<td>0.154161317</td>
+</tr>
+<tr class="even">
+<td>Offensive Rebound Reset Offense</td>
+<td>0.067340925</td>
+</tr>
+<tr class="odd">
+<td>PR Ball Handler Defense Commits</td>
+<td>0.053122283</td>
+</tr>
+<tr class="even">
+<td>PR Ball Handler Single Covered</td>
+<td>0.013881865</td>
+</tr>
+<tr class="odd">
+<td>PR Ball Handler Traps</td>
+<td>-0.020176743</td>
+</tr>
+<tr class="even">
+<td>PR Roll Man</td>
+<td>0.101940646</td>
+</tr>
+<tr class="odd">
+<td>Post Up Defense Commits</td>
+<td>-0.056702755</td>
+</tr>
+<tr class="even">
+<td>Post Up Hard Double Team</td>
+<td>-0.090199983</td>
+</tr>
+<tr class="odd">
+<td>Post Up Single Covered</td>
+<td>0.013534056</td>
+</tr>
+<tr class="even">
+<td>Spot Ups</td>
+<td>-0.007428537</td>
+</tr>
+<tr class="odd">
+<td><strong>Transitions</strong></td>
+<td><strong>0.317687812</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The plays that are most positively correlated to total points are transitions, cuts, and offensive rebounds. This could mean that transitions, cuts and offensive rebounds contribute to the most points compared to all other plays. The play that is most negatively correlated to total points is offscreens.</p>
+<p>To account for outliers and since some teams have played more a game or two more than others, the dataset was transformed by averaging the statistics per game per season, and the wins were summed.</p>
+<table>
+<caption><span id="tab:corr-wins">Table 2.7: </span> Correlation between Game Statistics and Number of Wins.</caption>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Correlation to Number of Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Press Offense</td>
+<td>-0.175526612</td>
+</tr>
+<tr class="even">
+<td>Push Ball From Shot Attempt</td>
+<td>0.091290517</td>
+</tr>
+<tr class="odd">
+<td><strong>Push Ball From Turnover</strong></td>
+<td><strong>0.484877383</strong></td>
+</tr>
+<tr class="even">
+<td>Push Ball to Half Court</td>
+<td>0.115357730</td>
+</tr>
+<tr class="odd">
+<td>Free Throws</td>
+<td>-0.092037012</td>
+</tr>
+<tr class="even">
+<td>Guarded Jump Shots</td>
+<td>-0.153775302</td>
+</tr>
+<tr class="odd">
+<td><strong>Unguarded Jump Shots</strong></td>
+<td><strong>0.592888473</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Long Jump Shots</strong></td>
+<td><strong>0.331422037</strong></td>
+</tr>
+<tr class="odd">
+<td>Medium Jump Shots</td>
+<td>-0.365731181</td>
+</tr>
+<tr class="even">
+<td>Short Jump Shots</td>
+<td>-0.197920494</td>
+</tr>
+<tr class="odd">
+<td><strong>Cuts</strong></td>
+<td><strong>0.373973357</strong></td>
+</tr>
+<tr class="even">
+<td>Handoffs</td>
+<td>-0.072249207</td>
+</tr>
+<tr class="odd">
+<td>Isolation Single Covered</td>
+<td>-0.354371026</td>
+</tr>
+<tr class="even">
+<td>Isolation Defense Commits</td>
+<td>-0.006820286</td>
+</tr>
+<tr class="odd">
+<td>Miscellaneous Possessions</td>
+<td>-0.406512329</td>
+</tr>
+<tr class="even">
+<td>OffScreens</td>
+<td>-0.280720057</td>
+</tr>
+<tr class="odd">
+<td>Offensive Rebound PutBack</td>
+<td>0.166641468</td>
+</tr>
+<tr class="even">
+<td><strong>Offensive Rebound Reset</strong></td>
+<td><strong>0.368757978</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>PR Ball Handler Defense Commit</strong></td>
+<td><strong>0.338107184</strong></td>
+</tr>
+<tr class="even">
+<td>PR Ball Handler Single Covered</td>
+<td>0.072595284</td>
+</tr>
+<tr class="odd">
+<td>PR Ball Handler Traps</td>
+<td>0.115888712</td>
+</tr>
+<tr class="even">
+<td><strong>PR Roll Man</strong></td>
+<td><strong>0.311420152</strong></td>
+</tr>
+<tr class="odd">
+<td>Post Up Defense Commits</td>
+<td>-0.171605486</td>
+</tr>
+<tr class="even">
+<td>Post Up Hard Double Team</td>
+<td>-0.067993980</td>
+</tr>
+<tr class="odd">
+<td>Post Up Single Covered</td>
+<td>-0.183923948</td>
+</tr>
+<tr class="even">
+<td><strong>Spot Ups</strong></td>
+<td><strong>0.247910273</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Transitions</strong></td>
+<td><strong>0.231836305</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Assists</strong></td>
+<td><strong>0.653151380</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Blocks</strong></td>
+<td><strong>0.337827582</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Steals</strong></td>
+<td><strong>0.490803284</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Total Rebounds</strong></td>
+<td><strong>0.447741075</strong></td>
+</tr>
+<tr class="even">
+<td>Turnovers</td>
+<td>-0.319146688</td>
+</tr>
+</tbody>
+</table>
+<div id="the-most-positively-correlated-variables-to-wins" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> The most positively correlated variables to wins</h3>
+<p>The most positively correlated variable to number of wins is assists with a correlation of 0.65. Next to that are unguarded jump shots with a correlation of 0.59.
+The play types that are positively correlated to wins are Offensive Rebound Reset Offense, P&amp;R Ball Handler Defense Commits, P&amp;R Roll Man, Cuts, Transitions and Spot-Ups. Offensive Rebound Reset Offense gives the team another chance to score, P&amp;R Ball Handler Defense Commits would leave a man open to score, P&amp;R Roll Man can lead a man to an unguarded shot and same for Cuts, Transitions and Spot-Ups.
+The shot types with the highest correlation are the Long Jump Shot (3 Pointers), and of course, the Unguarded Jump Shots.
+Furthermore, Push Ball from Turnover is also highly correlated with wins which makes sense because if another team turns over the ball then they wasted a possession and the other team is able to score (most usually in a fastbreak).
+The general statistics that are most positively correlated to wins are assists, blocks, steals and rebounds. Blocks, steals and rebounds create more possessions to teams while creating less for the other team, i.e. the more you steal, block or rebound the ball, the more chances you have to score while putting your opponent at a disadvantage.</p>
+<div class="figure"><span id="fig:unnamed-chunk-26"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-26-1.png" alt="Correlogram of Game Statistics" width="768" />
+<p class="caption">
+Figure 2.10: Correlogram of Game Statistics
+</p>
+</div>
+<p>This figure shows that the most positively correlated statistics to unguarded jump shots are long jump shots, P&amp;R Roll Man, Spot-Ups, P&amp;R Ball Handler Defense Commits, and Push Ball from Turnover.</p>
+</div>
+<div id="the-most-negatively-correlated-variables-to-wins" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> The most negatively correlated variables to wins</h3>
+<p>The most negatively correlated variable to number of wins is Miscellaneous Possessions with a correlation of -0.40. Miscellaneous Possessions are undefined plays, possibly due to confusion, sloppy play, or bad decisions. The shot types that are negatively correlated are medium jump shots, short jump shots and guarded jump shots. The negatively correlated play types are Isolation Single Covered, Post-Up Single Covered, and OffScreens. This may suggest that these plays are easier to defend or harder to score from.
+And of course, the most negatively correlated general statistic is turnovers.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="datasets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="player-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

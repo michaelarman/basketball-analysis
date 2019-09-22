@@ -1,0 +1,28 @@
+# References
+
+
+[1] “Sports Analytics.” Wikipedia, Wikimedia Foundation, 29 June 2019, en.wikipedia.org/wiki/Sports_analytics.
+
+[2] “Synergy Sports Technology.” Synergy Sports Technology, corp.synergysportstech.com/.
+
+[3] “Ontario University Athletics (OUA).” OUA, www.oua.ca/landing/index.
+
+[4] Bilder, Christopher R., and Thomas M. Loughin. Analysis of Categorical Data with R. CRC Press, 2015.
+
+[5] Belhumeur, Kevin. “How Important Is Home-Court Advantage in the NBA?” Bleacher Report, Bleacher Report, 3 Oct. 2017, bleacherreport.com/articles/1520496-how-important-is-home-court-advantage-in-the-nba.
+
+[6] U Sports Hoops - University Basketball in Canada, usportshoops.ca/history/team-history.php?Gender=MBB&amp;Team=Carleton.
+
+[7] Brid, Rajesh S. “Decision Trees - A Simple Way to Visualize a Decision.” Medium, GreyAtom, 26 Oct. 2018, medium.com/greyatom/decision-trees-a-simple-way-to-visualize-a-decision-dc506a403aeb.
+
+[8] Haefner, Jeff. “9 Stats That Every Serious Basketball Coach Should Track.” Welcome to BREAKTHROUGH BASKETBALL, 2013, www.breakthroughbasketball.com/stats/9_stats_basketball_coach_should_track.html?source=post_page-----6eac3c43a096----------------------.
+
+[9] “NbClust.” Function | R Documentation, www.rdocumentation.org/packages/NbClust/versions/1.0/topics/NbClust.
+
+[10] “Finding Optimal Number of Clusters.” R, 9 Feb. 2017, www.r-bloggers.com/finding-optimal-number-of-clusters/.
+
+[11] “Understanding Random Forest.” Medium, Towards Data Science, 4 Aug. 2019, towardsdatascience.com/understanding-random-forest-58381e0602d2.
+
+[12] “Logistic Regression.” Wikipedia, Wikimedia Foundation, 30 July 2019, en.wikipedia.org/wiki/Logistic_regression.
+
+[13] Pelechrinis, Konstantinos. “Data Reveals the Value of an Assist in Basketball.” The Conversation, 8 July 2019, theconversation.com/data-reveals-the-value-of-an-assist-in-basketball-113893.

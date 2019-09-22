@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Appendix | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Appendix | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Appendix | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Appendix</h1>
+<div id="data-scraping-functions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Data Scraping Functions</h2>
+<div id="oua-webscraper" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> OUA webscraper</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="appendix.html#cb22-1"></a><span class="im">import</span> re</span>
+<span id="cb22-2"><a href="appendix.html#cb22-2"></a><span class="im">import</span> requests</span>
+<span id="cb22-3"><a href="appendix.html#cb22-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-4"><a href="appendix.html#cb22-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-5"><a href="appendix.html#cb22-5"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb22-6"><a href="appendix.html#cb22-6"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen <span class="im">as</span> uReq</span>
+<span id="cb22-7"><a href="appendix.html#cb22-7"></a><span class="im">import</span> csv</span>
+<span id="cb22-8"><a href="appendix.html#cb22-8"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb22-9"><a href="appendix.html#cb22-9"></a><span class="co">#import pprint</span></span>
+<span id="cb22-10"><a href="appendix.html#cb22-10"></a><span class="im">import</span> csv</span>
+<span id="cb22-11"><a href="appendix.html#cb22-11"></a></span>
+<span id="cb22-12"><a href="appendix.html#cb22-12"></a><span class="kw">def</span> get_links():</span>
+<span id="cb22-13"><a href="appendix.html#cb22-13"></a>    <span class="bu">print</span>(<span class="st">&quot;getting links...&quot;</span>)</span>
+<span id="cb22-14"><a href="appendix.html#cb22-14"></a>    teams <span class="op">=</span> [<span class="st">&#39;algoma&#39;</span>, <span class="st">&#39;brock&#39;</span>, <span class="st">&#39;carleton&#39;</span>, <span class="st">&#39;guelph&#39;</span>, <span class="st">&#39;lakehead&#39;</span>, <span class="st">&#39;laurentian&#39;</span>,</span>
+<span id="cb22-15"><a href="appendix.html#cb22-15"></a>             <span class="st">&#39;laurier&#39;</span>, <span class="st">&#39;mcmaster&#39;</span>, <span class="st">&#39;nipissing&#39;</span>, <span class="st">&#39;ottawa&#39;</span>, <span class="st">&#39;queens&#39;</span>, <span class="st">&#39;ryerson&#39;</span>,</span>
+<span id="cb22-16"><a href="appendix.html#cb22-16"></a>             <span class="st">&#39;toronto&#39;</span>, <span class="st">&#39;waterloo&#39;</span>, <span class="st">&#39;western&#39;</span>, <span class="st">&#39;windsor&#39;</span>, <span class="st">&#39;york&#39;</span>]</span>
+<span id="cb22-17"><a href="appendix.html#cb22-17"></a>    years <span class="op">=</span> [<span class="st">&#39;2014-15&#39;</span>, <span class="st">&#39;2015-16&#39;</span>, <span class="st">&#39;2016-17&#39;</span>, <span class="st">&#39;2017-18&#39;</span>, <span class="st">&#39;2018-19&#39;</span>]</span>
+<span id="cb22-18"><a href="appendix.html#cb22-18"></a>    original_url <span class="op">=</span> <span class="st">&#39;http://oua.ca/sports/mbkb/&#39;</span></span>
+<span id="cb22-19"><a href="appendix.html#cb22-19"></a>    end_url <span class="op">=</span> <span class="st">&#39;?view=gamelog&#39;</span></span>
+<span id="cb22-20"><a href="appendix.html#cb22-20"></a>    href_list <span class="op">=</span> []</span>
+<span id="cb22-21"><a href="appendix.html#cb22-21"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb22-22"><a href="appendix.html#cb22-22"></a>        <span class="cf">for</span> team <span class="kw">in</span> teams:</span>
+<span id="cb22-23"><a href="appendix.html#cb22-23"></a>            current_url <span class="op">=</span> original_url <span class="op">+</span> year <span class="op">+</span> <span class="st">&#39;/teams/&#39;</span> <span class="op">+</span> team <span class="op">+</span> end_url</span>
+<span id="cb22-24"><a href="appendix.html#cb22-24"></a>            r <span class="op">=</span> requests.get(current_url)</span>
+<span id="cb22-25"><a href="appendix.html#cb22-25"></a>            raw_html <span class="op">=</span> r.content</span>
+<span id="cb22-26"><a href="appendix.html#cb22-26"></a>            soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb22-27"><a href="appendix.html#cb22-27"></a>            tables <span class="op">=</span> soup.findAll(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb22-28"><a href="appendix.html#cb22-28"></a>            max_len <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb22-29"><a href="appendix.html#cb22-29"></a>            index <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb22-30"><a href="appendix.html#cb22-30"></a></span>
+<span id="cb22-31"><a href="appendix.html#cb22-31"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tables)):</span>
+<span id="cb22-32"><a href="appendix.html#cb22-32"></a>                tags <span class="op">=</span> tables[i].findAll(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb22-33"><a href="appendix.html#cb22-33"></a>                <span class="cf">if</span> <span class="bu">len</span>(tags) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb22-34"><a href="appendix.html#cb22-34"></a>                    url <span class="op">=</span> tags[<span class="dv">0</span>].get(<span class="st">&#39;href&#39;</span>, <span class="va">None</span>)</span>
+<span id="cb22-35"><a href="appendix.html#cb22-35"></a>                    <span class="cf">if</span> <span class="st">&quot;/boxscores/20&quot;</span> <span class="kw">in</span> url <span class="kw">and</span> <span class="bu">len</span>(tables[i]) <span class="op">&gt;</span> max_len:</span>
+<span id="cb22-36"><a href="appendix.html#cb22-36"></a>                        index <span class="op">=</span> i</span>
+<span id="cb22-37"><a href="appendix.html#cb22-37"></a>                        max_len <span class="op">=</span> <span class="bu">len</span>(tables[i])</span>
+<span id="cb22-38"><a href="appendix.html#cb22-38"></a></span>
+<span id="cb22-39"><a href="appendix.html#cb22-39"></a>            table <span class="op">=</span> tables[index]</span>
+<span id="cb22-40"><a href="appendix.html#cb22-40"></a></span>
+<span id="cb22-41"><a href="appendix.html#cb22-41"></a>            tags <span class="op">=</span> table.findAll(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb22-42"><a href="appendix.html#cb22-42"></a>            <span class="cf">for</span> tag <span class="kw">in</span> tags:</span>
+<span id="cb22-43"><a href="appendix.html#cb22-43"></a>                url <span class="op">=</span> re.sub(<span class="st">&quot;\.\.&quot;</span>, original_url <span class="op">+</span> year, tag.get(<span class="st">&#39;href&#39;</span>, <span class="va">None</span>))</span>
+<span id="cb22-44"><a href="appendix.html#cb22-44"></a>                url <span class="op">+=</span> <span class="st">&#39;?view=teamstats&#39;</span></span>
+<span id="cb22-45"><a href="appendix.html#cb22-45"></a>                href_list.append(url)</span>
+<span id="cb22-46"><a href="appendix.html#cb22-46"></a></span>
+<span id="cb22-47"><a href="appendix.html#cb22-47"></a>    <span class="bu">print</span>(<span class="st">&quot;done getting links&quot;</span>)</span>
+<span id="cb22-48"><a href="appendix.html#cb22-48"></a>    <span class="cf">return</span> href_list</span>
+<span id="cb22-49"><a href="appendix.html#cb22-49"></a></span>
+<span id="cb22-50"><a href="appendix.html#cb22-50"></a></span>
+<span id="cb22-51"><a href="appendix.html#cb22-51"></a><span class="kw">def</span> scrape(url):</span>
+<span id="cb22-52"><a href="appendix.html#cb22-52"></a>    <span class="co">&quot;&quot;&quot; This function is used to create data </span></span>
+<span id="cb22-53"><a href="appendix.html#cb22-53"></a><span class="co">    dictionaries for any url of team stats in the oua website. </span></span>
+<span id="cb22-54"><a href="appendix.html#cb22-54"></a><span class="co">    It takes an array of urls but for some games there</span></span>
+<span id="cb22-55"><a href="appendix.html#cb22-55"></a><span class="co">    are extra fields to look out for. This function is </span></span>
+<span id="cb22-56"><a href="appendix.html#cb22-56"></a><span class="co">    for those that do not have those extra fields in the table&quot;&quot;&quot;</span></span>
+<span id="cb22-57"><a href="appendix.html#cb22-57"></a></span>
+<span id="cb22-58"><a href="appendix.html#cb22-58"></a>    <span class="co"># create dictionary for links with less fields in table</span></span>
+<span id="cb22-59"><a href="appendix.html#cb22-59"></a>    dictlist <span class="op">=</span> {}</span>
+<span id="cb22-60"><a href="appendix.html#cb22-60"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(url)):</span>
+<span id="cb22-61"><a href="appendix.html#cb22-61"></a></span>
+<span id="cb22-62"><a href="appendix.html#cb22-62"></a>        <span class="bu">print</span>(url[i])</span>
+<span id="cb22-63"><a href="appendix.html#cb22-63"></a>        r <span class="op">=</span> requests.get(url[i])</span>
+<span id="cb22-64"><a href="appendix.html#cb22-64"></a>        raw_html <span class="op">=</span> r.content</span>
+<span id="cb22-65"><a href="appendix.html#cb22-65"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb22-66"><a href="appendix.html#cb22-66"></a>        soup[url[i]] <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb22-67"><a href="appendix.html#cb22-67"></a>        stats <span class="op">=</span> soup[url[i]].findAll(<span class="st">&quot;table&quot;</span>)</span>
+<span id="cb22-68"><a href="appendix.html#cb22-68"></a>        scores <span class="op">=</span> soup[url[i]].findAll(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb22-69"><a href="appendix.html#cb22-69"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;teams clearfix&#39;</span>})[<span class="dv">0</span>].table</span>
+<span id="cb22-70"><a href="appendix.html#cb22-70"></a>        <span class="co"># some links have different amounts of tables</span></span>
+<span id="cb22-71"><a href="appendix.html#cb22-71"></a>        <span class="kw">and</span> sometimes the team stats table <span class="kw">is</span> different</span>
+<span id="cb22-72"><a href="appendix.html#cb22-72"></a>        table <span class="op">=</span> stats[<span class="dv">8</span>]</span>
+<span id="cb22-73"><a href="appendix.html#cb22-73"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">len</span>(stats)):</span>
+<span id="cb22-74"><a href="appendix.html#cb22-74"></a>            <span class="cf">if</span> <span class="bu">str</span>(stats[j].caption) <span class="op">==</span> </span>
+<span id="cb22-75"><a href="appendix.html#cb22-75"></a>            <span class="co">&#39;&lt;caption class=</span></span>
+<span id="cb22-76"><a href="appendix.html#cb22-76"></a><span class="co">            &quot;caption offscreen&quot;&gt;</span></span>
+<span id="cb22-77"><a href="appendix.html#cb22-77"></a><span class="co">            &lt;h2&gt;Team Statistics&lt;/h2&gt;&lt;/caption&gt;&#39;</span>:</span>
+<span id="cb22-78"><a href="appendix.html#cb22-78"></a>                table<span class="op">=</span>stats[j]</span>
+<span id="cb22-79"><a href="appendix.html#cb22-79"></a>                <span class="cf">break</span></span>
+<span id="cb22-80"><a href="appendix.html#cb22-80"></a></span>
+<span id="cb22-81"><a href="appendix.html#cb22-81"></a>        dictlist[url[i]] <span class="op">=</span> {}</span>
+<span id="cb22-82"><a href="appendix.html#cb22-82"></a>        d <span class="op">=</span> {}</span>
+<span id="cb22-83"><a href="appendix.html#cb22-83"></a></span>
+<span id="cb22-84"><a href="appendix.html#cb22-84"></a>        dictlist[url[i]] <span class="op">=</span> {</span>
+<span id="cb22-85"><a href="appendix.html#cb22-85"></a>            <span class="st">&quot;Away&quot;</span> : table.findAll(<span class="st">&#39;th&#39;</span>, {<span class="st">&#39;scope&#39;</span>: <span class="st">&#39;col&#39;</span>})[<span class="dv">1</span>].text.strip(),</span>
+<span id="cb22-86"><a href="appendix.html#cb22-86"></a>            <span class="st">&quot;Home&quot;</span> : table.findAll(<span class="st">&#39;th&#39;</span>, {<span class="st">&#39;scope&#39;</span>: <span class="st">&#39;col&#39;</span>})[<span class="dv">2</span>].text.strip(),</span>
+<span id="cb22-87"><a href="appendix.html#cb22-87"></a>        }</span>
+<span id="cb22-88"><a href="appendix.html#cb22-88"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-89"><a href="appendix.html#cb22-89"></a>            winner <span class="op">=</span> scores.findAll(<span class="st">&#39;tr&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;winner&#39;</span>})[<span class="dv">0</span>]</span>
+<span id="cb22-90"><a href="appendix.html#cb22-90"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-91"><a href="appendix.html#cb22-91"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-92"><a href="appendix.html#cb22-92"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-93"><a href="appendix.html#cb22-93"></a>            loser <span class="op">=</span> scores.findAll(<span class="st">&#39;tr&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;loser&#39;</span>})[<span class="dv">0</span>]</span>
+<span id="cb22-94"><a href="appendix.html#cb22-94"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-95"><a href="appendix.html#cb22-95"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-96"><a href="appendix.html#cb22-96"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-97"><a href="appendix.html#cb22-97"></a>            dictlist[url[i]].update({<span class="st">&quot;Winner&quot;</span>: winner.th.text.strip()})</span>
+<span id="cb22-98"><a href="appendix.html#cb22-98"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-99"><a href="appendix.html#cb22-99"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-100"><a href="appendix.html#cb22-100"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-101"><a href="appendix.html#cb22-101"></a>            dictlist[url[i]].update({<span class="st">&quot;Loser&quot;</span>: loser.th.text.strip()})</span>
+<span id="cb22-102"><a href="appendix.html#cb22-102"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-103"><a href="appendix.html#cb22-103"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-104"><a href="appendix.html#cb22-104"></a>        <span class="co"># for k in range(1,6):</span></span>
+<span id="cb22-105"><a href="appendix.html#cb22-105"></a>        <span class="co">#     dictlist[url[i]].update({&quot;Winner Qtr&quot; +k +Pts&quot;})</span></span>
+<span id="cb22-106"><a href="appendix.html#cb22-106"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-107"><a href="appendix.html#cb22-107"></a>            dictlist[url[i]].update({<span class="st">&quot;Winner 1st Qtr Pts&quot;</span>:</span>
+<span id="cb22-108"><a href="appendix.html#cb22-108"></a>            winner.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">0</span>].text.strip()})</span>
+<span id="cb22-109"><a href="appendix.html#cb22-109"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-110"><a href="appendix.html#cb22-110"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-111"><a href="appendix.html#cb22-111"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-112"><a href="appendix.html#cb22-112"></a>            dictlist[url[i]].update({<span class="st">&quot;Loser 1st Qtr Pts&quot;</span>:</span>
+<span id="cb22-113"><a href="appendix.html#cb22-113"></a>            loser.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">0</span>].text.strip()})</span>
+<span id="cb22-114"><a href="appendix.html#cb22-114"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-115"><a href="appendix.html#cb22-115"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-116"><a href="appendix.html#cb22-116"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-117"><a href="appendix.html#cb22-117"></a>            dictlist[url[i]].update({<span class="st">&quot;Winner 2nd Qtr Pts&quot;</span>:</span>
+<span id="cb22-118"><a href="appendix.html#cb22-118"></a>            winner.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip()})</span>
+<span id="cb22-119"><a href="appendix.html#cb22-119"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-120"><a href="appendix.html#cb22-120"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-121"><a href="appendix.html#cb22-121"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-122"><a href="appendix.html#cb22-122"></a>            dictlist[url[i]].update({<span class="st">&quot;Loser 2nd Qtr Pts&quot;</span>:</span>
+<span id="cb22-123"><a href="appendix.html#cb22-123"></a>            loser.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip()})</span>
+<span id="cb22-124"><a href="appendix.html#cb22-124"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-125"><a href="appendix.html#cb22-125"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-126"><a href="appendix.html#cb22-126"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-127"><a href="appendix.html#cb22-127"></a>            dictlist[url[i]].update({<span class="st">&quot;Winner 3rd Qtr Pts&quot;</span>:</span>
+<span id="cb22-128"><a href="appendix.html#cb22-128"></a>            winner.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip()})</span>
+<span id="cb22-129"><a href="appendix.html#cb22-129"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-130"><a href="appendix.html#cb22-130"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-131"><a href="appendix.html#cb22-131"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-132"><a href="appendix.html#cb22-132"></a>            dictlist[url[i]].update({<span class="st">&quot;Loser 3rd Qtr Pts&quot;</span>:</span>
+<span id="cb22-133"><a href="appendix.html#cb22-133"></a>            loser.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip()})</span>
+<span id="cb22-134"><a href="appendix.html#cb22-134"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-135"><a href="appendix.html#cb22-135"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-136"><a href="appendix.html#cb22-136"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-137"><a href="appendix.html#cb22-137"></a>            dictlist[url[i]].update({<span class="st">&quot;Winner 4th Qtr Pts&quot;</span>:</span>
+<span id="cb22-138"><a href="appendix.html#cb22-138"></a>            winner.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip()})</span>
+<span id="cb22-139"><a href="appendix.html#cb22-139"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-140"><a href="appendix.html#cb22-140"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-141"><a href="appendix.html#cb22-141"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-142"><a href="appendix.html#cb22-142"></a>            dictlist[url[i]].update({<span class="st">&quot;Loser 4th Qtr Pts&quot;</span>:</span>
+<span id="cb22-143"><a href="appendix.html#cb22-143"></a>            loser.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip()})</span>
+<span id="cb22-144"><a href="appendix.html#cb22-144"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-145"><a href="appendix.html#cb22-145"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-146"><a href="appendix.html#cb22-146"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-147"><a href="appendix.html#cb22-147"></a>            dictlist[url[i]].update( {<span class="st">&quot;Winner Total Pts&quot;</span>:</span>
+<span id="cb22-148"><a href="appendix.html#cb22-148"></a>            winner.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip()})</span>
+<span id="cb22-149"><a href="appendix.html#cb22-149"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-150"><a href="appendix.html#cb22-150"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-151"><a href="appendix.html#cb22-151"></a>        <span class="cf">try</span>:</span>
+<span id="cb22-152"><a href="appendix.html#cb22-152"></a>            dictlist[url[i]].update( {<span class="st">&quot;Loser Total Pts&quot;</span>:</span>
+<span id="cb22-153"><a href="appendix.html#cb22-153"></a>            loser.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip()})</span>
+<span id="cb22-154"><a href="appendix.html#cb22-154"></a>        <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-155"><a href="appendix.html#cb22-155"></a>            d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-156"><a href="appendix.html#cb22-156"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">16</span>):</span>
+<span id="cb22-157"><a href="appendix.html#cb22-157"></a>            <span class="cf">try</span>:</span>
+<span id="cb22-158"><a href="appendix.html#cb22-158"></a>                dictlist[url[i]].update( { table.findAll(<span class="st">&#39;th&#39;</span>, </span>
+<span id="cb22-159"><a href="appendix.html#cb22-159"></a>                {<span class="st">&#39;scope&#39;</span>: <span class="st">&#39;row&#39;</span>})[j].text.strip() <span class="op">+</span> <span class="st">&#39; Away&#39;</span>:</span>
+<span id="cb22-160"><a href="appendix.html#cb22-160"></a>                table.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span><span class="op">*</span>j].</span>
+<span id="cb22-161"><a href="appendix.html#cb22-161"></a>                text.strip()})</span>
+<span id="cb22-162"><a href="appendix.html#cb22-162"></a>            <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-163"><a href="appendix.html#cb22-163"></a>                d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-164"><a href="appendix.html#cb22-164"></a>            <span class="cf">try</span>:</span>
+<span id="cb22-165"><a href="appendix.html#cb22-165"></a>                dictlist[url[i]].update({ table.findAll(<span class="st">&#39;th&#39;</span>, </span>
+<span id="cb22-166"><a href="appendix.html#cb22-166"></a>                {<span class="st">&#39;scope&#39;</span>: <span class="st">&#39;row&#39;</span>})[j].text.strip() <span class="op">+</span> <span class="st">&#39; Home&#39;</span> :</span>
+<span id="cb22-167"><a href="appendix.html#cb22-167"></a>                table.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span><span class="op">*</span>j<span class="op">+</span><span class="dv">1</span>].</span>
+<span id="cb22-168"><a href="appendix.html#cb22-168"></a>                text.strip()})</span>
+<span id="cb22-169"><a href="appendix.html#cb22-169"></a>            <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-170"><a href="appendix.html#cb22-170"></a>                d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-171"><a href="appendix.html#cb22-171"></a>            <span class="cf">try</span>:</span>
+<span id="cb22-172"><a href="appendix.html#cb22-172"></a>                dictlist[url[i]].update({table.findAll(<span class="st">&#39;th&#39;</span>,</span>
+<span id="cb22-173"><a href="appendix.html#cb22-173"></a>                {<span class="st">&#39;scope&#39;</span>: <span class="st">&#39;row&#39;</span>})[<span class="dv">16</span>].text.strip()<span class="op">+</span><span class="st">&#39; Away&#39;</span>:</span>
+<span id="cb22-174"><a href="appendix.html#cb22-174"></a>                table.findAll(<span class="st">&#39;td&#39;</span>)[<span class="dv">32</span>].</span>
+<span id="cb22-175"><a href="appendix.html#cb22-175"></a>                text.strip()})</span>
+<span id="cb22-176"><a href="appendix.html#cb22-176"></a>            <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb22-177"><a href="appendix.html#cb22-177"></a>                d[<span class="va">None</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-178"><a href="appendix.html#cb22-178"></a>    z <span class="op">=</span> {<span class="op">**</span>dictlist, <span class="op">**</span>d}</span>
+<span id="cb22-179"><a href="appendix.html#cb22-179"></a></span>
+<span id="cb22-180"><a href="appendix.html#cb22-180"></a>    <span class="cf">return</span> z</span>
+<span id="cb22-181"><a href="appendix.html#cb22-181"></a></span>
+<span id="cb22-182"><a href="appendix.html#cb22-182"></a></span>
+<span id="cb22-183"><a href="appendix.html#cb22-183"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb22-184"><a href="appendix.html#cb22-184"></a>    q <span class="op">=</span> get_links()</span>
+<span id="cb22-185"><a href="appendix.html#cb22-185"></a>    a <span class="op">=</span> scrape(q)</span>
+<span id="cb22-186"><a href="appendix.html#cb22-186"></a>    df <span class="op">=</span> pd.DataFrame(a)</span>
+<span id="cb22-187"><a href="appendix.html#cb22-187"></a>    df <span class="op">=</span> df.T</span>
+<span id="cb22-188"><a href="appendix.html#cb22-188"></a>    df <span class="op">=</span> df.replace(<span class="st">&#39;\-&#39;</span>, <span class="st">&#39; -- &#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb22-189"><a href="appendix.html#cb22-189"></a>    df <span class="op">=</span> df[[<span class="st">&#39;Away&#39;</span>, <span class="st">&#39;FG Away&#39;</span>, <span class="st">&#39;FG% Away&#39;</span>, <span class="st">&#39;3PT FG Away&#39;</span>, </span>
+<span id="cb22-190"><a href="appendix.html#cb22-190"></a>    <span class="st">&#39;3PT FG% Away&#39;</span>, <span class="st">&#39;FT Away&#39;</span>, <span class="st">&#39;FT% Away&#39;</span>, <span class="st">&#39;Rebounds Away&#39;</span>,</span>
+<span id="cb22-191"><a href="appendix.html#cb22-191"></a>             <span class="st">&#39;Assists Away&#39;</span>,</span>
+<span id="cb22-192"><a href="appendix.html#cb22-192"></a>             <span class="st">&#39;Turnovers Away&#39;</span>, <span class="st">&#39;Points Off Turnovers Away&#39;</span>, </span>
+<span id="cb22-193"><a href="appendix.html#cb22-193"></a>             <span class="st">&#39;2nd Chance Points Away&#39;</span>, <span class="st">&#39;Points in the Paint Away&#39;</span>,</span>
+<span id="cb22-194"><a href="appendix.html#cb22-194"></a>             <span class="st">&#39;Fastbreak Points Away&#39;</span>, <span class="st">&#39;Bench Points Away&#39;</span>,</span>
+<span id="cb22-195"><a href="appendix.html#cb22-195"></a>             <span class="st">&#39;Largest Lead Away&#39;</span>, <span class="st">&#39;Time of Largest Lead Away&#39;</span>, </span>
+<span id="cb22-196"><a href="appendix.html#cb22-196"></a>             <span class="st">&#39;Home&#39;</span>, <span class="st">&#39;FG Home&#39;</span>,</span>
+<span id="cb22-197"><a href="appendix.html#cb22-197"></a>             <span class="st">&#39;FG% Home&#39;</span>, <span class="st">&#39;3PT FG Home&#39;</span>, <span class="st">&#39;3PT FG% Home&#39;</span>, </span>
+<span id="cb22-198"><a href="appendix.html#cb22-198"></a>             <span class="st">&#39;FT Home&#39;</span>, <span class="st">&#39;FT% Home&#39;</span>, <span class="st">&#39;Rebounds Home&#39;</span>, <span class="st">&#39;Assists Home&#39;</span>,</span>
+<span id="cb22-199"><a href="appendix.html#cb22-199"></a>             <span class="st">&#39;Turnovers Home&#39;</span>,<span class="st">&#39;Points Off Turnovers Home&#39;</span>, </span>
+<span id="cb22-200"><a href="appendix.html#cb22-200"></a>             <span class="st">&#39;2nd Chance Points Home&#39;</span>, <span class="st">&#39;Points in the Paint Home&#39;</span>, </span>
+<span id="cb22-201"><a href="appendix.html#cb22-201"></a>             <span class="st">&#39;Fastbreak Points Home&#39;</span>,</span>
+<span id="cb22-202"><a href="appendix.html#cb22-202"></a>             <span class="st">&#39;Bench Points Home&#39;</span>, <span class="st">&#39;Largest Lead Away&#39;</span>, </span>
+<span id="cb22-203"><a href="appendix.html#cb22-203"></a>             <span class="st">&#39;Time of Largest Lead Away&#39;</span>, <span class="st">&#39;Trends Away&#39;</span>, <span class="st">&#39;Winner&#39;</span>, </span>
+<span id="cb22-204"><a href="appendix.html#cb22-204"></a>             <span class="st">&#39;Winner 1st Qtr Pts&#39;</span>,</span>
+<span id="cb22-205"><a href="appendix.html#cb22-205"></a>             <span class="st">&#39;Winner 2nd Qtr Pts&#39;</span>, <span class="st">&#39;Winner 3rd Qtr Pts&#39;</span>, </span>
+<span id="cb22-206"><a href="appendix.html#cb22-206"></a>             <span class="st">&#39;Winner 4th Qtr Pts&#39;</span>, <span class="st">&#39;Winner Total Pts&#39;</span>, <span class="st">&#39;Loser&#39;</span>,</span>
+<span id="cb22-207"><a href="appendix.html#cb22-207"></a>             <span class="st">&#39;Loser 1st Qtr Pts&#39;</span>, <span class="st">&#39;Loser 2nd Qtr Pts&#39;</span>,</span>
+<span id="cb22-208"><a href="appendix.html#cb22-208"></a>             <span class="st">&#39;Loser 3rd Qtr Pts&#39;</span>, <span class="st">&#39;Loser 4th Qtr Pts&#39;</span>, <span class="st">&#39;Loser Total Pts&#39;</span>]]</span>
+<span id="cb22-209"><a href="appendix.html#cb22-209"></a></span>
+<span id="cb22-210"><a href="appendix.html#cb22-210"></a>    df.to_csv(<span class="st">&#39;gbyg.csv&#39;</span>, header<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-211"><a href="appendix.html#cb22-211"></a></span>
+<span id="cb22-212"><a href="appendix.html#cb22-212"></a>    <span class="im">import</span> pdb<span class="op">;</span> pdb.set_trace()</span></code></pre></div>
+</div>
+<div id="oua-player-stats-scraper" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> OUA Player Stats Scraper</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="appendix.html#cb23-1"></a><span class="im">import</span> requests</span>
+<span id="cb23-2"><a href="appendix.html#cb23-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-3"><a href="appendix.html#cb23-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-4"><a href="appendix.html#cb23-4"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb23-5"><a href="appendix.html#cb23-5"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen <span class="im">as</span> uReq</span>
+<span id="cb23-6"><a href="appendix.html#cb23-6"></a><span class="im">import</span> re</span>
+<span id="cb23-7"><a href="appendix.html#cb23-7"></a><span class="im">import</span> itertools</span>
+<span id="cb23-8"><a href="appendix.html#cb23-8"></a></span>
+<span id="cb23-9"><a href="appendix.html#cb23-9"></a><span class="kw">def</span> get_links():</span>
+<span id="cb23-10"><a href="appendix.html#cb23-10"></a>    <span class="bu">print</span>(<span class="st">&quot;getting links...&quot;</span>)</span>
+<span id="cb23-11"><a href="appendix.html#cb23-11"></a>    teams <span class="op">=</span> [<span class="st">&#39;algoma&#39;</span>, <span class="st">&#39;brock&#39;</span>, <span class="st">&#39;carleton&#39;</span>, <span class="st">&#39;guelph&#39;</span>, </span>
+<span id="cb23-12"><a href="appendix.html#cb23-12"></a>    <span class="st">&#39;lakehead&#39;</span>, <span class="st">&#39;laurentian&#39;</span>,</span>
+<span id="cb23-13"><a href="appendix.html#cb23-13"></a>             <span class="st">&#39;laurier&#39;</span>, <span class="st">&#39;mcmaster&#39;</span>, <span class="st">&#39;nipissing&#39;</span>, </span>
+<span id="cb23-14"><a href="appendix.html#cb23-14"></a>             <span class="st">&#39;ottawa&#39;</span>, <span class="st">&#39;queens&#39;</span>, <span class="st">&#39;ryerson&#39;</span>,</span>
+<span id="cb23-15"><a href="appendix.html#cb23-15"></a>             <span class="st">&#39;toronto&#39;</span>, <span class="st">&#39;waterloo&#39;</span>, <span class="st">&#39;western&#39;</span>, <span class="st">&#39;windsor&#39;</span>, <span class="st">&#39;york&#39;</span>]</span>
+<span id="cb23-16"><a href="appendix.html#cb23-16"></a>    years <span class="op">=</span> [<span class="st">&#39;2014-15&#39;</span>, <span class="st">&#39;2015-16&#39;</span>, <span class="st">&#39;2016-17&#39;</span>, <span class="st">&#39;2017-18&#39;</span>, <span class="st">&#39;2018-19&#39;</span>]</span>
+<span id="cb23-17"><a href="appendix.html#cb23-17"></a>    original_url <span class="op">=</span> <span class="st">&#39;http://oua.ca/sports/mbkb/&#39;</span></span>
+<span id="cb23-18"><a href="appendix.html#cb23-18"></a>    end_url <span class="op">=</span> <span class="st">&#39;?view=gamelog&#39;</span></span>
+<span id="cb23-19"><a href="appendix.html#cb23-19"></a>    href_list <span class="op">=</span> []</span>
+<span id="cb23-20"><a href="appendix.html#cb23-20"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb23-21"><a href="appendix.html#cb23-21"></a>        <span class="cf">for</span> team <span class="kw">in</span> teams:</span>
+<span id="cb23-22"><a href="appendix.html#cb23-22"></a>            current_url <span class="op">=</span> original_url <span class="op">+</span> year <span class="op">+</span> </span>
+<span id="cb23-23"><a href="appendix.html#cb23-23"></a>            <span class="co">&#39;/teams/&#39;</span> <span class="op">+</span> team <span class="op">+</span> end_url</span>
+<span id="cb23-24"><a href="appendix.html#cb23-24"></a>            r <span class="op">=</span> requests.get(current_url)</span>
+<span id="cb23-25"><a href="appendix.html#cb23-25"></a>            raw_html <span class="op">=</span> r.content</span>
+<span id="cb23-26"><a href="appendix.html#cb23-26"></a>            soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-27"><a href="appendix.html#cb23-27"></a>            tables <span class="op">=</span> soup.findAll(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb23-28"><a href="appendix.html#cb23-28"></a>            max_len <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-29"><a href="appendix.html#cb23-29"></a>            index <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-30"><a href="appendix.html#cb23-30"></a></span>
+<span id="cb23-31"><a href="appendix.html#cb23-31"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tables)):</span>
+<span id="cb23-32"><a href="appendix.html#cb23-32"></a>                tags <span class="op">=</span> tables[i].findAll(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb23-33"><a href="appendix.html#cb23-33"></a>                <span class="cf">if</span> <span class="bu">len</span>(tags) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb23-34"><a href="appendix.html#cb23-34"></a>                    url <span class="op">=</span> tags[<span class="dv">0</span>].get(<span class="st">&#39;href&#39;</span>, <span class="va">None</span>)</span>
+<span id="cb23-35"><a href="appendix.html#cb23-35"></a>                    <span class="cf">if</span> <span class="st">&quot;/boxscores/20&quot;</span> <span class="kw">in</span> url </span>
+<span id="cb23-36"><a href="appendix.html#cb23-36"></a>                    <span class="kw">and</span> <span class="bu">len</span>(tables[i]) <span class="op">&gt;</span> max_len:</span>
+<span id="cb23-37"><a href="appendix.html#cb23-37"></a>                        index <span class="op">=</span> i</span>
+<span id="cb23-38"><a href="appendix.html#cb23-38"></a>                        max_len <span class="op">=</span> <span class="bu">len</span>(tables[i])</span>
+<span id="cb23-39"><a href="appendix.html#cb23-39"></a></span>
+<span id="cb23-40"><a href="appendix.html#cb23-40"></a>            table <span class="op">=</span> tables[index]</span>
+<span id="cb23-41"><a href="appendix.html#cb23-41"></a></span>
+<span id="cb23-42"><a href="appendix.html#cb23-42"></a>            tags <span class="op">=</span> table.findAll(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb23-43"><a href="appendix.html#cb23-43"></a>            <span class="cf">for</span> tag <span class="kw">in</span> tags:</span>
+<span id="cb23-44"><a href="appendix.html#cb23-44"></a>                url <span class="op">=</span> re.sub(<span class="st">&quot;\.\.&quot;</span>, original_url <span class="op">+</span> year, </span>
+<span id="cb23-45"><a href="appendix.html#cb23-45"></a>                tag.get(<span class="st">&#39;href&#39;</span>, <span class="va">None</span>))</span>
+<span id="cb23-46"><a href="appendix.html#cb23-46"></a>                url <span class="op">+=</span> <span class="st">&#39;?view=teamstats&#39;</span></span>
+<span id="cb23-47"><a href="appendix.html#cb23-47"></a>                href_list.append(url)</span>
+<span id="cb23-48"><a href="appendix.html#cb23-48"></a></span>
+<span id="cb23-49"><a href="appendix.html#cb23-49"></a>    <span class="bu">print</span>(<span class="st">&quot;done getting links&quot;</span>)</span>
+<span id="cb23-50"><a href="appendix.html#cb23-50"></a>    <span class="cf">return</span> href_list</span>
+<span id="cb23-51"><a href="appendix.html#cb23-51"></a></span>
+<span id="cb23-52"><a href="appendix.html#cb23-52"></a><span class="kw">def</span> vsplayers_scrape(url):</span>
+<span id="cb23-53"><a href="appendix.html#cb23-53"></a>    vslist <span class="op">=</span> {}</span>
+<span id="cb23-54"><a href="appendix.html#cb23-54"></a>    homelist <span class="op">=</span> {}</span>
+<span id="cb23-55"><a href="appendix.html#cb23-55"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(url)):</span>
+<span id="cb23-56"><a href="appendix.html#cb23-56"></a>        <span class="bu">print</span>(url[j])</span>
+<span id="cb23-57"><a href="appendix.html#cb23-57"></a>        r <span class="op">=</span> requests.get(url[j])</span>
+<span id="cb23-58"><a href="appendix.html#cb23-58"></a>        raw_html <span class="op">=</span> r.content</span>
+<span id="cb23-59"><a href="appendix.html#cb23-59"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-60"><a href="appendix.html#cb23-60"></a>        soup[url[j]] <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-61"><a href="appendix.html#cb23-61"></a></span>
+<span id="cb23-62"><a href="appendix.html#cb23-62"></a>        boxscore <span class="op">=</span> soup[url[j]].find_all(<span class="st">&#39;article&#39;</span>,</span>
+<span id="cb23-63"><a href="appendix.html#cb23-63"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;game-boxscore bkb clearfix&#39;</span>})</span>
+<span id="cb23-64"><a href="appendix.html#cb23-64"></a></span>
+<span id="cb23-65"><a href="appendix.html#cb23-65"></a>        players <span class="op">=</span> boxscore[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-66"><a href="appendix.html#cb23-66"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;player-stats&#39;</span>})</span>
+<span id="cb23-67"><a href="appendix.html#cb23-67"></a>        team1 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-68"><a href="appendix.html#cb23-68"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})</span>
+<span id="cb23-69"><a href="appendix.html#cb23-69"></a>        visitorteam <span class="op">=</span> team1[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>,</span>
+<span id="cb23-70"><a href="appendix.html#cb23-70"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup visitor clearfix&#39;</span>})</span>
+<span id="cb23-71"><a href="appendix.html#cb23-71"></a></span>
+<span id="cb23-72"><a href="appendix.html#cb23-72"></a>        team2 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-73"><a href="appendix.html#cb23-73"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})[<span class="dv">1</span>]</span>
+<span id="cb23-74"><a href="appendix.html#cb23-74"></a>        hometeam <span class="op">=</span> team2.find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-75"><a href="appendix.html#cb23-75"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup home clearfix&#39;</span>})</span>
+<span id="cb23-76"><a href="appendix.html#cb23-76"></a>        hometbody <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-77"><a href="appendix.html#cb23-77"></a>        hometr <span class="op">=</span> hometbody[<span class="dv">1</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-78"><a href="appendix.html#cb23-78"></a></span>
+<span id="cb23-79"><a href="appendix.html#cb23-79"></a>        visitortbody <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-80"><a href="appendix.html#cb23-80"></a>        visitortr <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-81"><a href="appendix.html#cb23-81"></a>        vslist[url[j]] <span class="op">=</span> {}</span>
+<span id="cb23-82"><a href="appendix.html#cb23-82"></a></span>
+<span id="cb23-83"><a href="appendix.html#cb23-83"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>))):</span>
+<span id="cb23-84"><a href="appendix.html#cb23-84"></a>            <span class="cf">if</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-85"><a href="appendix.html#cb23-85"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;STARTERS&#39;</span>):</span>
+<span id="cb23-86"><a href="appendix.html#cb23-86"></a>                starters <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-87"><a href="appendix.html#cb23-87"></a>                starterstr <span class="op">=</span> starters.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-88"><a href="appendix.html#cb23-88"></a>            <span class="cf">elif</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-89"><a href="appendix.html#cb23-89"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;RESERVES&#39;</span>):</span>
+<span id="cb23-90"><a href="appendix.html#cb23-90"></a>                reserves <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-91"><a href="appendix.html#cb23-91"></a>                reservestr <span class="op">=</span> reserves.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-92"><a href="appendix.html#cb23-92"></a></span>
+<span id="cb23-93"><a href="appendix.html#cb23-93"></a>        <span class="cf">if</span> <span class="bu">len</span>(starterstr) <span class="op">&gt;</span> <span class="dv">4</span>:</span>
+<span id="cb23-94"><a href="appendix.html#cb23-94"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(starters.find_all(<span class="st">&#39;th&#39;</span>))) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb23-95"><a href="appendix.html#cb23-95"></a>                vslist[url[j],i] <span class="op">=</span> {</span>
+<span id="cb23-96"><a href="appendix.html#cb23-96"></a>                    <span class="st">&#39;Away&#39;</span> : visitorteam[<span class="dv">0</span>].caption.text.strip(),</span>
+<span id="cb23-97"><a href="appendix.html#cb23-97"></a>                    visitorteam[<span class="dv">0</span>].thead.th.text.strip() :</span>
+<span id="cb23-98"><a href="appendix.html#cb23-98"></a>                    starters.find_all(<span class="st">&#39;th&#39;</span>)[i<span class="op">+</span><span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-99"><a href="appendix.html#cb23-99"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">1</span>].text.strip() :</span>
+<span id="cb23-100"><a href="appendix.html#cb23-100"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].td.text.strip(),</span>
+<span id="cb23-101"><a href="appendix.html#cb23-101"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">2</span>].text.strip() :</span>
+<span id="cb23-102"><a href="appendix.html#cb23-102"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-103"><a href="appendix.html#cb23-103"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">3</span>].text.strip() :</span>
+<span id="cb23-104"><a href="appendix.html#cb23-104"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip(),</span>
+<span id="cb23-105"><a href="appendix.html#cb23-105"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">4</span>].text.strip() :</span>
+<span id="cb23-106"><a href="appendix.html#cb23-106"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip(),</span>
+<span id="cb23-107"><a href="appendix.html#cb23-107"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">5</span>].text.strip() :</span>
+<span id="cb23-108"><a href="appendix.html#cb23-108"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip(),</span>
+<span id="cb23-109"><a href="appendix.html#cb23-109"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">6</span>].text.strip() :</span>
+<span id="cb23-110"><a href="appendix.html#cb23-110"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">5</span>].text.strip(),</span>
+<span id="cb23-111"><a href="appendix.html#cb23-111"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">7</span>].text.strip():</span>
+<span id="cb23-112"><a href="appendix.html#cb23-112"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">6</span>].text.strip(),</span>
+<span id="cb23-113"><a href="appendix.html#cb23-113"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">8</span>].text.strip():</span>
+<span id="cb23-114"><a href="appendix.html#cb23-114"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">7</span>].text.strip(),</span>
+<span id="cb23-115"><a href="appendix.html#cb23-115"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">9</span>].text.strip():</span>
+<span id="cb23-116"><a href="appendix.html#cb23-116"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">8</span>].text.strip(),</span>
+<span id="cb23-117"><a href="appendix.html#cb23-117"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">10</span>].text.strip():</span>
+<span id="cb23-118"><a href="appendix.html#cb23-118"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">9</span>].text.strip(),</span>
+<span id="cb23-119"><a href="appendix.html#cb23-119"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">11</span>].text.strip():</span>
+<span id="cb23-120"><a href="appendix.html#cb23-120"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">10</span>].text.strip(),</span>
+<span id="cb23-121"><a href="appendix.html#cb23-121"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">12</span>].text.strip():</span>
+<span id="cb23-122"><a href="appendix.html#cb23-122"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">11</span>].text.strip(),</span>
+<span id="cb23-123"><a href="appendix.html#cb23-123"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">13</span>].text.strip():</span>
+<span id="cb23-124"><a href="appendix.html#cb23-124"></a>                    starterstr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">12</span>].text.strip(),</span>
+<span id="cb23-125"><a href="appendix.html#cb23-125"></a>                }</span>
+<span id="cb23-126"><a href="appendix.html#cb23-126"></a></span>
+<span id="cb23-127"><a href="appendix.html#cb23-127"></a>    <span class="cf">return</span> vslist</span>
+<span id="cb23-128"><a href="appendix.html#cb23-128"></a></span>
+<span id="cb23-129"><a href="appendix.html#cb23-129"></a><span class="kw">def</span> vrplayers_scrape(url):</span>
+<span id="cb23-130"><a href="appendix.html#cb23-130"></a>    vrlist <span class="op">=</span> {}</span>
+<span id="cb23-131"><a href="appendix.html#cb23-131"></a>    homelist <span class="op">=</span> {}</span>
+<span id="cb23-132"><a href="appendix.html#cb23-132"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(url)):</span>
+<span id="cb23-133"><a href="appendix.html#cb23-133"></a>        <span class="bu">print</span>(url[j])</span>
+<span id="cb23-134"><a href="appendix.html#cb23-134"></a>        r <span class="op">=</span> requests.get(url[j])</span>
+<span id="cb23-135"><a href="appendix.html#cb23-135"></a>        raw_html <span class="op">=</span> r.content</span>
+<span id="cb23-136"><a href="appendix.html#cb23-136"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-137"><a href="appendix.html#cb23-137"></a>        soup[url[j]] <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-138"><a href="appendix.html#cb23-138"></a></span>
+<span id="cb23-139"><a href="appendix.html#cb23-139"></a>        boxscore <span class="op">=</span> soup[url[j]].find_all(<span class="st">&#39;article&#39;</span>,</span>
+<span id="cb23-140"><a href="appendix.html#cb23-140"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;game-boxscore bkb clearfix&#39;</span>})</span>
+<span id="cb23-141"><a href="appendix.html#cb23-141"></a></span>
+<span id="cb23-142"><a href="appendix.html#cb23-142"></a>        players <span class="op">=</span> boxscore[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;player-stats&#39;</span>})</span>
+<span id="cb23-143"><a href="appendix.html#cb23-143"></a>        team1 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})</span>
+<span id="cb23-144"><a href="appendix.html#cb23-144"></a>        visitorteam <span class="op">=</span> team1[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-145"><a href="appendix.html#cb23-145"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup visitor clearfix&#39;</span>})</span>
+<span id="cb23-146"><a href="appendix.html#cb23-146"></a></span>
+<span id="cb23-147"><a href="appendix.html#cb23-147"></a>        team2 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-148"><a href="appendix.html#cb23-148"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})[<span class="dv">1</span>]</span>
+<span id="cb23-149"><a href="appendix.html#cb23-149"></a>        hometeam <span class="op">=</span> team2.find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-150"><a href="appendix.html#cb23-150"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup home clearfix&#39;</span>})</span>
+<span id="cb23-151"><a href="appendix.html#cb23-151"></a>        hometbody <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-152"><a href="appendix.html#cb23-152"></a>        hometr <span class="op">=</span> hometbody[<span class="dv">1</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-153"><a href="appendix.html#cb23-153"></a></span>
+<span id="cb23-154"><a href="appendix.html#cb23-154"></a>        visitortbody <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-155"><a href="appendix.html#cb23-155"></a>        visitortr <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-156"><a href="appendix.html#cb23-156"></a>        vrlist[url[j]] <span class="op">=</span> {}</span>
+<span id="cb23-157"><a href="appendix.html#cb23-157"></a></span>
+<span id="cb23-158"><a href="appendix.html#cb23-158"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>))):</span>
+<span id="cb23-159"><a href="appendix.html#cb23-159"></a>            <span class="cf">if</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-160"><a href="appendix.html#cb23-160"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;STARTERS&#39;</span>):</span>
+<span id="cb23-161"><a href="appendix.html#cb23-161"></a>                starters <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-162"><a href="appendix.html#cb23-162"></a>                starterstr <span class="op">=</span> starters.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-163"><a href="appendix.html#cb23-163"></a>            <span class="cf">elif</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-164"><a href="appendix.html#cb23-164"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;RESERVES&#39;</span>):</span>
+<span id="cb23-165"><a href="appendix.html#cb23-165"></a>                reserves <span class="op">=</span> visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-166"><a href="appendix.html#cb23-166"></a>                reservestr <span class="op">=</span> reserves.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-167"><a href="appendix.html#cb23-167"></a></span>
+<span id="cb23-168"><a href="appendix.html#cb23-168"></a>        <span class="cf">if</span> <span class="bu">len</span>(reservestr) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb23-169"><a href="appendix.html#cb23-169"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(reserves.find_all(<span class="st">&#39;th&#39;</span>))) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb23-170"><a href="appendix.html#cb23-170"></a>                vrlist[url[j],i] <span class="op">=</span> {</span>
+<span id="cb23-171"><a href="appendix.html#cb23-171"></a>                    <span class="st">&#39;Away&#39;</span> : visitorteam[<span class="dv">0</span>].caption.text.strip(),</span>
+<span id="cb23-172"><a href="appendix.html#cb23-172"></a>                    visitorteam[<span class="dv">0</span>].thead.th.text.strip() :</span>
+<span id="cb23-173"><a href="appendix.html#cb23-173"></a>                    reserves.find_all(<span class="st">&#39;th&#39;</span>)[i<span class="op">+</span><span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-174"><a href="appendix.html#cb23-174"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">1</span>].text.strip() :</span>
+<span id="cb23-175"><a href="appendix.html#cb23-175"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].td.text.strip(),</span>
+<span id="cb23-176"><a href="appendix.html#cb23-176"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">2</span>].text.strip() :</span>
+<span id="cb23-177"><a href="appendix.html#cb23-177"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-178"><a href="appendix.html#cb23-178"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">3</span>].text.strip() :</span>
+<span id="cb23-179"><a href="appendix.html#cb23-179"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip(),</span>
+<span id="cb23-180"><a href="appendix.html#cb23-180"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">4</span>].text.strip() :</span>
+<span id="cb23-181"><a href="appendix.html#cb23-181"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip(),</span>
+<span id="cb23-182"><a href="appendix.html#cb23-182"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">5</span>].text.strip() :</span>
+<span id="cb23-183"><a href="appendix.html#cb23-183"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip(),</span>
+<span id="cb23-184"><a href="appendix.html#cb23-184"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">6</span>].text.strip() :</span>
+<span id="cb23-185"><a href="appendix.html#cb23-185"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">5</span>].text.strip(),</span>
+<span id="cb23-186"><a href="appendix.html#cb23-186"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">7</span>].text.strip():</span>
+<span id="cb23-187"><a href="appendix.html#cb23-187"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">6</span>].text.strip(),</span>
+<span id="cb23-188"><a href="appendix.html#cb23-188"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">8</span>].text.strip():</span>
+<span id="cb23-189"><a href="appendix.html#cb23-189"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">7</span>].text.strip(),</span>
+<span id="cb23-190"><a href="appendix.html#cb23-190"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">9</span>].text.strip():</span>
+<span id="cb23-191"><a href="appendix.html#cb23-191"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">8</span>].text.strip(),</span>
+<span id="cb23-192"><a href="appendix.html#cb23-192"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">10</span>].text.strip():</span>
+<span id="cb23-193"><a href="appendix.html#cb23-193"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">9</span>].text.strip(),</span>
+<span id="cb23-194"><a href="appendix.html#cb23-194"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">11</span>].text.strip():</span>
+<span id="cb23-195"><a href="appendix.html#cb23-195"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">10</span>].text.strip(),</span>
+<span id="cb23-196"><a href="appendix.html#cb23-196"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">12</span>].text.strip():</span>
+<span id="cb23-197"><a href="appendix.html#cb23-197"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">11</span>].text.strip(),</span>
+<span id="cb23-198"><a href="appendix.html#cb23-198"></a>                    visitorteam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">13</span>].text.strip():</span>
+<span id="cb23-199"><a href="appendix.html#cb23-199"></a>                    reservestr[i<span class="op">+</span><span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">12</span>].text.strip(),</span>
+<span id="cb23-200"><a href="appendix.html#cb23-200"></a>                }</span>
+<span id="cb23-201"><a href="appendix.html#cb23-201"></a></span>
+<span id="cb23-202"><a href="appendix.html#cb23-202"></a>    <span class="cf">return</span> vrlist</span>
+<span id="cb23-203"><a href="appendix.html#cb23-203"></a></span>
+<span id="cb23-204"><a href="appendix.html#cb23-204"></a></span>
+<span id="cb23-205"><a href="appendix.html#cb23-205"></a></span>
+<span id="cb23-206"><a href="appendix.html#cb23-206"></a></span>
+<span id="cb23-207"><a href="appendix.html#cb23-207"></a></span>
+<span id="cb23-208"><a href="appendix.html#cb23-208"></a><span class="kw">def</span> hsplayers_scrape(url):</span>
+<span id="cb23-209"><a href="appendix.html#cb23-209"></a>    rlist <span class="op">=</span> {}</span>
+<span id="cb23-210"><a href="appendix.html#cb23-210"></a>    slist <span class="op">=</span> {}</span>
+<span id="cb23-211"><a href="appendix.html#cb23-211"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(url)):</span>
+<span id="cb23-212"><a href="appendix.html#cb23-212"></a>        <span class="bu">print</span>(url[j])</span>
+<span id="cb23-213"><a href="appendix.html#cb23-213"></a>        r <span class="op">=</span> requests.get(url[j])</span>
+<span id="cb23-214"><a href="appendix.html#cb23-214"></a>        raw_html <span class="op">=</span> r.content</span>
+<span id="cb23-215"><a href="appendix.html#cb23-215"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-216"><a href="appendix.html#cb23-216"></a>        soup[url[j]] <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-217"><a href="appendix.html#cb23-217"></a></span>
+<span id="cb23-218"><a href="appendix.html#cb23-218"></a>        boxscore <span class="op">=</span> soup[url[j]].find_all(<span class="st">&#39;article&#39;</span>, </span>
+<span id="cb23-219"><a href="appendix.html#cb23-219"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;game-boxscore bkb clearfix&#39;</span>})</span>
+<span id="cb23-220"><a href="appendix.html#cb23-220"></a></span>
+<span id="cb23-221"><a href="appendix.html#cb23-221"></a>        players <span class="op">=</span> boxscore[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-222"><a href="appendix.html#cb23-222"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;player-stats&#39;</span>})</span>
+<span id="cb23-223"><a href="appendix.html#cb23-223"></a>        team1 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-224"><a href="appendix.html#cb23-224"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})</span>
+<span id="cb23-225"><a href="appendix.html#cb23-225"></a>        visitorteam <span class="op">=</span> team1[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-226"><a href="appendix.html#cb23-226"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup visitor clearfix&#39;</span>})</span>
+<span id="cb23-227"><a href="appendix.html#cb23-227"></a></span>
+<span id="cb23-228"><a href="appendix.html#cb23-228"></a>        team2 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-229"><a href="appendix.html#cb23-229"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})[<span class="dv">1</span>]</span>
+<span id="cb23-230"><a href="appendix.html#cb23-230"></a>        hometeam <span class="op">=</span> team2.find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-231"><a href="appendix.html#cb23-231"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup home clearfix&#39;</span>})</span>
+<span id="cb23-232"><a href="appendix.html#cb23-232"></a>        hometbody <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-233"><a href="appendix.html#cb23-233"></a>        hometr <span class="op">=</span> hometbody[<span class="dv">1</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-234"><a href="appendix.html#cb23-234"></a></span>
+<span id="cb23-235"><a href="appendix.html#cb23-235"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>))):</span>
+<span id="cb23-236"><a href="appendix.html#cb23-236"></a>            <span class="cf">if</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-237"><a href="appendix.html#cb23-237"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;STARTERS&#39;</span>):</span>
+<span id="cb23-238"><a href="appendix.html#cb23-238"></a>                starters <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-239"><a href="appendix.html#cb23-239"></a>                starterstr <span class="op">=</span> starters.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-240"><a href="appendix.html#cb23-240"></a>            <span class="cf">elif</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-241"><a href="appendix.html#cb23-241"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;RESERVES&#39;</span>):</span>
+<span id="cb23-242"><a href="appendix.html#cb23-242"></a>                reserves <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-243"><a href="appendix.html#cb23-243"></a>                reservestr <span class="op">=</span> reserves.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-244"><a href="appendix.html#cb23-244"></a></span>
+<span id="cb23-245"><a href="appendix.html#cb23-245"></a>        slist[url[j]] <span class="op">=</span> {}</span>
+<span id="cb23-246"><a href="appendix.html#cb23-246"></a>        <span class="cf">if</span> <span class="bu">len</span>(starterstr) <span class="op">&gt;</span> <span class="dv">4</span>:</span>
+<span id="cb23-247"><a href="appendix.html#cb23-247"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(starters.find_all(<span class="st">&#39;th&#39;</span>))) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb23-248"><a href="appendix.html#cb23-248"></a>                slist[url[j],i] <span class="op">=</span> {</span>
+<span id="cb23-249"><a href="appendix.html#cb23-249"></a>                    <span class="st">&#39;Home&#39;</span>: hometeam[<span class="dv">0</span>].caption.text.strip(),</span>
+<span id="cb23-250"><a href="appendix.html#cb23-250"></a>                    hometeam[<span class="dv">0</span>].thead.th.text.strip():</span>
+<span id="cb23-251"><a href="appendix.html#cb23-251"></a>                    starters.find_all(<span class="st">&#39;th&#39;</span>)[i <span class="op">+</span> <span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-252"><a href="appendix.html#cb23-252"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">1</span>].text.strip():</span>
+<span id="cb23-253"><a href="appendix.html#cb23-253"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].td.text.strip(),</span>
+<span id="cb23-254"><a href="appendix.html#cb23-254"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">2</span>].text.strip():</span>
+<span id="cb23-255"><a href="appendix.html#cb23-255"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-256"><a href="appendix.html#cb23-256"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">3</span>].text.strip():</span>
+<span id="cb23-257"><a href="appendix.html#cb23-257"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip(),</span>
+<span id="cb23-258"><a href="appendix.html#cb23-258"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">4</span>].text.strip():</span>
+<span id="cb23-259"><a href="appendix.html#cb23-259"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip(),</span>
+<span id="cb23-260"><a href="appendix.html#cb23-260"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">5</span>].text.strip():</span>
+<span id="cb23-261"><a href="appendix.html#cb23-261"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip(),</span>
+<span id="cb23-262"><a href="appendix.html#cb23-262"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">6</span>].text.strip():</span>
+<span id="cb23-263"><a href="appendix.html#cb23-263"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">5</span>].text.strip(),</span>
+<span id="cb23-264"><a href="appendix.html#cb23-264"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">7</span>].text.strip():</span>
+<span id="cb23-265"><a href="appendix.html#cb23-265"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">6</span>].text.strip(),</span>
+<span id="cb23-266"><a href="appendix.html#cb23-266"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">8</span>].text.strip():</span>
+<span id="cb23-267"><a href="appendix.html#cb23-267"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">7</span>].text.strip(),</span>
+<span id="cb23-268"><a href="appendix.html#cb23-268"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">9</span>].text.strip():</span>
+<span id="cb23-269"><a href="appendix.html#cb23-269"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">8</span>].text.strip(),</span>
+<span id="cb23-270"><a href="appendix.html#cb23-270"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">10</span>].text.strip():</span>
+<span id="cb23-271"><a href="appendix.html#cb23-271"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">9</span>].text.strip(),</span>
+<span id="cb23-272"><a href="appendix.html#cb23-272"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">11</span>].text.strip():</span>
+<span id="cb23-273"><a href="appendix.html#cb23-273"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">10</span>].text.strip(),</span>
+<span id="cb23-274"><a href="appendix.html#cb23-274"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">12</span>].text.strip():</span>
+<span id="cb23-275"><a href="appendix.html#cb23-275"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">11</span>].text.strip(),</span>
+<span id="cb23-276"><a href="appendix.html#cb23-276"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">13</span>].text.strip():</span>
+<span id="cb23-277"><a href="appendix.html#cb23-277"></a>                    starterstr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">12</span>].text.strip(),</span>
+<span id="cb23-278"><a href="appendix.html#cb23-278"></a>                }</span>
+<span id="cb23-279"><a href="appendix.html#cb23-279"></a></span>
+<span id="cb23-280"><a href="appendix.html#cb23-280"></a>    <span class="cf">return</span> slist</span>
+<span id="cb23-281"><a href="appendix.html#cb23-281"></a></span>
+<span id="cb23-282"><a href="appendix.html#cb23-282"></a><span class="kw">def</span> hrplayers_scrape(url):</span>
+<span id="cb23-283"><a href="appendix.html#cb23-283"></a>    rlist <span class="op">=</span> {}</span>
+<span id="cb23-284"><a href="appendix.html#cb23-284"></a>    slist <span class="op">=</span> {}</span>
+<span id="cb23-285"><a href="appendix.html#cb23-285"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(url)):</span>
+<span id="cb23-286"><a href="appendix.html#cb23-286"></a>        <span class="bu">print</span>(url[j])</span>
+<span id="cb23-287"><a href="appendix.html#cb23-287"></a>        r <span class="op">=</span> requests.get(url[j])</span>
+<span id="cb23-288"><a href="appendix.html#cb23-288"></a>        raw_html <span class="op">=</span> r.content</span>
+<span id="cb23-289"><a href="appendix.html#cb23-289"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-290"><a href="appendix.html#cb23-290"></a>        soup[url[j]] <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb23-291"><a href="appendix.html#cb23-291"></a></span>
+<span id="cb23-292"><a href="appendix.html#cb23-292"></a>        boxscore <span class="op">=</span> soup[url[j]].find_all(<span class="st">&#39;article&#39;</span>, </span>
+<span id="cb23-293"><a href="appendix.html#cb23-293"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;game-boxscore bkb clearfix&#39;</span>})</span>
+<span id="cb23-294"><a href="appendix.html#cb23-294"></a></span>
+<span id="cb23-295"><a href="appendix.html#cb23-295"></a>        players <span class="op">=</span> boxscore[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-296"><a href="appendix.html#cb23-296"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;player-stats&#39;</span>})</span>
+<span id="cb23-297"><a href="appendix.html#cb23-297"></a>        team1 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-298"><a href="appendix.html#cb23-298"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})</span>
+<span id="cb23-299"><a href="appendix.html#cb23-299"></a>        visitorteam <span class="op">=</span> team1[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-300"><a href="appendix.html#cb23-300"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-box full lineup visitor clearfix&#39;</span>})</span>
+<span id="cb23-301"><a href="appendix.html#cb23-301"></a></span>
+<span id="cb23-302"><a href="appendix.html#cb23-302"></a>        team2 <span class="op">=</span> players[<span class="dv">0</span>].find_all(<span class="st">&#39;div&#39;</span>, </span>
+<span id="cb23-303"><a href="appendix.html#cb23-303"></a>        {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;stats-wrap clearfix&#39;</span>})[<span class="dv">1</span>]</span>
+<span id="cb23-304"><a href="appendix.html#cb23-304"></a>        hometeam <span class="op">=</span> team2.find_all(<span class="st">&#39;div&#39;</span>, {<span class="st">&#39;class&#39;</span>:</span>
+<span id="cb23-305"><a href="appendix.html#cb23-305"></a>        <span class="st">&#39;stats-box full lineup home clearfix&#39;</span>})</span>
+<span id="cb23-306"><a href="appendix.html#cb23-306"></a>        hometbody <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)</span>
+<span id="cb23-307"><a href="appendix.html#cb23-307"></a>        hometr <span class="op">=</span> hometbody[<span class="dv">1</span>].find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-308"><a href="appendix.html#cb23-308"></a></span>
+<span id="cb23-309"><a href="appendix.html#cb23-309"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>))):</span>
+<span id="cb23-310"><a href="appendix.html#cb23-310"></a>            <span class="cf">if</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-311"><a href="appendix.html#cb23-311"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;STARTERS&#39;</span>):</span>
+<span id="cb23-312"><a href="appendix.html#cb23-312"></a>                starters <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-313"><a href="appendix.html#cb23-313"></a>                starterstr <span class="op">=</span> starters.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-314"><a href="appendix.html#cb23-314"></a>            <span class="cf">elif</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k].</span>
+<span id="cb23-315"><a href="appendix.html#cb23-315"></a>            tr.text.strip() <span class="op">==</span> <span class="bu">str</span>(<span class="st">&#39;RESERVES&#39;</span>):</span>
+<span id="cb23-316"><a href="appendix.html#cb23-316"></a>                reserves <span class="op">=</span> hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;tbody&#39;</span>)[k]</span>
+<span id="cb23-317"><a href="appendix.html#cb23-317"></a>                reservestr <span class="op">=</span> reserves.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb23-318"><a href="appendix.html#cb23-318"></a></span>
+<span id="cb23-319"><a href="appendix.html#cb23-319"></a>        rlist[url[j]] <span class="op">=</span> {}</span>
+<span id="cb23-320"><a href="appendix.html#cb23-320"></a>        <span class="cf">if</span> <span class="bu">len</span>(reservestr) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb23-321"><a href="appendix.html#cb23-321"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>((<span class="bu">len</span>(reserves.find_all(<span class="st">&#39;th&#39;</span>))) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb23-322"><a href="appendix.html#cb23-322"></a>                rlist[url[j], i] <span class="op">=</span> {</span>
+<span id="cb23-323"><a href="appendix.html#cb23-323"></a>                    <span class="st">&#39;Home&#39;</span>: hometeam[<span class="dv">0</span>].caption.text.strip(),</span>
+<span id="cb23-324"><a href="appendix.html#cb23-324"></a>                    hometeam[<span class="dv">0</span>].thead.th.text.strip():</span>
+<span id="cb23-325"><a href="appendix.html#cb23-325"></a>                    reserves.find_all(<span class="st">&#39;th&#39;</span>)[i <span class="op">+</span> <span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-326"><a href="appendix.html#cb23-326"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">1</span>].text.strip():</span>
+<span id="cb23-327"><a href="appendix.html#cb23-327"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].td.text.strip(),</span>
+<span id="cb23-328"><a href="appendix.html#cb23-328"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">2</span>].text.strip():</span>
+<span id="cb23-329"><a href="appendix.html#cb23-329"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip(),</span>
+<span id="cb23-330"><a href="appendix.html#cb23-330"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">3</span>].text.strip():</span>
+<span id="cb23-331"><a href="appendix.html#cb23-331"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip(),</span>
+<span id="cb23-332"><a href="appendix.html#cb23-332"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">4</span>].text.strip():</span>
+<span id="cb23-333"><a href="appendix.html#cb23-333"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">3</span>].text.strip(),</span>
+<span id="cb23-334"><a href="appendix.html#cb23-334"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">5</span>].text.strip():</span>
+<span id="cb23-335"><a href="appendix.html#cb23-335"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">4</span>].text.strip(),</span>
+<span id="cb23-336"><a href="appendix.html#cb23-336"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">6</span>].text.strip():</span>
+<span id="cb23-337"><a href="appendix.html#cb23-337"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">5</span>].text.strip(),</span>
+<span id="cb23-338"><a href="appendix.html#cb23-338"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">7</span>].text.strip():</span>
+<span id="cb23-339"><a href="appendix.html#cb23-339"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">6</span>].text.strip(),</span>
+<span id="cb23-340"><a href="appendix.html#cb23-340"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">8</span>].text.strip():</span>
+<span id="cb23-341"><a href="appendix.html#cb23-341"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">7</span>].text.strip(),</span>
+<span id="cb23-342"><a href="appendix.html#cb23-342"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">9</span>].text.strip():</span>
+<span id="cb23-343"><a href="appendix.html#cb23-343"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">8</span>].text.strip(),</span>
+<span id="cb23-344"><a href="appendix.html#cb23-344"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">10</span>].text.strip():</span>
+<span id="cb23-345"><a href="appendix.html#cb23-345"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">9</span>].text.strip(),</span>
+<span id="cb23-346"><a href="appendix.html#cb23-346"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">11</span>].text.strip():</span>
+<span id="cb23-347"><a href="appendix.html#cb23-347"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">10</span>].text.strip(),</span>
+<span id="cb23-348"><a href="appendix.html#cb23-348"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">12</span>].text.strip():</span>
+<span id="cb23-349"><a href="appendix.html#cb23-349"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">11</span>].text.strip(),</span>
+<span id="cb23-350"><a href="appendix.html#cb23-350"></a>                    hometeam[<span class="dv">0</span>].find_all(<span class="st">&#39;th&#39;</span>)[<span class="dv">13</span>].text.strip():</span>
+<span id="cb23-351"><a href="appendix.html#cb23-351"></a>                    reservestr[i <span class="op">+</span> <span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">12</span>].text.strip(),</span>
+<span id="cb23-352"><a href="appendix.html#cb23-352"></a>                }</span>
+<span id="cb23-353"><a href="appendix.html#cb23-353"></a>    <span class="cf">return</span> rlist</span>
+<span id="cb23-354"><a href="appendix.html#cb23-354"></a></span>
+<span id="cb23-355"><a href="appendix.html#cb23-355"></a>q <span class="op">=</span> get_links()</span>
+<span id="cb23-356"><a href="appendix.html#cb23-356"></a>b <span class="op">=</span> hrplayers_scrape(q)</span>
+<span id="cb23-357"><a href="appendix.html#cb23-357"></a>c <span class="op">=</span> hsplayers_scrape(q)</span>
+<span id="cb23-358"><a href="appendix.html#cb23-358"></a>d <span class="op">=</span> vsplayers_scrape(q)</span>
+<span id="cb23-359"><a href="appendix.html#cb23-359"></a>e <span class="op">=</span> vrplayers_scrape(q)</span>
+<span id="cb23-360"><a href="appendix.html#cb23-360"></a></span>
+<span id="cb23-361"><a href="appendix.html#cb23-361"></a></span>
+<span id="cb23-362"><a href="appendix.html#cb23-362"></a></span>
+<span id="cb23-363"><a href="appendix.html#cb23-363"></a>df1 <span class="op">=</span> pd.DataFrame(b)</span>
+<span id="cb23-364"><a href="appendix.html#cb23-364"></a>df1 <span class="op">=</span> df1.T</span>
+<span id="cb23-365"><a href="appendix.html#cb23-365"></a>df1 <span class="op">=</span> df1.replace(<span class="st">&#39;\-&#39;</span>, <span class="st">&#39; -- &#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-366"><a href="appendix.html#cb23-366"></a>df1 <span class="op">=</span> df1.replace(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39;&#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-367"><a href="appendix.html#cb23-367"></a>df1.to_csv(<span class="st">&#39;home reserves.csv&#39;</span>,header <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-368"><a href="appendix.html#cb23-368"></a></span>
+<span id="cb23-369"><a href="appendix.html#cb23-369"></a>df2 <span class="op">=</span> pd.DataFrame(c)</span>
+<span id="cb23-370"><a href="appendix.html#cb23-370"></a>df2 <span class="op">=</span> df2.T</span>
+<span id="cb23-371"><a href="appendix.html#cb23-371"></a>df2 <span class="op">=</span> df2.replace(<span class="st">&#39;\-&#39;</span>, <span class="st">&#39; -- &#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-372"><a href="appendix.html#cb23-372"></a>df2 <span class="op">=</span> df2.replace(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39;&#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-373"><a href="appendix.html#cb23-373"></a>df2.to_csv(<span class="st">&#39;home starters.csv&#39;</span>,header <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-374"><a href="appendix.html#cb23-374"></a></span>
+<span id="cb23-375"><a href="appendix.html#cb23-375"></a>df3 <span class="op">=</span> pd.DataFrame(d)</span>
+<span id="cb23-376"><a href="appendix.html#cb23-376"></a>df3 <span class="op">=</span> df3.T</span>
+<span id="cb23-377"><a href="appendix.html#cb23-377"></a>df3 <span class="op">=</span> df3.replace(<span class="st">&#39;\-&#39;</span>, <span class="st">&#39; -- &#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-378"><a href="appendix.html#cb23-378"></a>df3 <span class="op">=</span> df3.replace(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39;&#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-379"><a href="appendix.html#cb23-379"></a>df3.to_csv(<span class="st">&#39;visitors starters.csv&#39;</span>,header <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-380"><a href="appendix.html#cb23-380"></a></span>
+<span id="cb23-381"><a href="appendix.html#cb23-381"></a>df4 <span class="op">=</span> pd.DataFrame(e)</span>
+<span id="cb23-382"><a href="appendix.html#cb23-382"></a>df4 <span class="op">=</span> df4.T</span>
+<span id="cb23-383"><a href="appendix.html#cb23-383"></a>df4 <span class="op">=</span> df4.replace(<span class="st">&#39;\-&#39;</span>, <span class="st">&#39; -- &#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-384"><a href="appendix.html#cb23-384"></a>df4 <span class="op">=</span> df4.replace(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39;&#39;</span>, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">object</span>)</span>
+<span id="cb23-385"><a href="appendix.html#cb23-385"></a>df4.to_csv(<span class="st">&#39;visitors reserves.csv&#39;</span>,header <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-386"><a href="appendix.html#cb23-386"></a></span>
+<span id="cb23-387"><a href="appendix.html#cb23-387"></a></span>
+<span id="cb23-388"><a href="appendix.html#cb23-388"></a>concat <span class="op">=</span> pd.concat([df2,df3,df1,df4],sort<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-389"><a href="appendix.html#cb23-389"></a></span>
+<span id="cb23-390"><a href="appendix.html#cb23-390"></a>df1.columns</span>
+<span id="cb23-391"><a href="appendix.html#cb23-391"></a></span>
+<span id="cb23-392"><a href="appendix.html#cb23-392"></a>concat.to_csv(<span class="st">&#39;player_data.csv&#39;</span>,header<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="synergy-data-scraper" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Synergy Data Scraper</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="appendix.html#cb24-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb24-2"><a href="appendix.html#cb24-2"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb24-3"><a href="appendix.html#cb24-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-4"><a href="appendix.html#cb24-4"></a><span class="im">import</span> time</span>
+<span id="cb24-5"><a href="appendix.html#cb24-5"></a><span class="im">import</span> os</span>
+<span id="cb24-6"><a href="appendix.html#cb24-6"></a><span class="im">import</span> sys</span>
+<span id="cb24-7"><a href="appendix.html#cb24-7"></a></span>
+<span id="cb24-8"><a href="appendix.html#cb24-8"></a></span>
+<span id="cb24-9"><a href="appendix.html#cb24-9"></a>browser <span class="op">=</span> webdriver.Chrome(os.path.join(sys.path[<span class="dv">0</span>], <span class="st">&#39;chromedriver&#39;</span>))</span>
+<span id="cb24-10"><a href="appendix.html#cb24-10"></a></span>
+<span id="cb24-11"><a href="appendix.html#cb24-11"></a><span class="kw">def</span> login():</span>
+<span id="cb24-12"><a href="appendix.html#cb24-12"></a>    login_url <span class="op">=</span> <span class="st">&#39;https://www.synergysportstech.com/Synergy/Default.aspx&#39;</span></span>
+<span id="cb24-13"><a href="appendix.html#cb24-13"></a>    browser.get(login_url)</span>
+<span id="cb24-14"><a href="appendix.html#cb24-14"></a>    username1 <span class="op">=</span> browser.find_element_by_css_selector(<span class="st">&#39;#txtUserName&#39;</span>)</span>
+<span id="cb24-15"><a href="appendix.html#cb24-15"></a>    username <span class="op">=</span> <span class="st">&quot;************&quot;</span></span>
+<span id="cb24-16"><a href="appendix.html#cb24-16"></a>    username1.send_keys(username)</span>
+<span id="cb24-17"><a href="appendix.html#cb24-17"></a>    password1 <span class="op">=</span> browser.find_element_by_css_selector(<span class="st">&#39;#txtPassword&#39;</span>)</span>
+<span id="cb24-18"><a href="appendix.html#cb24-18"></a>    password <span class="op">=</span> <span class="st">&quot;************&quot;</span></span>
+<span id="cb24-19"><a href="appendix.html#cb24-19"></a>    password1.send_keys(password)</span>
+<span id="cb24-20"><a href="appendix.html#cb24-20"></a></span>
+<span id="cb24-21"><a href="appendix.html#cb24-21"></a>    browser.find_element_by_css_selector(<span class="st">&#39;#btnLogin&#39;</span>).click()</span>
+<span id="cb24-22"><a href="appendix.html#cb24-22"></a></span>
+<span id="cb24-23"><a href="appendix.html#cb24-23"></a></span>
+<span id="cb24-24"><a href="appendix.html#cb24-24"></a><span class="kw">def</span> get_links():</span>
+<span id="cb24-25"><a href="appendix.html#cb24-25"></a>    browser.get(<span class="st">&#39;https://www.synergysportstech.com/Synergy/Sport/Basketball/web/teamsst/Video/SelectGame2.aspx&#39;</span>)</span>
+<span id="cb24-26"><a href="appendix.html#cb24-26"></a></span>
+<span id="cb24-27"><a href="appendix.html#cb24-27"></a>    el5 <span class="op">=</span> browser.find_element_by_css_selector</span>
+<span id="cb24-28"><a href="appendix.html#cb24-28"></a>    (<span class="st">&#39;#ctl00_MainContent_lstSeason&#39;</span>)</span>
+<span id="cb24-29"><a href="appendix.html#cb24-29"></a>    <span class="cf">for</span> option <span class="kw">in</span> el5.find_elements_by_tag_name(<span class="st">&#39;option&#39;</span>):</span>
+<span id="cb24-30"><a href="appendix.html#cb24-30"></a>        <span class="cf">if</span> option.text <span class="op">==</span> <span class="st">&#39;2014 - 2015&#39;</span>:</span>
+<span id="cb24-31"><a href="appendix.html#cb24-31"></a>            option.click() <span class="co"># select() in earlier versions of webdriver</span></span>
+<span id="cb24-32"><a href="appendix.html#cb24-32"></a>            <span class="cf">break</span></span>
+<span id="cb24-33"><a href="appendix.html#cb24-33"></a></span>
+<span id="cb24-34"><a href="appendix.html#cb24-34"></a>    time.sleep(<span class="dv">3</span>)</span>
+<span id="cb24-35"><a href="appendix.html#cb24-35"></a>    el2 <span class="op">=</span> browser.find_element_by_css_selector</span>
+<span id="cb24-36"><a href="appendix.html#cb24-36"></a>    (<span class="st">&#39;#ctl00_MainContent_lstDivisionGroup&#39;</span>)</span>
+<span id="cb24-37"><a href="appendix.html#cb24-37"></a>    <span class="cf">for</span> option <span class="kw">in</span> el2.find_elements_by_tag_name(<span class="st">&#39;option&#39;</span>):</span>
+<span id="cb24-38"><a href="appendix.html#cb24-38"></a>        <span class="cf">if</span> option.text <span class="op">==</span> <span class="st">&#39;U Sports&#39;</span>:</span>
+<span id="cb24-39"><a href="appendix.html#cb24-39"></a>            option.click() <span class="co"># select() in earlier versions of webdriver</span></span>
+<span id="cb24-40"><a href="appendix.html#cb24-40"></a>            <span class="cf">break</span></span>
+<span id="cb24-41"><a href="appendix.html#cb24-41"></a></span>
+<span id="cb24-42"><a href="appendix.html#cb24-42"></a>    el4 <span class="op">=</span> browser.find_element_by_css_selector</span>
+<span id="cb24-43"><a href="appendix.html#cb24-43"></a>    (<span class="st">&#39;#ctl00_MainContent_lstViewMax&#39;</span>)</span>
+<span id="cb24-44"><a href="appendix.html#cb24-44"></a>    <span class="cf">for</span> option <span class="kw">in</span> el4.find_elements_by_tag_name(<span class="st">&#39;option&#39;</span>):</span>
+<span id="cb24-45"><a href="appendix.html#cb24-45"></a>        <span class="cf">if</span> option.text <span class="op">==</span> <span class="st">&#39;1600&#39;</span>:</span>
+<span id="cb24-46"><a href="appendix.html#cb24-46"></a>            option.click() <span class="co"># select() in earlier versions of webdriver</span></span>
+<span id="cb24-47"><a href="appendix.html#cb24-47"></a>            <span class="cf">break</span></span>
+<span id="cb24-48"><a href="appendix.html#cb24-48"></a></span>
+<span id="cb24-49"><a href="appendix.html#cb24-49"></a>    el <span class="op">=</span> browser.find_element_by_css_selector</span>
+<span id="cb24-50"><a href="appendix.html#cb24-50"></a>    (<span class="st">&#39;#ctl00_MainContent_lstSubType&#39;</span>)</span>
+<span id="cb24-51"><a href="appendix.html#cb24-51"></a>    <span class="cf">for</span> option <span class="kw">in</span> el.find_elements_by_tag_name(<span class="st">&#39;option&#39;</span>):</span>
+<span id="cb24-52"><a href="appendix.html#cb24-52"></a>        <span class="cf">if</span> option.text <span class="op">==</span> <span class="st">&#39;Regular Season&#39;</span>:</span>
+<span id="cb24-53"><a href="appendix.html#cb24-53"></a>            option.click() <span class="co"># select() in earlier versions of webdriver</span></span>
+<span id="cb24-54"><a href="appendix.html#cb24-54"></a>            <span class="cf">break</span></span>
+<span id="cb24-55"><a href="appendix.html#cb24-55"></a></span>
+<span id="cb24-56"><a href="appendix.html#cb24-56"></a>    time.sleep(<span class="dv">5</span>)</span>
+<span id="cb24-57"><a href="appendix.html#cb24-57"></a></span>
+<span id="cb24-58"><a href="appendix.html#cb24-58"></a>    el3 <span class="op">=</span> browser.find_element_by_css_selector</span>
+<span id="cb24-59"><a href="appendix.html#cb24-59"></a>    (<span class="st">&#39;#ctl00_MainContent_lstDivisions&#39;</span>)</span>
+<span id="cb24-60"><a href="appendix.html#cb24-60"></a>    <span class="cf">for</span> option <span class="kw">in</span> el3.find_elements_by_tag_name(<span class="st">&#39;option&#39;</span>):</span>
+<span id="cb24-61"><a href="appendix.html#cb24-61"></a>        <span class="cf">if</span> option.text <span class="op">==</span> <span class="st">&#39;Ontario University Athletics&#39;</span>:</span>
+<span id="cb24-62"><a href="appendix.html#cb24-62"></a>            option.click() <span class="co"># select() in earlier versions of webdriver</span></span>
+<span id="cb24-63"><a href="appendix.html#cb24-63"></a>            <span class="cf">break</span></span>
+<span id="cb24-64"><a href="appendix.html#cb24-64"></a></span>
+<span id="cb24-65"><a href="appendix.html#cb24-65"></a>    time.sleep(<span class="dv">5</span>)</span>
+<span id="cb24-66"><a href="appendix.html#cb24-66"></a></span>
+<span id="cb24-67"><a href="appendix.html#cb24-67"></a>    links <span class="op">=</span> browser.find_elements_by_tag_name(<span class="st">&#39;table&#39;</span>)</span>
+<span id="cb24-68"><a href="appendix.html#cb24-68"></a>    html <span class="op">=</span> links[<span class="dv">2</span>].get_attribute(<span class="st">&#39;innerHTML&#39;</span>)</span>
+<span id="cb24-69"><a href="appendix.html#cb24-69"></a>    soup1 <span class="op">=</span> BeautifulSoup(html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb24-70"><a href="appendix.html#cb24-70"></a>    href_list1 <span class="op">=</span> soup1.find_all(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb24-71"><a href="appendix.html#cb24-71"></a>    i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-72"><a href="appendix.html#cb24-72"></a>    url_list <span class="op">=</span> []</span>
+<span id="cb24-73"><a href="appendix.html#cb24-73"></a>    root_url <span class="op">=</span> <span class="st">&#39;https://www.synergysportstech.com/Synergy/Sport/Basketball/web/teamsst/Video/&#39;</span></span>
+<span id="cb24-74"><a href="appendix.html#cb24-74"></a>    <span class="cf">for</span> link <span class="kw">in</span> href_list1:</span>
+<span id="cb24-75"><a href="appendix.html#cb24-75"></a>        <span class="cf">if</span> <span class="st">&quot;GameGrid2&quot;</span> <span class="kw">in</span> link[<span class="st">&#39;href&#39;</span>]:</span>
+<span id="cb24-76"><a href="appendix.html#cb24-76"></a>            url_list.append(root_url <span class="op">+</span> link[<span class="st">&#39;href&#39;</span>])</span>
+<span id="cb24-77"><a href="appendix.html#cb24-77"></a></span>
+<span id="cb24-78"><a href="appendix.html#cb24-78"></a>    <span class="cf">return</span> url_list</span>
+<span id="cb24-79"><a href="appendix.html#cb24-79"></a></span>
+<span id="cb24-80"><a href="appendix.html#cb24-80"></a><span class="kw">def</span> scrape(url_list):</span>
+<span id="cb24-81"><a href="appendix.html#cb24-81"></a>    <span class="bu">dict</span> <span class="op">=</span> {}</span>
+<span id="cb24-82"><a href="appendix.html#cb24-82"></a>    <span class="cf">for</span> url <span class="kw">in</span> url_list:</span>
+<span id="cb24-83"><a href="appendix.html#cb24-83"></a>        <span class="bu">dict</span>[url] <span class="op">=</span> {}</span>
+<span id="cb24-84"><a href="appendix.html#cb24-84"></a>        browser.get(url)</span>
+<span id="cb24-85"><a href="appendix.html#cb24-85"></a>        browser.find_element_by_link_text(<span class="st">&#39;Game Breakdown&#39;</span>).click()</span>
+<span id="cb24-86"><a href="appendix.html#cb24-86"></a>        time.sleep(<span class="dv">5</span>)</span>
+<span id="cb24-87"><a href="appendix.html#cb24-87"></a></span>
+<span id="cb24-88"><a href="appendix.html#cb24-88"></a>        table <span class="op">=</span> browser.find_elements_by_class_name(<span class="st">&#39;Tier&#39;</span>)</span>
+<span id="cb24-89"><a href="appendix.html#cb24-89"></a>        raw_html <span class="op">=</span> table[<span class="dv">2</span>].get_attribute(<span class="st">&#39;innerHTML&#39;</span>)</span>
+<span id="cb24-90"><a href="appendix.html#cb24-90"></a>        soup <span class="op">=</span> BeautifulSoup(raw_html, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb24-91"><a href="appendix.html#cb24-91"></a>        raw_html2 <span class="op">=</span> table[<span class="dv">0</span>].get_attribute(<span class="st">&#39;innerHTML&#39;</span>)</span>
+<span id="cb24-92"><a href="appendix.html#cb24-92"></a>        soup2 <span class="op">=</span> BeautifulSoup(raw_html2, <span class="st">&#39;html.parser&#39;</span>)</span>
+<span id="cb24-93"><a href="appendix.html#cb24-93"></a>        <span class="bu">print</span>(soup.tr)</span>
+<span id="cb24-94"><a href="appendix.html#cb24-94"></a>        tr <span class="op">=</span> soup2.find_all(<span class="st">&#39;tr&#39;</span>)</span>
+<span id="cb24-95"><a href="appendix.html#cb24-95"></a>        Away_Team <span class="op">=</span> tr[<span class="dv">1</span>].td.text.strip()</span>
+<span id="cb24-96"><a href="appendix.html#cb24-96"></a>        Away_Total_Score <span class="op">=</span> tr[<span class="dv">1</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip()</span>
+<span id="cb24-97"><a href="appendix.html#cb24-97"></a>        Home_Team <span class="op">=</span> tr[<span class="dv">2</span>].td.text.strip()</span>
+<span id="cb24-98"><a href="appendix.html#cb24-98"></a>        Home_Total_Score <span class="op">=</span> tr[<span class="dv">2</span>].find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip()</span>
+<span id="cb24-99"><a href="appendix.html#cb24-99"></a>        <span class="co"># team1 = soup.find_all(&#39;td&#39;)[7].text.strip()</span></span>
+<span id="cb24-100"><a href="appendix.html#cb24-100"></a>        <span class="co"># team2 = soup.find_all(&#39;td&#39;)[8].text.strip()</span></span>
+<span id="cb24-101"><a href="appendix.html#cb24-101"></a></span>
+<span id="cb24-102"><a href="appendix.html#cb24-102"></a>        tierrow <span class="op">=</span> soup.find_all(<span class="st">&#39;tr&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;TierRow&#39;</span>})</span>
+<span id="cb24-103"><a href="appendix.html#cb24-103"></a></span>
+<span id="cb24-104"><a href="appendix.html#cb24-104"></a>        <span class="bu">dict</span>[url][Home_Team] <span class="op">=</span> {}</span>
+<span id="cb24-105"><a href="appendix.html#cb24-105"></a>        <span class="bu">dict</span>[url][Away_Team] <span class="op">=</span> {}</span>
+<span id="cb24-106"><a href="appendix.html#cb24-106"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tierrow)):</span>
+<span id="cb24-107"><a href="appendix.html#cb24-107"></a>            row <span class="op">=</span> soup.find_all(<span class="st">&#39;tr&#39;</span>, {<span class="st">&#39;class&#39;</span>: <span class="st">&#39;TierRow&#39;</span>})[i]</span>
+<span id="cb24-108"><a href="appendix.html#cb24-108"></a>            rowname <span class="op">=</span> row.find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">0</span>].text.strip()</span>
+<span id="cb24-109"><a href="appendix.html#cb24-109"></a>            <span class="bu">dict</span>[url][Home_Team][rowname] <span class="op">=</span> row.find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">1</span>].text.strip()</span>
+<span id="cb24-110"><a href="appendix.html#cb24-110"></a>            <span class="bu">dict</span>[url][Home_Team][<span class="st">&#39;Total Points&#39;</span>] <span class="op">=</span> Home_Total_Score</span>
+<span id="cb24-111"><a href="appendix.html#cb24-111"></a>            <span class="bu">dict</span>[url][Away_Team][rowname] <span class="op">=</span> row.find_all(<span class="st">&#39;td&#39;</span>)[<span class="dv">2</span>].text.strip()</span>
+<span id="cb24-112"><a href="appendix.html#cb24-112"></a>            <span class="bu">dict</span>[url][Away_Team][<span class="st">&#39;Total Points&#39;</span>] <span class="op">=</span> Away_Total_Score</span>
+<span id="cb24-113"><a href="appendix.html#cb24-113"></a>            <span class="cf">if</span> <span class="bu">int</span>(Home_Total_Score) <span class="op">&gt;</span> <span class="bu">int</span>(Away_Total_Score):</span>
+<span id="cb24-114"><a href="appendix.html#cb24-114"></a>                <span class="bu">dict</span>[url][Home_Team][<span class="st">&#39;Winner&#39;</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb24-115"><a href="appendix.html#cb24-115"></a>            <span class="cf">elif</span> Away_Total_Score <span class="op">&gt;</span> Home_Total_Score:</span>
+<span id="cb24-116"><a href="appendix.html#cb24-116"></a>                <span class="bu">dict</span>[url][Away_Team][<span class="st">&#39;Winner&#39;</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb24-117"><a href="appendix.html#cb24-117"></a></span>
+<span id="cb24-118"><a href="appendix.html#cb24-118"></a>    <span class="cf">return</span> <span class="bu">dict</span></span>
+<span id="cb24-119"><a href="appendix.html#cb24-119"></a></span>
+<span id="cb24-120"><a href="appendix.html#cb24-120"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb24-121"><a href="appendix.html#cb24-121"></a>    login()</span>
+<span id="cb24-122"><a href="appendix.html#cb24-122"></a>    urls <span class="op">=</span> get_links()</span>
+<span id="cb24-123"><a href="appendix.html#cb24-123"></a>    <span class="bu">dict</span> <span class="op">=</span> scrape(urls)</span>
+<span id="cb24-124"><a href="appendix.html#cb24-124"></a></span>
+<span id="cb24-125"><a href="appendix.html#cb24-125"></a>    df <span class="op">=</span> pd.DataFrame.from_dict({(i,j): <span class="bu">dict</span>[i][j]</span>
+<span id="cb24-126"><a href="appendix.html#cb24-126"></a>                           <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">dict</span>.keys()</span>
+<span id="cb24-127"><a href="appendix.html#cb24-127"></a>                           <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">dict</span>[i].keys()})</span>
+<span id="cb24-128"><a href="appendix.html#cb24-128"></a>    df <span class="op">=</span> df.T</span>
+<span id="cb24-129"><a href="appendix.html#cb24-129"></a>    df.to_csv(<span class="st">&#39;General2014-15 .csv&#39;</span>)</span>
+<span id="cb24-130"><a href="appendix.html#cb24-130"></a>    df.fillna(<span class="dv">0</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

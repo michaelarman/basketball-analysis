@@ -1,0 +1,44 @@
+--- 
+title: "Men's U-Sports Basketball Analysis"
+author: "Michael Armanious"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+bibliography:
+- book.bib
+- packages.bib
+cover-image: images/basketball.png
+biblio-style: apalike
+description: Sports Analytics
+documentclass: book
+link-citations: yes
+site: bookdown::bookdown_site
+subtitle:  A project submitted to the Faculty of Graduate and Postdoctoral Affairs in partial fulfillment of the requirements for the degree of Master of Science in Mathematics with specialization in Statistics <br> Carleton University Ottawa, Ontario
+always_allow_html: yes
+---
+# Abstract {-}
+    
+```{r abstract-begin, results="asis", include=FALSE}
+    if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex") {
+      # we first need to remove duplicate abstract title, hack-fix from http://tex.stackexchange.com/questions/42482/remove-abstract-title-from-abstract
+      cat("\\renewcommand{\\abstractname}{\\vspace{-\\baselineskip}}") # clear the title
+      cat("\\begin{abstract}")
+    }
+    ```
+    
+  Statistics in sports is a growing field in research that provides specialized methodology for collecting and analyzing sports data in order to make decisions for successful planning and implementation of new strategies [1]. Sports, particularly, have countless and ever-expanding data sources that can be used by analysts in order to extract objective information for use in aspects such as making predictions throughout seasons and enhancements in team and player performance.  Broadly, Sports Analysis is described as the process of data management, predictive model implementation, and the use of information systems for decision making to gain a competitive advantage.
+
+The purpose of this research project is to find meaningful insights about Canadian Men's University Basketball using analytics. The seasons that will be focused on are the regular seasons from 2015 to 2019 of the men's U Sports teams for the Ontario University Athletics (OUA) Division. Multiple datasets were extracted for this analysis from the OUA and Synergy websites then staged and loaded into a database. For this project, data staging mainly compromised of cleansing, consolidation and aligning these different datasets in order to have consistent and usable data. Other different data mining techniques, including, but not limited to, Decision Trees, Logistic Regression and Random Forests were also used along with Exploratory Data techniques. These will be described and shown in detail in this report.  
+
+There is a section devoted to the Carleton Ravens' Men's Team; one of the best teams in the division. Their style of play will be analyzed to bring insight on why they are one of the top performing teams.
+
+    
+```{r abstract-end, results="asis", include=FALSE}
+    if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex") {cat("\\end{abstract}")}
+    ```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

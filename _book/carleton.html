@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Carleton | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Carleton | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Carleton | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="classification-of-wins.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="carleton" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Carleton</h1>
+<p>Carleton has been a strong team for over the past decade. They have won 14 of the last 17 U Sports national championships (2003-2007, 2009, 2011-2017, 2019) due to remarkable coaching and great roster.</p>
+<div id="dave-smart-effect" class="section level2">
+<h2><span class="header-section-number">5.1</span> Dave Smart Effect</h2>
+<p>The Raven’s head coach Dave Smart has a lot to do with the success of the team, as he has led them to 13 of their 14 championships between 1999 (his first year as coach) to 2019. From 2003 to 2007 inclusive, Smart led the Ravens to five consecutive Canadian Interuniversity Sport (CIS) national championships, which were the first CIS championships won by Carleton in any sport.[6] He has been head coach for all seasons since 1999 except for 2015-2016, during which he was on sabbatical leave. Below we analyze data from 2015 to 2019, from which it can even be deduced that his absence affected the team’s performance.</p>
+<div class="figure"><span id="fig:unnamed-chunk-65"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-65-1.png" alt="Carleton Wins Per Season." width="672" />
+<p class="caption">
+Figure 5.1: Carleton Wins Per Season.
+</p>
+</div>
+<p>The Ravens won the fewest regular season games in the 2015-2016 season when Dave Smart took a sabbatical (his nephew, Rob Smart was the interim coach). The team had also lost four starters from the previous year’s championship. It is evident that these two factors greatly affected the Raven’s performance throughout that season.</p>
+<div id="comparing-play-types" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Comparing Play Types</h3>
+<div class="figure"><span id="fig:unnamed-chunk-67"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-67-1.png" alt="Carleton Play Types Proportionate to Total Possessions Comparison Per Season" width="672" />
+<p class="caption">
+Figure 5.2: Carleton Play Types Proportionate to Total Possessions Comparison Per Season
+</p>
+</div>
+<p>Barplot (i) illustrates that the 2015/2016 season had significantly more Post-Up plays. This could be a preference of coach Rob Smart due to a larger roster or could be his preferred style of play in general.
+The 2015/2016 season had the fewest isolation plays (ii) but not a significant change from the 2016/2017 season.
+The 2015/2016 season had the most transition turnovers(iv) (transition plays resulting in a turnover) along with the 2016-2017 season.</p>
+<div id="statistical-proportion-test" class="section level4">
+<h4><span class="header-section-number">5.1.1.1</span> Statistical Proportion Test</h4>
+<p>A Test Of Equal Or Given Proportions can be used for testing the null that the proportions in several groups are the same, or that they equal certain given values. This can be used to see if the the 2015-16 season is statistically significant compared to the other seasons for the above play types.</p>
+</div>
+<div id="proportion-testing-post-up-plays" class="section level4">
+<h4><span class="header-section-number">5.1.1.2</span> Proportion Testing Post-Up Plays</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$AllPostUp out of carleton$AllPossessionClips
+X-squared = 86.565, df = 3, p-value &lt; 2.2e-16
+alternative hypothesis: two.sided
+sample estimates:
+    prop 1     prop 2     prop 3     prop 4 
+0.12204951 0.04860267 0.05393996 0.07446809 </code></pre>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$AllPostUp out of carleton$AllPossessionClips 
+
+  1       2      3     
+2 2.8e-13 -      -     
+3 2.8e-13 0.5086 -     
+4 3.8e-06 0.0048 0.0159
+
+P value adjustment method: holm </code></pre>
+<p>This shows that the pairs including the 2015-2016 season are statistically significant.</p>
+</div>
+<div id="proportion-testing-isolation-plays" class="section level4">
+<h4><span class="header-section-number">5.1.1.3</span> Proportion Testing Isolation Plays</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$AllIsolation out of carleton$AllPossessionClips
+X-squared = 24.15, df = 3, p-value = 2.324e-05
+alternative hypothesis: two.sided
+sample estimates:
+    prop 1     prop 2     prop 3     prop 4 
+0.07369027 0.08505468 0.09193246 0.11798839 </code></pre>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$AllIsolation out of carleton$AllPossessionClips 
+
+  1       2      3     
+2 0.4924  -      -     
+3 0.1434  0.4973 -     
+4 3.6e-05 0.0064 0.0272
+
+P value adjustment method: holm </code></pre>
+<p>The 2018-2019 season has statistically significant pairs compared to the rest.</p>
+</div>
+<div id="proportion-testing-transition-plays" class="section level4">
+<h4><span class="header-section-number">5.1.1.4</span> Proportion Testing Transition Plays</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$Transitions out of carleton$AllPossessionClips
+X-squared = 15.781, df = 3, p-value = 0.001257
+alternative hypothesis: two.sided
+sample estimates:
+   prop 1    prop 2    prop 3    prop 4 
+0.2020725 0.2381531 0.2049719 0.1856867 </code></pre>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$Transitions out of carleton$AllPossessionClips 
+
+  1       2       3      
+2 0.06350 -       -      
+3 0.85511 0.06489 -      
+4 0.43435 0.00066 0.37309
+
+P value adjustment method: holm </code></pre>
+<p>Only the 2016-2017 season compared to the 2018-2019 season is statistically significant.</p>
+</div>
+<div id="proportion-testing-transition-turnovers-plays" class="section level4">
+<h4><span class="header-section-number">5.1.1.5</span> Proportion Testing Transition Turnovers Plays</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$TransitionTurnover out of carleton$AllPossessionClips
+X-squared = 13.696, df = 3, p-value = 0.003349
+alternative hypothesis: two.sided
+sample estimates:
+    prop 1     prop 2     prop 3     prop 4 
+0.03799655 0.03766707 0.02861163 0.02030948 </code></pre>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$TransitionTurnover out of carleton$AllPossessionClips 
+
+  1     2     3    
+2 1.000 -     -    
+3 0.405 0.405 -    
+4 0.009 0.010 0.405
+
+P value adjustment method: holm </code></pre>
+<p>Prop1 is the 2015-2016 season, Prop 2 is the 2016-2017 season, Prop3 is the 2017-2018 season, and Prop4 is the 2018-2019 season.
+All the p-values are less than 0.05 which tells us that the proportion is not the same for each season,i,e. at least one season is different from the others. However this does not mean the 2015-16 season is the one that is statistically different from the rest. It is only the case for Post-Up plays that the 2015-16 season is statistically different from all the others. It is also the most significant difference with an X-squared value of 85.565. For Isolation it is the 2018-19 season that is statistically different from the rest.</p>
+</div>
+</div>
+<div id="comparing-pace" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Comparing Pace</h3>
+<div class="figure"><span id="fig:unnamed-chunk-77"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-77-1.png" alt="Carleton Pace Per Season" width="672" />
+<p class="caption">
+Figure 5.3: Carleton Pace Per Season
+</p>
+</div>
+<p>This barplot illustrates that the 2015/2016 Ravens pushed the ball the fewest and as a result had a slower pace on average.</p>
+<div id="statistical-proportion-tests" class="section level4">
+<h4><span class="header-section-number">5.1.2.1</span> Statistical Proportion Tests</h4>
+</div>
+<div id="proportion-testing-pace" class="section level4">
+<h4><span class="header-section-number">5.1.2.2</span> Proportion Testing Pace</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$AllPushBall out of carleton$AllPossessionClips
+X-squared = 13.444, df = 3, p-value = 0.003768
+alternative hypothesis: two.sided
+sample estimates:
+   prop 1    prop 2    prop 3    prop 4 
+0.3235463 0.3791009 0.3686679 0.3520309 </code></pre>
+<p>The p-value is less than 0.05 which tells us that the proportion is not the same for each season,i,e. at least one season is different from the others.</p>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$AllPushBall out of carleton$AllPossessionClips 
+
+  1      2      3     
+2 0.0049 -      -     
+3 0.0189 0.5510 -     
+4 0.2784 0.2854 0.5510
+
+P value adjustment method: holm </code></pre>
+<p>This shows that the 2015-16 season pushed the ball significantly fewer times compared to the other seasons except for the 2018-2019 season.</p>
+</div>
+</div>
+<div id="comparing-shot-types" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Comparing Shot Types</h3>
+<div class="figure"><span id="fig:unnamed-chunk-80"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-80-1.png" alt="Carleton Shot Types Per Season" width="672" />
+<p class="caption">
+Figure 5.4: Carleton Shot Types Per Season
+</p>
+</div>
+<p>The 2015/2016 Ravens had the fewest 3 pointers and significantly more medium jump shots (these are jump shots from 17 ft to behind the 3 point line).</p>
+<div id="statistical-proportion-test-1" class="section level4">
+<h4><span class="header-section-number">5.1.3.1</span> Statistical Proportion Test</h4>
+</div>
+<div id="proportion-testing-long-jump-shots" class="section level4">
+<h4><span class="header-section-number">5.1.3.2</span> Proportion Testing Long Jump Shots</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$LongJumpShots out of carleton$AllPossessionClips
+X-squared = 15.228, df = 3, p-value = 0.001632
+alternative hypothesis: two.sided
+sample estimates:
+   prop 1    prop 2    prop 3    prop 4 
+0.2521589 0.3110571 0.2922139 0.2843327 </code></pre>
+<p>The p-value is less than 0.05 which tells us that the proportion is not the same for each season,i,e. at least one season is different from the others.</p>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$LongJumpShots out of carleton$AllPossessionClips 
+
+  1       2       3      
+2 0.00097 -       -      
+3 0.03058 0.44727 -      
+4 0.11383 0.24777 0.59636
+
+P value adjustment method: holm </code></pre>
+<p>This shows that the 2015-16 season shot 3-pointers significantly fewer times compared to the other seasons except for the 2018-2019 season.</p>
+</div>
+<div id="proportion-testing-medium-jump-shots" class="section level4">
+<h4><span class="header-section-number">5.1.3.3</span> Proportion Testing Medium Jump Shots</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton$MediumJumpShots out of carleton$AllPossessionClips
+X-squared = 32.642, df = 3, p-value = 3.831e-07
+alternative hypothesis: two.sided
+sample estimates:
+    prop 1     prop 2     prop 3     prop 4 
+0.03742084 0.02551640 0.01923077 0.01063830 </code></pre>
+<p>The p-value is less than 0.05 which tells us that the proportion is not the same for each season,i,e. at least one season is different from the others.</p>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton$MediumJumpShots out of carleton$AllPossessionClips 
+
+  1       2      3     
+2 0.1204  -      -     
+3 0.0041  0.2321 -     
+4 4.1e-07 0.0041 0.0915
+
+P value adjustment method: holm </code></pre>
+<p>This shows that the 2015-16 season took significantly more medium jump shots than the other seasons except for the 2016-2017 season.</p>
+</div>
+</div>
+<div id="comparing-bench-points" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Comparing Bench Points</h3>
+<div class="figure"><span id="fig:unnamed-chunk-85"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-85-1.png" alt="Carleton Bench Points Per Season" width="672" />
+<p class="caption">
+Figure 5.5: Carleton Bench Points Per Season
+</p>
+</div>
+<p>This barplot shows that the 2015/2016 Ravens had the fewest bench points which could suggest that the coach did not utilize his bench players as much. Also it can suggest something about the skills of the bench players during that season compared to the other seasons.</p>
+<div id="statistical-proportion-test-2" class="section level4">
+<h4><span class="header-section-number">5.1.4.1</span> Statistical Proportion Test</h4>
+</div>
+<div id="proportion-testing-bench-points" class="section level4">
+<h4><span class="header-section-number">5.1.4.2</span> Proportion Testing Bench Points</h4>
+<pre><code>
+    4-sample test for equality of proportions without continuity
+    correction
+
+data:  carleton.reg$BenchPoints out of carleton.reg$TotalPoints
+X-squared = 84.589, df = 3, p-value &lt; 2.2e-16
+alternative hypothesis: two.sided
+sample estimates:
+   prop 1    prop 2    prop 3    prop 4 
+0.3120049 0.4181922 0.4071709 0.4578772 </code></pre>
+<p>The p-value is less than 0.05 which tells us that the proportion is not the same for each season,i,e. at least one season is different from the others.</p>
+<pre><code>
+    Pairwise comparisons using Pairwise comparison of proportions 
+
+data:  carleton.reg$BenchPoints out of carleton.reg$TotalPoints 
+
+  1       2      3     
+2 9.2e-10 -      -     
+3 1.2e-08 0.5134 -     
+4 &lt; 2e-16 0.0296 0.0033
+
+P value adjustment method: holm </code></pre>
+<p>This shows that the 2015-16 season had significantly fewer bench points than the other seasons. This could be due to the coach preferring to play his starters for most of the game.</p>
+</div>
+</div>
+</div>
+<div id="decision-tree" class="section level2">
+<h2><span class="header-section-number">5.2</span> Decision Tree</h2>
+<p>Carleton is a very successful team. Carleton has played 89 games from 2015-16 season to the 2018-19 season, of which they have only lost 7 of them. Using a decision tree, we can find where Carleton has lost their games. A decision tree is a decision support tool that uses a tree-like graph or model of decisions and their possible consequences, in this case the consequence is a game loss. The paths from root to leaf represent classification rules [7].</p>
+<div id="play-types-decision-tree" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Play Types Decision Tree</h3>
+<div class="figure"><span id="fig:unnamed-chunk-89"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-89-1.png" alt="Carleton Classification Tree for Wins using Play Type Data on all Seasons vs Classification Tree for Wins using Play Type Data excluding 2015-2016 Season. Note: 0 denotes loss and 1 denotes a win" width="672" />
+<p class="caption">
+Figure 5.6: Carleton Classification Tree for Wins using Play Type Data on all Seasons vs Classification Tree for Wins using Play Type Data excluding 2015-2016 Season. Note: 0 denotes loss and 1 denotes a win
+</p>
+</div>
+<p>Using the tree on the left we can see that Carleton has lost games when they have done more than 17 Post plays <strong>or</strong> fewer than 17 Post plays but with low Transition plays and low Cuts. They have also lost when they have a high number of post plays but few pick and roll plays.
+If we exclude the 2015-2016 season, the number of branches in the classification tree becomes reduced. Carleton has lost games when they made 15 Pick and Roll Ball Handler plays, and then fewer than six Post-Up plays.</p>
+<div class="figure"><span id="fig:unnamed-chunk-90"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-90-1.png" alt="Carleton Classification Tree for Wins using Play Type Data on Seasons with Dave Smart vs Classification Tree for Wins using Play Type Data on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win" width="672" />
+<p class="caption">
+Figure 5.7: Carleton Classification Tree for Wins using Play Type Data on Seasons with Dave Smart vs Classification Tree for Wins using Play Type Data on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win
+</p>
+</div>
+<p>In the figure on the left is a classification tree for the Season Dave Smart was not coaching. That team won 79% of games and they have lost 16% of their games when they had fewer than 14 transitions and lost the remaining 5% when took more than 30 Spot-Ups.
+In the figure on the right is a classification tree for the Seasons Dave Smart was coaching. That team won 98% of games and lost their game(s) only when they performed 14 Pick &amp; Roll Ball Handler plays and fewer than 6 Post-Up plays. This is a very specific loss.</p>
+</div>
+<div id="shot-types-decision-tree" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Shot Types Decision Tree</h3>
+<div class="figure"><span id="fig:unnamed-chunk-91"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-91-1.png" alt="Carleton Classification Tree for Wins using Shots Data" width="672" />
+<p class="caption">
+Figure 5.8: Carleton Classification Tree for Wins using Shots Data
+</p>
+</div>
+<p>On the left tree, we see that Ravens lost when they scored a low number of 3 pointers and also when they take a lot of guarded jump shots (this is considering all the seasons from 2015 to 2019). When we exclude the 2015-2016 season, the Ravens lost their games when they scored less than 12 free throws, shot more than six short jump shots, and less than one medium jump shot. They have won all games with more than 12 free throws taken. The more fouls Carleton draws, the more probable they will win.</p>
+<div class="figure"><span id="fig:unnamed-chunk-92"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-92-1.png" alt="Carleton Classification Tree for Wins using Shots Data on Seasons with Dave Smart vs Classification Tree for Wins on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win" width="672" />
+<p class="caption">
+Figure 5.9: Carleton Classification Tree for Wins using Shots Data on Seasons with Dave Smart vs Classification Tree for Wins on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win
+</p>
+</div>
+<p>In the figure on the right is a classification tree for the Seasons Dave Smart was coaching. That team won 98% of games and lost their game(s) only when they took fewer than one medium jump shots.</p>
+</div>
+<div id="combined-variables-decision-tree" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Combined Variables Decision Tree</h3>
+<div class="figure"><span id="fig:unnamed-chunk-93"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-93-1.png" alt="Carleton Classification Tree for Wins using Combined Data on Seasons with Dave Smart vs Classification Tree for Wins for all Seasons. Note: 0 denotes loss and 1 denotes a win" width="672" />
+<p class="caption">
+Figure 5.10: Carleton Classification Tree for Wins using Combined Data on Seasons with Dave Smart vs Classification Tree for Wins for all Seasons. Note: 0 denotes loss and 1 denotes a win
+</p>
+</div>
+<p>From the left decision tree we see that the Ravens have lost when they made a lot of post-up plays and when they pushed the ball a low number of times (this includes all seasons). If we exclude the 2015-2016 season, the branches of the classification tree become reduced. The Ravens lost games when they made fewer than four steals and pushed the ball more than 32 times.</p>
+<div class="figure"><span id="fig:unnamed-chunk-94"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-94-1.png" alt="Carleton Classification Tree for Wins using Combined Data on Seasons with Dave Smart vs Classification Tree for Wins on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win" width="672" />
+<p class="caption">
+Figure 5.11: Carleton Classification Tree for Wins using Combined Data on Seasons with Dave Smart vs Classification Tree for Wins on Season without Dave Smart. Note: 0 denotes loss and 1 denotes a win
+</p>
+</div>
+<p>The branches of the tree are reduced. The season without Dave Smart coaching lost their games due to few Transitions plays and few Spot-Up Plays. The seasons with Dave Smart coaching lost their games from performing few steals combined with pushing the ball more than 32 possessions</p>
+</div>
+</div>
+<div id="carletons-shot-taking" class="section level2">
+<h2><span class="header-section-number">5.3</span> Carleton’s Shot Taking</h2>
+<p>There are four statistics that give insight of what is happening in a game: Field Goal Attempts, Adjusted Field Goal Percentage (a formula (aFG% = [(Total Points - Free Throws Made)/Field Goal Attempts]/2) designed to determine the impact of 3 pointers on a player’s overall shooting percentage.), Free Throw Attempts, and Free Throw Percentage. If a team beats their opponent in all four statistics, then they will always win [8]. This is because to win you either need to shoot a higher percentage or take more shots than your opponent. The number of shot attempts and free throw attempts are related to other statistics such as turnovers, rebounds, fouls, blocks, and steals. However, assuming the teams are attempting the same number of shots, it would be important for a coach to know which players shoot efficient in which area of the court.</p>
+<div id="shooting-efficiency" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> 2018-2019 Shooting Efficiency</h3>
+<p>Using Synergy’s Multi-Game Shot Chart, we can see the shooting effiencies for all areas on the court. The shooting efficiencies are represented by the percentage values, while the fractions below these represent the number of shots made over the number of shots attempted. Efficiencies with higher number of shots attempted (i.e. the denominator) are more worthwhile to analyze because they represent players’ success in areas that they shoot from more frequently.</p>
+<div class="figure"><span id="fig:carl-shot-eff"></span>
+<img src="images/carl201819.png" alt="" />
+<p class="caption">Figure 5.12:  Carleton’s Overall Shooting Efficiency for all of the 2018-2019 Season.</p>
+</div>
+<p>Carleton is most effective nearest the net just like most teams (if not all). Their most effective 3-point area is the top left where they shoot on average 41.7%. The team attempted over 120 shots in the middle, right, and left 3-point areas but shot around 10% better in the top left 3-point area. This would suggest the players who shoot from that area to take more shots from there.</p>
+<p>The below figure illustrates a table of the Carleton Players’ Shooting Statistics throughout the 2018-2019 season. Although some percentage efficiencies of some players are higher than others, it is important to first consider the number of attempts made. For example, J. Louis has a 100% 3FG, but only attempted (and thus made) one shot. Thus considering only the Field Goal Percentages is not useful and one must also consider the attempts. To facilitate this, the table has been ordered in descending order of Field Goal Attempts (FGAs). To determine the players with better shooting efficiency, we first look at the top four players with the most FGAs. From this, we can compare their Adjusted Field Goal Percentages relative to each other.</p>
+<div class="figure"><span id="fig:carl-plays"></span>
+<img src="images/PlayerShots.png" alt="" />
+<p class="caption">Figure 5.13:  Carleton Players’ Overall Shooting Efficiency for all of the 2018-2019 Season sorted by field goal attempts. Note that “m” denotes “missed”, while “M” denotes “made” and “A” denotes “attempts”.</p>
+</div>
+<p>From the table, different deductions can be made using the aforementioned method. It is clear that some players shoot more while outputting less points and vice versa. From the top four players with the highest FGAs, Eddie Ekiyor has the highest aFG% of 66.5%. This means that relative to the other three players, he took the fewest attempts (200 FGAs), yet scored 319 points. On the other hand, Yasiin Joseph took more attempts (213 FGAs) and scored 227 points. This type of data is very useful as coaches can use it to enhance the shooting skills of players who already have the confidence to make many Field Goal Attempts, but are lacking on shot accuracy.</p>
+</div>
+</div>
+<div id="carletons-play-types" class="section level2">
+<h2><span class="header-section-number">5.4</span> Carleton’s Play Types</h2>
+<div class="figure"><span id="fig:carl-players"></span>
+<img src="images/sorted.PNG" alt="" />
+<p class="caption">Figure 5.14:  Carleton Players’ Play Type Shooting Efficiency for all of the 2018-2019 Season sorted by adjusted field goal % .</p>
+</div>
+<p>The plays that result in the most efficient shooting percentages are Pick &amp; Roll-Roll Man, Offensive Rebound - Put Backs, Cuts, Transitions, Pick &amp; Roll-Ball Handler, and Post-Up. Cuts and Transitions have the most shot attempts from the plays mentioned.
+The plays with the lowest adjusted field goal percentages are Handoffs, Isolation, Miscellaneous, and Off Screens. This may suggest that these plays should not be performed as much as the other more effective plays.</p>
+</div>
+<div id="why-is-carleton-so-successful" class="section level2">
+<h2><span class="header-section-number">5.5</span> Why is Carleton so successful?</h2>
+<p>The Men’s Carleton Raven’s Team has been very successful. Using Synergy, we can see how they rank compared to other teams.</p>
+<div class="figure"><span id="fig:p-rank"></span>
+<img src="images/playtyperank.PNG" alt="" />
+<p class="caption">Figure 5.15:  Carleton’s Ranking of Offensive Play Types .</p>
+</div>
+<p>In the above figure we can see that Carleton is amongst the top percentiles for Offensive Play Types. The ranking is based on Points Per Possession (Total Points Per Possession/Total Possessions). They have ranked in the top 90 percentiles. The coaching and players are the most important factors in how they have performed these plays. Without the coaching, the players would most likely not be able to perform the plays as well as they have. And without the players, the success of the plays would also not be as excellent. The success of the team has much to do with the work ethic and abilities of both the coaches and the players.</p>
+<div class="figure"><span id="fig:p-rank"></span>
+<img src="images/playdefrank.PNG" alt="" />
+<p class="caption">Figure 5.15:  Carleton’s Ranking of Defending Play Types .</p>
+</div>
+<p>In the above figure are the Defensive rankings for the Play Types. Again, Carleton is amongst the top percentiles.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="classification-of-wins.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

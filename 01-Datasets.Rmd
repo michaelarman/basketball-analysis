@@ -1,0 +1,185 @@
+# Datasets
+
+The data that has been collected comes from two sources: the Synergy database [2] and the OUA website [3]. It is game by game data for every team in the U Sports division in the Ontario University Athletics conference during the regular seasons from 2015/2016 to 2018/2019. The datasets extracted from Synergy contain insufficient data from the 2014/2015 season so only the data from 2015/2016 to 2018/2019 will be used from the data collected from Synergy. Six datasets were extracted per game and aggregated. These datasets are Play Types, Sets, Shots, Transitions, General Statistics, and Player Statistics. The data scraping functions that were used can be found in the appendix.
+
+## Play Types
+This dataset shows the number of different types of plays per game.
+
+Features                 | Description
+-------------------------| --------------------------------------------------------
+ID                       | a unique ID to reference the games (row data) 
+Team                     | Name of the team
+Season                   | the year of the regular season that the game took place
+All Isolation            | Number of possessions that have an isolation play
+All Offensive Rebounds   | Number of possessions that involve an offensive rebound
+All P.R Ball Handler (BH)| Number of possessions involving a pick & roll ball handler
+All Possessions          | Number of possessions in a game
+All Post-Up              | Number of possessions involving a post-up play
+Cuts                     | Number of possessions involving cuts
+Handoffs                 | Number of possessions involving a handoff play
+Isolation Defense Commits| A category of an isolation play where the defense commits
+Isolation Single Covered | A category of an isolation play where no defense commits
+Miscellaneous Possessions| Number of possessions that do not fit a certain category
+Off Screens              | Number of possessions involving an Off Screen
+Offensive Rebound PutBack| A category of Offensive Rebounds where ball gets tipped in
+Off Reb Reset Offense    | A category of Offensive Rebounds where the offense resets
+PR BH Defense Commits    | A category of pick & roll BH where defense commit
+PR BH Single Covered     | A category of pick & roll BH where no defense commit
+PR BH Traps              | A category of pick & roll BH where the BH gets trapped
+PR Roll Man              | A category of pick & roll BH where the roll score
+Post-Up Defense Commits  | A category of Post-Ups where the defense commits
+Post-Up Hard Double Team | A category of Post-Ups where a double team comes
+Post-Up Single Covered   | A category of Post-Ups where no defense commits
+Spot Ups                 | Number of possessions with a Spot-Up play
+Total Points             | Total Number of Points for the game
+Win                      | 1 indicating  a win and 0 indicating a loss  
+
+Table: (\#tab:play-types) Features & Descriptions of Play Types Dataset (Source: Synergy Database)
+
+
+## Sets 
+This dataset contains the number of possessions for every way the Offense sets up.
+
+Features                 | Description
+-------------------------| -------------------------------------------------
+ID                       | a unique ID to reference the games (row data) 
+Team                     | Name of the team
+Season                   | the year of the regular season that the game took place
+After Time Outs          | Number of possessions that are after a time-out
+Half Court Set All       | Number of possessions when the offense is set
+Half Court Set All No Pts| Number of possessions when the offense is set but no pts
+Half Court Set All Pts   | Number of possessions when the offense is set & pts scored
+Half Court Set Vs Zone   | Number of possessions when the offense set vs zone defense
+Half Court SetVs.Zone Pts| Number of possessions when the offense is set vs zone&pts
+Half-Court SetVs.Zone No | Number of possessions when the offense is set vs zone&nopt
+Last 4 Seconds           | Number of possessions when it is the last 4 seconds 
+Out Of Bounds            | Number of possessions after inbounding from an outofbounds
+Out of Bounds End        | Number of possessions from an out of bounds from the end
+Out of Bounds Side       | Number of possessions from an out of bounds on the side
+Total Points             | Total Number of Points for the game
+Win                      | 1 indicating  a win and 0 indicating a loss  
+
+Table: (\#tab:sets) Features & Descriptions of Sets Dataset (Source: Synergy Database)
+
+
+## Shots
+This dataset contains the types of shots that were taken per game.
+
+Features            | Description
+--------------------| -------------------------------------------------
+ID                  | A unique ID to reference the games (row data) 
+Team                | Name of the team
+Season              | The year of the regular season that the game took place
+2FG Attempts        | Number of 2PT Field Goal (FG) Attempts
+2FG Made            | Number of 2PT FG Made
+2FG Missed          | Number of 2PT FG Missed
+3FG Attempts        | Number of 3PT FG Attempts
+3FG Made            | Number of 3PT FG Made
+3FG Missed          | Number of 3PT FG Missed
+All Free Throws     | Number of Free Throws
+Live Free Throws    | Number of Live Free Throws
+FG Attempts         | Number of FG Attempts 
+FG Made             | Number of FG Made
+FG Missed           | Number of FG Missed
+Guarded Jump Shots  | Number of Guarded Jump Shots
+Unguarded Jump Shots| Number of Unguarded Jump Shots
+Long Jump Shots     | Number of 3 Point Shots
+Medium Jump Shots   | Number of shots from 17 ft to  < 3 point line
+Short Jump Shots    | Number of shots from < 17 ft
+Total Points        | Total Number of Points for the game
+Win                 | 1 indicating  a win and 0 indicating a loss  
+
+Table: (\#tab:shots) Features & Descriptions of Shots Dataset (Source: Synergy Database)
+
+
+## Transitions
+This dataset contains information about transition plays
+
+Features                 | Description
+-------------------------| ------------------------------------------------
+ID                       | a unique ID to reference the games (row data) 
+Team                     | Name of the team
+Season                   | the year of the regular season that the game took place
+All Push Ball            | Number of Possesions where the ball is being pushed                                          | without setting up
+Push Ball - Shot Attempt | A category of Push Ball where the ball is being pushed                                       | after a missed shot attempt
+Push Ball - Turnover     | A category of Push Ball where the ball is being pushed                                       | after a turnover
+Push Ball to Half Court  | A category of Push ball where the ball is being pushed to                                    | half court to be set up
+Press Offense            | Number of Possessions where the offense is being pressed
+Transition Offense       | Number of Transition plays
+Transition Turnover      | Number of Transition plays leading to a turnover
+Total Points             | Total Number of Points for the game
+Win                      | 1 indicating  a win and 0 indicating a loss  
+
+Table: (\#tab:transitions) Features & Descriptions of Transitions Dataset (Source: Synergy Database)
+
+
+## Player Statistics
+
+Features                 | Description
+-------------------------| -------------------------------------------------
+Game ID                  | a unique ID to reference the games (row data) 
+Date                     | the date that the game took place
+Season                   | the year of the regular season that the game took place
+Team                     | Name of the team
+Player                   | Name of the player
+Home                     | A binary value; 1 indicating Home team, 0 Away team
+GP                       | Total number of games played
+MPG                      | Minutes played per game
+PPG                      | Points per game
+PTS                      | Total Points scored
+MIN                      | Total minutes played
+FGM                      | Number of Field Goals Made for the team
+FGA                      | Number of Field Goals Attempted for the team
+Field Goal%              | (FGM/FGA) x 100
+3PM                      | Number of 3 Pointers Made by the team
+3PA                      | Number of 3 Pointers Attempted by the team
+3Point%                  | (3PM/3PA) x 100
+FTM                      | Number of FreeThrows Made by the team
+FTA                      | Number of FreeThrows Attempted by the team
+FT%                      | (FTM/FTA) x 100
+Assists                  | Number of Assists the team made
+Rebounds                 | Number of Rebounds the team made
+Steals                   | Number of Steals in the game
+Blocks                   | Number of Blocks in the game
+Turnovers                | Number of Turnovers by the team
+
+Table: (\#tab:player-stats) Features & Descriptions of Player Statistics (Source: OUA website)
+
+
+## General Statistics
+Features                 | Description
+-------------------------| -------------------------------------------------
+Game ID                  | a unique ID to reference the games (row data) 
+Date                     | the date that the game took place
+Season                   | the year of the regular season that the game took place
+Team                     | Name of the team
+Home                     | A binary value; 1 indicating Home team, 0 Away team
+FGM                      | Number of Field Goals Made for the team
+FGA                      | Number of Field Goals Attempted for the team
+Field Goal%              | (FGM/FGA) x 100
+3PM                      | Number of 3 Pointers Made by the team
+3PA                      | Number of 3 Pointers Attempted by the team
+3Point%                  | (3PM/3PA) x 100
+FTM                      | Number of FreeThrows Made by the team
+FTA                      | Number of FreeThrows Attempted by the team
+FT%                      | (FTM/FTA) x 100
+Assists                  | Number of Assists the team made
+Rebounds                 | Number of Rebounds the team made
+Steals                   | Number of Steals in the game
+Blocks                   | Number of Blocks in the game
+Turnovers                | Number of Turnovers by the team
+Points off Turnovers     | Number of Points made off Turnovers by the team
+Points in the Paint      | Number of Points made in the Paint by the team
+2nd Chance Points        | Total 2nd Chance Pts for the team
+Bench Points             | Number of Pts made by the bench players for the team
+Fastbreak Pts            | Number of Fastbreak Pts by the team
+Largest Lead             | The Largest Lead made by the team
+Time of Largest Lead     | The time of the team's Largest Lead
+Win                      | A binary value; 1 indicating a win, 0 loss
+Winner 1st Qtr Pts       | The number of points the scored in the 1st qtr
+Winner 2nd Qtr Pts       | The number of points scored in the 2nd qtr
+Winner 3rd Qtr Pts       | The number of points scored in the 3rd qtr
+Winner 4th Qtr Pts       | The number of points scored in the 4th qtr
+OT Pts                   | The number of points scored in overtime
+
+Table: (\#tab:general-stats) Features & Descriptions of General Statistics (Source: OUA website)

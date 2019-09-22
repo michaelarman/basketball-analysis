@@ -1,0 +1,5 @@
+"0",""
+"0","carleton.tree<-rpart(Win ~ Transitions +  AllIsolation +"
+"0","                      AllOffensiveRebounds + AllP.RBallHandler +"
+"0","                      AllPost.Up + Cuts + Handoffs + MiscellaneousPossessions +                      SpotUps, data = carleton.no2015,control=rpart.control(minbucket=1, cp=0.001))"
+"0","rpart.plot(carleton.tree, main=""Classification Tree for Wins without 2015-2016 Season"", cex.main = .7, box.palette = 0)"

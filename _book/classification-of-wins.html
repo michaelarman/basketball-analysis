@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Classification of Wins | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Classification of Wins | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Classification of Wins | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="player-analysis.html"/>
+<link rel="next" href="carleton.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="classification-of-wins" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Classification of Wins</h1>
+<p>In machine learning and statistics, classification is a supervised learning approach in which the machine learns from the data input given to it and then uses this learning to classify new observations. In this case, classification can be used to identify a win and loss and also to predict whether a game will be a win or loss. That means we want to identify which variables are the most important in distinguishing a win (or a loss_.
+There are many types of classification techniques such as Random Forests, Support Vector Machines, Logistic Regression, XGBoost, etc..</p>
+<div id="random-forests" class="section level2">
+<h2><span class="header-section-number">4.1</span> Random Forests</h2>
+<p>Random forest is an ensemble learning method for classification. Ensemble methods are very effective because they use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the learning algorithms alone.
+A random forest consists of a large number of decision trees that operate as an ensemble. Each individual tree in the random forest gives a prediction of outcome and the class with the most votes becomes the model’s prediction[11].
+The reason why a random forest is a great technique is because a large number of relatively uncorrelated models (trees) operating as a committee will outperform any of the individual constituent models.
+Random forests also give an importance score for all the features used in the model. A standard procedure is to first use all the variables and then use feature importance to narrow the model down to get more accurate results.</p>
+<div id="model-1" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Model 1</h3>
+<p>In this random forest model we are predicting wins using the following predictors: Assists,DefensiveRebounds,TotalRebounds,Turnovers,PushBallfromTurnover,Steals,
+PressOffense,UnguardedJumpShots,AllFreeThrows,P&amp;RBallHandler-SingleCovered,Cuts,
+GuardedJumpShots,ShortJumpShots,TransitionOffense,LongJumpShots,Transitions,SpotUps,
+P&amp;RBallHandler-DefenseCommits,PushBallfromShotAttempt,PushBalltoHalfCourtOff.,
+OffensiveRebounds,MiscellaneousPossessions,Isolation-SingleCovered,Post-Up-SingleCovered,
+MediumJumpShots,Blocks,OffScreens,Off.Reb.-PutBacks,Handoffs,Off.Reb.-ResetOffense,
+TransitionTurnover,P&amp;RRollMan,Isolation-DefenseCommits,Post-Up-DefenseCommits,
+Post-Up-HardDoubleTeam,P&amp;RBallHandler-Traps. The model is trained on a train set which is a random sample (without replacement) of 70% of the dataset and tested on a random sample of 30% of the dataset. The accuracy score is obtained below.</p>
+<pre><code>Accuracy: 0.7477064220183486</code></pre>
+<p>A very important perk of the random forest algorithm is it allows us to obtain the Feature importance to let us know which variables were the most important for creating the model, i.e. which features are the most important in classifying and predicting wins. A table of the Feature importance from this model is shown below.</p>
+<table>
+<caption>Feature Importance of Random Forest Model 1</caption>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Feature Importance Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Assists</td>
+<td>0.096881</td>
+</tr>
+<tr class="even">
+<td>DefensiveRebounds</td>
+<td>0.062817</td>
+</tr>
+<tr class="odd">
+<td>TotalRebounds</td>
+<td>0.059851</td>
+</tr>
+<tr class="even">
+<td>Turnovers</td>
+<td>0.056744</td>
+</tr>
+<tr class="odd">
+<td>PushBallfromTurnover</td>
+<td>0.044454</td>
+</tr>
+<tr class="even">
+<td>Steals</td>
+<td>0.038865</td>
+</tr>
+<tr class="odd">
+<td>PressOffense</td>
+<td>0.037174</td>
+</tr>
+<tr class="even">
+<td>Unguarded Jump Shots</td>
+<td>0.030118</td>
+</tr>
+<tr class="odd">
+<td>AllFreeThrows</td>
+<td>0.029086</td>
+</tr>
+<tr class="even">
+<td>P&amp;RBallHandler-SingleCovered</td>
+<td>0.028485</td>
+</tr>
+<tr class="odd">
+<td>Cuts</td>
+<td>0.027246</td>
+</tr>
+<tr class="even">
+<td>GuardedJumpShots</td>
+<td>0.026854</td>
+</tr>
+<tr class="odd">
+<td>ShortJumpShots</td>
+<td>0.025915</td>
+</tr>
+<tr class="even">
+<td>TransitionOffense</td>
+<td>0.025691</td>
+</tr>
+<tr class="odd">
+<td>LongJumpShots</td>
+<td>0.023443</td>
+</tr>
+<tr class="even">
+<td>Transitions</td>
+<td>0.023180</td>
+</tr>
+<tr class="odd">
+<td>SpotUps</td>
+<td>0.023102</td>
+</tr>
+<tr class="even">
+<td>P&amp;RBallHandler-DefenseCommits</td>
+<td>0.022575</td>
+</tr>
+<tr class="odd">
+<td>PushBallfromShotAttempt</td>
+<td>0.022505</td>
+</tr>
+<tr class="even">
+<td>PushBalltoHalfCourtOff.</td>
+<td>0.022279</td>
+</tr>
+<tr class="odd">
+<td>OffensiveRebounds</td>
+<td>0.022109</td>
+</tr>
+<tr class="even">
+<td>MiscellaneousPossessions</td>
+<td>0.020995</td>
+</tr>
+<tr class="odd">
+<td>Isolation-SingleCovered</td>
+<td>0.020878</td>
+</tr>
+<tr class="even">
+<td>Post-Up-SingleCovered</td>
+<td>0.020679</td>
+</tr>
+<tr class="odd">
+<td>MediumJumpShots</td>
+<td>0.019900</td>
+</tr>
+<tr class="even">
+<td>Blocks</td>
+<td>0.019759</td>
+</tr>
+<tr class="odd">
+<td>OffScreens</td>
+<td>0.018904</td>
+</tr>
+<tr class="even">
+<td>Off.Reb.-PutBacks</td>
+<td>0.017528</td>
+</tr>
+<tr class="odd">
+<td>Handoffs</td>
+<td>0.017504</td>
+</tr>
+<tr class="even">
+<td>Off.Reb.-ResetOffense</td>
+<td>0.017282</td>
+</tr>
+<tr class="odd">
+<td>TransitionTurnover</td>
+<td>0.017150</td>
+</tr>
+<tr class="even">
+<td>P&amp;RRollMan</td>
+<td>0.015011</td>
+</tr>
+<tr class="odd">
+<td>Isolation-DefenseCommits</td>
+<td>0.013565</td>
+</tr>
+<tr class="even">
+<td>Post-Up-DefenseCommits</td>
+<td>0.013291</td>
+</tr>
+<tr class="odd">
+<td>Post-Up-HardDoubleTeam</td>
+<td>0.012348</td>
+</tr>
+<tr class="even">
+<td>P&amp;RBallHandler-Traps</td>
+<td>0.005832</td>
+</tr>
+</tbody>
+</table>
+<p>Note: since random forests take samples randomly, the accuracy will vary depending on the seed chosen.</p>
+</div>
+<div id="model-2" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Model 2</h3>
+<p>In this random forest model we are predicting wins using a refined selection of predictors: Assists,DefensiveRebounds,TotalRebounds,Turnovers,Steals,PushBallfromTurnover,PressOffense,AllFreeThrows,UnguardedJumpShots,ShortJumpShots,Cuts,LongJumpShots,
+Transitions,GuardedJumpShots,PushBallfromShotAttempt,AllP&amp;RBallHandler,SpotUps,
+AllPost-Up,PushBalltoHalfCourtOff.,AllOffensiveRebounds,MiscellaneousPossessions,
+AllIsolation,OffScreens,Blocks,MediumJumpShots,Isolation-SingleCovered,Handoffs.The model is trained on a train set which is a random sample (without replacement) of 70% of the dataset and tested on a random sample of 30% of the dataset. The accuracy score is obtained below.</p>
+<pre><code>Accuracy: 0.7477064220183486</code></pre>
+<p>A very valuable component of the Random Forest algorithm is feature importance. Since a Random Forest is a collection of Decision trees and so the splitting criterion used to choose which variable to split on is used to rank the importance of variables. For example, if the decision tree first splits using the Assists variable for most of the decision trees, then Assists would be an important variable. The decision tree creates splits by identifying the variables which create the best homogeneous sets.</p>
+<p>A table of the Feature importance from this model is shown below</p>
+<table>
+<caption>Feature Importance of Random Forest Model 2</caption>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Feature Importance Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Assists</strong></td>
+<td><strong>0.103865</strong></td>
+</tr>
+<tr class="even">
+<td>DefensiveRebounds</td>
+<td>0.079669</td>
+</tr>
+<tr class="odd">
+<td>TotalRebounds</td>
+<td>0.064047</td>
+</tr>
+<tr class="even">
+<td>Turnovers</td>
+<td>0.062428</td>
+</tr>
+<tr class="odd">
+<td>Steals</td>
+<td>0.059118</td>
+</tr>
+<tr class="even">
+<td>PushBallfromTurnover</td>
+<td>0.048081</td>
+</tr>
+<tr class="odd">
+<td>PressOffense</td>
+<td>0.039639</td>
+</tr>
+<tr class="even">
+<td>AllFreeThrows</td>
+<td>0.034666</td>
+</tr>
+<tr class="odd">
+<td>Unguarded Jump Shots</td>
+<td>0.033493</td>
+</tr>
+<tr class="even">
+<td>ShortJumpShots</td>
+<td>0.032340</td>
+</tr>
+<tr class="odd">
+<td>Cuts</td>
+<td>0.031976</td>
+</tr>
+<tr class="even">
+<td>LongJumpShots</td>
+<td>0.030290</td>
+</tr>
+<tr class="odd">
+<td>Transitions</td>
+<td>0.029443</td>
+</tr>
+<tr class="even">
+<td>GuardedJumpShots</td>
+<td>0.029287</td>
+</tr>
+<tr class="odd">
+<td>PushBallfromShotAttempt</td>
+<td>0.028180</td>
+</tr>
+<tr class="even">
+<td>AllP&amp;RBallHandler</td>
+<td>0.028030</td>
+</tr>
+<tr class="odd">
+<td>SpotUps</td>
+<td>0.027917</td>
+</tr>
+<tr class="even">
+<td>AllPost-Up</td>
+<td>0.027047</td>
+</tr>
+<tr class="odd">
+<td>PushBalltoHalfCourtOff.</td>
+<td>0.025952</td>
+</tr>
+<tr class="even">
+<td>AllOffensiveRebounds</td>
+<td>0.025533</td>
+</tr>
+<tr class="odd">
+<td>MiscellaneousPossessions</td>
+<td>0.024643</td>
+</tr>
+<tr class="even">
+<td>AllIsolation</td>
+<td>0.024239</td>
+</tr>
+<tr class="odd">
+<td>OffScreens</td>
+<td>0.023363</td>
+</tr>
+<tr class="even">
+<td>Blocks</td>
+<td>0.022834</td>
+</tr>
+<tr class="odd">
+<td>MediumJumpShots</td>
+<td>0.022212</td>
+</tr>
+<tr class="even">
+<td>Isolation-SingleCovered</td>
+<td>0.021883</td>
+</tr>
+<tr class="odd">
+<td>Handoffs</td>
+<td>0.019824</td>
+</tr>
+</tbody>
+</table>
+<p>Assists are the most important feature in both models for classifying whether a game is a win or loss.</p>
+</div>
+</div>
+<div id="logistic-regression" class="section level2">
+<h2><span class="header-section-number">4.2</span> Logistic Regression</h2>
+<p>Logistic Regression is a form of regression that is used when the response variable is a categorical variable [12]. In this case it is a binary value (e.g. Success or Failure). The game by game data can be used to create a model that predicts Wins.</p>
+<div id="model" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Model</h3>
+<p>The same features are used in this model as the second model in the Random Forests section. Logistic regression will be used to classify and then predict wins. The equation is below</p>
+<p><span class="math display">\[ Win = \beta_0 + {\beta_1*Assists} + ... + {\beta_{27}*Handoffs} \]</span></p>
+<p>Again, the model is trained on a train set which is a random sample (without replacement) of 70% of the dataset and tested on a random sample of 30% of the dataset. The accuracy score is obtained below.</p>
+<pre><code>Accuracy: 0.7821100917431193</code></pre>
+<div class="figure"><span id="fig:feat-imp"></span>
+<img src="images/Feat_imp.png" alt="" />
+<p class="caption">Figure 4.1:  Feature Importance from Logistic Regression Model.</p>
+</div>
+<p>The feature importance from Logistic Regression differs from Random Forests.Although, Defensive Rebounds, Assists, and Turnovers are still on the top of the list. In general, turnovers negatively impact teams and can be an important feature to distinguish teams that are less likely to win if they make more turnovers.</p>
+</div>
+<div id="assists" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Assists</h3>
+<p>A dataset has been modified to subtract the home team’s statistics from the away team’s statistics for each game so that there are differential statistics.
+The differential statistics were compared to see which contributed to the highest proportion of wins.</p>
+<table>
+<caption>Differential Statistics &amp; Proportion of Wins</caption>
+<thead>
+<tr class="header">
+<th>Differential Statistics</th>
+<th>Proportion of Wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Positive Assists Differential</td>
+<td>845/1171 = 72.2%</td>
+</tr>
+<tr class="even">
+<td>Positive Rebounds Differential</td>
+<td>817/1171 = 69.8%</td>
+</tr>
+<tr class="odd">
+<td>Negative Turnovers Differential</td>
+<td>726/1171 = 62%</td>
+</tr>
+</tbody>
+</table>
+<div id="risk-ratio-odds-ratio" class="section level4">
+<h4><span class="header-section-number">4.2.2.1</span> Risk Ratio &amp; Odds Ratio</h4>
+<pre><code>2 by 2 table analysis: 
+------------------------------------------------------ 
+Outcome   : Win 
+Comparing : Positive Assists Differential vs. Negative Assists Differential 
+
+                              Win Lose    P(Win) 95% conf. interval
+Positive Assists Differential 845  326    0.7216    0.6952   0.7465
+Negative Assists Differential 326  845    0.2784    0.2535   0.3048
+
+                                   95% conf. interval
+             Relative Risk: 2.5920    2.3481   2.8613
+         Sample Odds Ratio: 6.7186    5.6078   8.0494
+Conditional MLE Odds Ratio: 6.7123    5.5848   8.0849
+    Probability difference: 0.4432    0.4059   0.4784
+
+             Exact P-value: 0.0000 
+        Asymptotic P-value: 0.0000 
+------------------------------------------------------</code></pre>
+<p>Above is a two-by-two table analysis. The Sample Odds Ratio tells us that odds of a team winning is 6.7 higher given they have more assists than their opponent compared to teams that have fewer assists than their opponent. The Relative Risk tells us that teams with more assists than their opponent have 2.59 times the ‘risk’ of winning compared to teams with fewer assists than their opponent.</p>
+</div>
+</div>
+<div id="why-are-assists-so-important" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Why are Assists so important?</h3>
+<p>Assists can lead to effective scoring. A player is getting set up for a shot and each team can distribute their shots differently. A study was done in the NBA (Pelechrinis, Konstantinos, 2019) [13] that has shown that on average an assisted shot added 0.16 expected points more compared to an unassisted shot. If teams looked for the extra pass on 15 of their unassisted shots, this corresponds to approximately 2.4 additional expected points over the course of the game. An assist can increase the average field goal percentage of a type of shot as opposed to an unassisted shot (Pelechrinis, Konstantinos, 2019). Also, assists are necessary for effective play making. As seen previously, transitions, spot-ups and cuts are all very effective offensive plays and the thing that connects them together is an assist.</p>
+<div id="shots-derived-from-assists" class="section level4">
+<h4><span class="header-section-number">4.2.3.1</span> Shots Derived From Assists</h4>
+<p>Using Synergy’s Multi-Game Shot Chart it is possible to see the difference in shooting efficiency between shots derived from an assist and shots that were not.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
+<img src="images/carl201819.png" alt="Side-by-Side shot chart of Carleton's 2018-19 season. The left side is the shot chart of the entire season without any filters. The right side shows the chart of the entire season where shots were derived from passing plays." width="49%" height="50%" /><img src="images/carleton201819pass.png" alt="Side-by-Side shot chart of Carleton's 2018-19 season. The left side is the shot chart of the entire season without any filters. The right side shows the chart of the entire season where shots were derived from passing plays." width="49%" height="50%" />
+<p class="caption">
+Figure 4.2: Side-by-Side shot chart of Carleton’s 2018-19 season. The left side is the shot chart of the entire season without any filters. The right side shows the chart of the entire season where shots were derived from passing plays.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="conclusion-2" class="section level2">
+<h2><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>To summarise, both classification algorithms work well. However, the Logistic Regression has a better accuracy along with better interpretability and usability. Both algorithms lead to similar feature importance. Also, the feature importance is a very valuable component to these machine learning algorithms since it shows the most important characteristics associated with the target variable (in this case it is Wins).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="player-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="carleton.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

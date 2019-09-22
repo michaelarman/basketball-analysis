@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Datasets | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Datasets | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Datasets | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="exploratory-data-analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datasets" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Datasets</h1>
+<p>The data that has been collected comes from two sources: the Synergy database [2] and the OUA website [3]. It is game by game data for every team in the U Sports division in the Ontario University Athletics conference during the regular seasons from 2015/2016 to 2018/2019. The datasets extracted from Synergy contain insufficient data from the 2014/2015 season so only the data from 2015/2016 to 2018/2019 will be used from the data collected from Synergy. Six datasets were extracted per game and aggregated. These datasets are Play Types, Sets, Shots, Transitions, General Statistics, and Player Statistics. The data scraping functions that were used can be found in the appendix.</p>
+<div id="play-types" class="section level2">
+<h2><span class="header-section-number">1.1</span> Play Types</h2>
+<p>This dataset shows the number of different types of plays per game.</p>
+<table>
+<caption><span id="tab:play-types">Table 1.1: </span> Features &amp; Descriptions of Play Types Dataset (Source: Synergy Database)</caption>
+<colgroup>
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>a unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>the year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>All Isolation</td>
+<td>Number of possessions that have an isolation play</td>
+</tr>
+<tr class="odd">
+<td>All Offensive Rebounds</td>
+<td>Number of possessions that involve an offensive rebound</td>
+</tr>
+<tr class="even">
+<td>All P.R Ball Handler (BH)</td>
+<td>Number of possessions involving a pick &amp; roll ball handler</td>
+</tr>
+<tr class="odd">
+<td>All Possessions</td>
+<td>Number of possessions in a game</td>
+</tr>
+<tr class="even">
+<td>All Post-Up</td>
+<td>Number of possessions involving a post-up play</td>
+</tr>
+<tr class="odd">
+<td>Cuts</td>
+<td>Number of possessions involving cuts</td>
+</tr>
+<tr class="even">
+<td>Handoffs</td>
+<td>Number of possessions involving a handoff play</td>
+</tr>
+<tr class="odd">
+<td>Isolation Defense Commits</td>
+<td>A category of an isolation play where the defense commits</td>
+</tr>
+<tr class="even">
+<td>Isolation Single Covered</td>
+<td>A category of an isolation play where no defense commits</td>
+</tr>
+<tr class="odd">
+<td>Miscellaneous Possessions</td>
+<td>Number of possessions that do not fit a certain category</td>
+</tr>
+<tr class="even">
+<td>Off Screens</td>
+<td>Number of possessions involving an Off Screen</td>
+</tr>
+<tr class="odd">
+<td>Offensive Rebound PutBack</td>
+<td>A category of Offensive Rebounds where ball gets tipped in</td>
+</tr>
+<tr class="even">
+<td>Off Reb Reset Offense</td>
+<td>A category of Offensive Rebounds where the offense resets</td>
+</tr>
+<tr class="odd">
+<td>PR BH Defense Commits</td>
+<td>A category of pick &amp; roll BH where defense commit</td>
+</tr>
+<tr class="even">
+<td>PR BH Single Covered</td>
+<td>A category of pick &amp; roll BH where no defense commit</td>
+</tr>
+<tr class="odd">
+<td>PR BH Traps</td>
+<td>A category of pick &amp; roll BH where the BH gets trapped</td>
+</tr>
+<tr class="even">
+<td>PR Roll Man</td>
+<td>A category of pick &amp; roll BH where the roll score</td>
+</tr>
+<tr class="odd">
+<td>Post-Up Defense Commits</td>
+<td>A category of Post-Ups where the defense commits</td>
+</tr>
+<tr class="even">
+<td>Post-Up Hard Double Team</td>
+<td>A category of Post-Ups where a double team comes</td>
+</tr>
+<tr class="odd">
+<td>Post-Up Single Covered</td>
+<td>A category of Post-Ups where no defense commits</td>
+</tr>
+<tr class="even">
+<td>Spot Ups</td>
+<td>Number of possessions with a Spot-Up play</td>
+</tr>
+<tr class="odd">
+<td>Total Points</td>
+<td>Total Number of Points for the game</td>
+</tr>
+<tr class="even">
+<td>Win</td>
+<td>1 indicating a win and 0 indicating a loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sets" class="section level2">
+<h2><span class="header-section-number">1.2</span> Sets</h2>
+<p>This dataset contains the number of possessions for every way the Offense sets up.</p>
+<table>
+<caption><span id="tab:sets">Table 1.2: </span> Features &amp; Descriptions of Sets Dataset (Source: Synergy Database)</caption>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>a unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>the year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>After Time Outs</td>
+<td>Number of possessions that are after a time-out</td>
+</tr>
+<tr class="odd">
+<td>Half Court Set All</td>
+<td>Number of possessions when the offense is set</td>
+</tr>
+<tr class="even">
+<td>Half Court Set All No Pts</td>
+<td>Number of possessions when the offense is set but no pts</td>
+</tr>
+<tr class="odd">
+<td>Half Court Set All Pts</td>
+<td>Number of possessions when the offense is set &amp; pts scored</td>
+</tr>
+<tr class="even">
+<td>Half Court Set Vs Zone</td>
+<td>Number of possessions when the offense set vs zone defense</td>
+</tr>
+<tr class="odd">
+<td>Half Court SetVs.Zone Pts</td>
+<td>Number of possessions when the offense is set vs zone&amp;pts</td>
+</tr>
+<tr class="even">
+<td>Half-Court SetVs.Zone No</td>
+<td>Number of possessions when the offense is set vs zone&amp;nopt</td>
+</tr>
+<tr class="odd">
+<td>Last 4 Seconds</td>
+<td>Number of possessions when it is the last 4 seconds</td>
+</tr>
+<tr class="even">
+<td>Out Of Bounds</td>
+<td>Number of possessions after inbounding from an outofbounds</td>
+</tr>
+<tr class="odd">
+<td>Out of Bounds End</td>
+<td>Number of possessions from an out of bounds from the end</td>
+</tr>
+<tr class="even">
+<td>Out of Bounds Side</td>
+<td>Number of possessions from an out of bounds on the side</td>
+</tr>
+<tr class="odd">
+<td>Total Points</td>
+<td>Total Number of Points for the game</td>
+</tr>
+<tr class="even">
+<td>Win</td>
+<td>1 indicating a win and 0 indicating a loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="shots" class="section level2">
+<h2><span class="header-section-number">1.3</span> Shots</h2>
+<p>This dataset contains the types of shots that were taken per game.</p>
+<table>
+<caption><span id="tab:shots">Table 1.3: </span> Features &amp; Descriptions of Shots Dataset (Source: Synergy Database)</caption>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>A unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>The year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>2FG Attempts</td>
+<td>Number of 2PT Field Goal (FG) Attempts</td>
+</tr>
+<tr class="odd">
+<td>2FG Made</td>
+<td>Number of 2PT FG Made</td>
+</tr>
+<tr class="even">
+<td>2FG Missed</td>
+<td>Number of 2PT FG Missed</td>
+</tr>
+<tr class="odd">
+<td>3FG Attempts</td>
+<td>Number of 3PT FG Attempts</td>
+</tr>
+<tr class="even">
+<td>3FG Made</td>
+<td>Number of 3PT FG Made</td>
+</tr>
+<tr class="odd">
+<td>3FG Missed</td>
+<td>Number of 3PT FG Missed</td>
+</tr>
+<tr class="even">
+<td>All Free Throws</td>
+<td>Number of Free Throws</td>
+</tr>
+<tr class="odd">
+<td>Live Free Throws</td>
+<td>Number of Live Free Throws</td>
+</tr>
+<tr class="even">
+<td>FG Attempts</td>
+<td>Number of FG Attempts</td>
+</tr>
+<tr class="odd">
+<td>FG Made</td>
+<td>Number of FG Made</td>
+</tr>
+<tr class="even">
+<td>FG Missed</td>
+<td>Number of FG Missed</td>
+</tr>
+<tr class="odd">
+<td>Guarded Jump Shots</td>
+<td>Number of Guarded Jump Shots</td>
+</tr>
+<tr class="even">
+<td>Unguarded Jump Shots</td>
+<td>Number of Unguarded Jump Shots</td>
+</tr>
+<tr class="odd">
+<td>Long Jump Shots</td>
+<td>Number of 3 Point Shots</td>
+</tr>
+<tr class="even">
+<td>Medium Jump Shots</td>
+<td>Number of shots from 17 ft to &lt; 3 point line</td>
+</tr>
+<tr class="odd">
+<td>Short Jump Shots</td>
+<td>Number of shots from &lt; 17 ft</td>
+</tr>
+<tr class="even">
+<td>Total Points</td>
+<td>Total Number of Points for the game</td>
+</tr>
+<tr class="odd">
+<td>Win</td>
+<td>1 indicating a win and 0 indicating a loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="transitions" class="section level2">
+<h2><span class="header-section-number">1.4</span> Transitions</h2>
+<p>This dataset contains information about transition plays</p>
+<table>
+<caption><span id="tab:transitions">Table 1.4: </span> Features &amp; Descriptions of Transitions Dataset (Source: Synergy Database)</caption>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>a unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>the year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>All Push Ball</td>
+<td>Number of Possesions where the ball is being pushed</td>
+</tr>
+<tr class="odd">
+<td>Push Ball - Shot Attempt</td>
+<td>A category of Push Ball where the ball is being pushed</td>
+</tr>
+<tr class="even">
+<td>Push Ball - Turnover</td>
+<td>A category of Push Ball where the ball is being pushed</td>
+</tr>
+<tr class="odd">
+<td>Push Ball to Half Court</td>
+<td>A category of Push ball where the ball is being pushed to</td>
+</tr>
+<tr class="even">
+<td>Press Offense</td>
+<td>Number of Possessions where the offense is being pressed</td>
+</tr>
+<tr class="odd">
+<td>Transition Offense</td>
+<td>Number of Transition plays</td>
+</tr>
+<tr class="even">
+<td>Transition Turnover</td>
+<td>Number of Transition plays leading to a turnover</td>
+</tr>
+<tr class="odd">
+<td>Total Points</td>
+<td>Total Number of Points for the game</td>
+</tr>
+<tr class="even">
+<td>Win</td>
+<td>1 indicating a win and 0 indicating a loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="player-statistics" class="section level2">
+<h2><span class="header-section-number">1.5</span> Player Statistics</h2>
+<table>
+<caption><span id="tab:player-stats">Table 1.5: </span> Features &amp; Descriptions of Player Statistics (Source: OUA website)</caption>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Game ID</td>
+<td>a unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Date</td>
+<td>the date that the game took place</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>the year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Player</td>
+<td>Name of the player</td>
+</tr>
+<tr class="even">
+<td>Home</td>
+<td>A binary value; 1 indicating Home team, 0 Away team</td>
+</tr>
+<tr class="odd">
+<td>GP</td>
+<td>Total number of games played</td>
+</tr>
+<tr class="even">
+<td>MPG</td>
+<td>Minutes played per game</td>
+</tr>
+<tr class="odd">
+<td>PPG</td>
+<td>Points per game</td>
+</tr>
+<tr class="even">
+<td>PTS</td>
+<td>Total Points scored</td>
+</tr>
+<tr class="odd">
+<td>MIN</td>
+<td>Total minutes played</td>
+</tr>
+<tr class="even">
+<td>FGM</td>
+<td>Number of Field Goals Made for the team</td>
+</tr>
+<tr class="odd">
+<td>FGA</td>
+<td>Number of Field Goals Attempted for the team</td>
+</tr>
+<tr class="even">
+<td>Field Goal%</td>
+<td>(FGM/FGA) x 100</td>
+</tr>
+<tr class="odd">
+<td>3PM</td>
+<td>Number of 3 Pointers Made by the team</td>
+</tr>
+<tr class="even">
+<td>3PA</td>
+<td>Number of 3 Pointers Attempted by the team</td>
+</tr>
+<tr class="odd">
+<td>3Point%</td>
+<td>(3PM/3PA) x 100</td>
+</tr>
+<tr class="even">
+<td>FTM</td>
+<td>Number of FreeThrows Made by the team</td>
+</tr>
+<tr class="odd">
+<td>FTA</td>
+<td>Number of FreeThrows Attempted by the team</td>
+</tr>
+<tr class="even">
+<td>FT%</td>
+<td>(FTM/FTA) x 100</td>
+</tr>
+<tr class="odd">
+<td>Assists</td>
+<td>Number of Assists the team made</td>
+</tr>
+<tr class="even">
+<td>Rebounds</td>
+<td>Number of Rebounds the team made</td>
+</tr>
+<tr class="odd">
+<td>Steals</td>
+<td>Number of Steals in the game</td>
+</tr>
+<tr class="even">
+<td>Blocks</td>
+<td>Number of Blocks in the game</td>
+</tr>
+<tr class="odd">
+<td>Turnovers</td>
+<td>Number of Turnovers by the team</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="general-statistics" class="section level2">
+<h2><span class="header-section-number">1.6</span> General Statistics</h2>
+<table>
+<caption><span id="tab:general-stats">Table 1.6: </span> Features &amp; Descriptions of General Statistics (Source: OUA website)</caption>
+<thead>
+<tr class="header">
+<th>Features</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Game ID</td>
+<td>a unique ID to reference the games (row data)</td>
+</tr>
+<tr class="even">
+<td>Date</td>
+<td>the date that the game took place</td>
+</tr>
+<tr class="odd">
+<td>Season</td>
+<td>the year of the regular season that the game took place</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>Name of the team</td>
+</tr>
+<tr class="odd">
+<td>Home</td>
+<td>A binary value; 1 indicating Home team, 0 Away team</td>
+</tr>
+<tr class="even">
+<td>FGM</td>
+<td>Number of Field Goals Made for the team</td>
+</tr>
+<tr class="odd">
+<td>FGA</td>
+<td>Number of Field Goals Attempted for the team</td>
+</tr>
+<tr class="even">
+<td>Field Goal%</td>
+<td>(FGM/FGA) x 100</td>
+</tr>
+<tr class="odd">
+<td>3PM</td>
+<td>Number of 3 Pointers Made by the team</td>
+</tr>
+<tr class="even">
+<td>3PA</td>
+<td>Number of 3 Pointers Attempted by the team</td>
+</tr>
+<tr class="odd">
+<td>3Point%</td>
+<td>(3PM/3PA) x 100</td>
+</tr>
+<tr class="even">
+<td>FTM</td>
+<td>Number of FreeThrows Made by the team</td>
+</tr>
+<tr class="odd">
+<td>FTA</td>
+<td>Number of FreeThrows Attempted by the team</td>
+</tr>
+<tr class="even">
+<td>FT%</td>
+<td>(FTM/FTA) x 100</td>
+</tr>
+<tr class="odd">
+<td>Assists</td>
+<td>Number of Assists the team made</td>
+</tr>
+<tr class="even">
+<td>Rebounds</td>
+<td>Number of Rebounds the team made</td>
+</tr>
+<tr class="odd">
+<td>Steals</td>
+<td>Number of Steals in the game</td>
+</tr>
+<tr class="even">
+<td>Blocks</td>
+<td>Number of Blocks in the game</td>
+</tr>
+<tr class="odd">
+<td>Turnovers</td>
+<td>Number of Turnovers by the team</td>
+</tr>
+<tr class="even">
+<td>Points off Turnovers</td>
+<td>Number of Points made off Turnovers by the team</td>
+</tr>
+<tr class="odd">
+<td>Points in the Paint</td>
+<td>Number of Points made in the Paint by the team</td>
+</tr>
+<tr class="even">
+<td>2nd Chance Points</td>
+<td>Total 2nd Chance Pts for the team</td>
+</tr>
+<tr class="odd">
+<td>Bench Points</td>
+<td>Number of Pts made by the bench players for the team</td>
+</tr>
+<tr class="even">
+<td>Fastbreak Pts</td>
+<td>Number of Fastbreak Pts by the team</td>
+</tr>
+<tr class="odd">
+<td>Largest Lead</td>
+<td>The Largest Lead made by the team</td>
+</tr>
+<tr class="even">
+<td>Time of Largest Lead</td>
+<td>The time of the team’s Largest Lead</td>
+</tr>
+<tr class="odd">
+<td>Win</td>
+<td>A binary value; 1 indicating a win, 0 loss</td>
+</tr>
+<tr class="even">
+<td>Winner 1st Qtr Pts</td>
+<td>The number of points the scored in the 1st qtr</td>
+</tr>
+<tr class="odd">
+<td>Winner 2nd Qtr Pts</td>
+<td>The number of points scored in the 2nd qtr</td>
+</tr>
+<tr class="even">
+<td>Winner 3rd Qtr Pts</td>
+<td>The number of points scored in the 3rd qtr</td>
+</tr>
+<tr class="odd">
+<td>Winner 4th Qtr Pts</td>
+<td>The number of points scored in the 4th qtr</td>
+</tr>
+<tr class="even">
+<td>OT Pts</td>
+<td>The number of points scored in overtime</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exploratory-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

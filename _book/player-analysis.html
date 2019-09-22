@@ -1,0 +1,7562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Player Analysis | Men’s U-Sports Basketball Analysis</title>
+  <meta name="description" content="Sports Analytics" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Player Analysis | Men’s U-Sports Basketball Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/basketball.png" />
+  <meta property="og:description" content="Sports Analytics" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Player Analysis | Men’s U-Sports Basketball Analysis" />
+  
+  <meta name="twitter:description" content="Sports Analytics" />
+  <meta name="twitter:image" content="images/basketball.png" />
+
+<meta name="author" content="Michael Armanious" />
+
+
+<meta name="date" content="2019-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exploratory-data-analysis.html"/>
+<link rel="next" href="classification-of-wins.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Master's Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>1</b> Datasets</a><ul>
+<li class="chapter" data-level="1.1" data-path="datasets.html"><a href="datasets.html#play-types"><i class="fa fa-check"></i><b>1.1</b> Play Types</a></li>
+<li class="chapter" data-level="1.2" data-path="datasets.html"><a href="datasets.html#sets"><i class="fa fa-check"></i><b>1.2</b> Sets</a></li>
+<li class="chapter" data-level="1.3" data-path="datasets.html"><a href="datasets.html#shots"><i class="fa fa-check"></i><b>1.3</b> Shots</a></li>
+<li class="chapter" data-level="1.4" data-path="datasets.html"><a href="datasets.html#transitions"><i class="fa fa-check"></i><b>1.4</b> Transitions</a></li>
+<li class="chapter" data-level="1.5" data-path="datasets.html"><a href="datasets.html#player-statistics"><i class="fa fa-check"></i><b>1.5</b> Player Statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="datasets.html"><a href="datasets.html#general-statistics"><i class="fa fa-check"></i><b>1.6</b> General Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#distributionvariation-of-variables"><i class="fa fa-check"></i><b>2.1</b> Distribution/Variation of Variables</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#play-types-1"><i class="fa fa-check"></i><b>2.1.1</b> Play Types</a></li>
+<li class="chapter" data-level="2.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#outliers"><i class="fa fa-check"></i><b>2.1.2</b> Outliers</a></li>
+<li class="chapter" data-level="2.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#winloss-associations"><i class="fa fa-check"></i><b>2.1.3</b> Win/Loss Associations</a></li>
+<li class="chapter" data-level="2.1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>2.1.4</b> Covariation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#sets-1"><i class="fa fa-check"></i><b>2.1.5</b> Sets</a></li>
+<li class="chapter" data-level="2.1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#shots-1"><i class="fa fa-check"></i><b>2.1.6</b> Shots</a></li>
+<li class="chapter" data-level="2.1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualizations"><i class="fa fa-check"></i><b>2.1.7</b> Visualizations</a></li>
+<li class="chapter" data-level="2.1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#transitions-1"><i class="fa fa-check"></i><b>2.1.8</b> Transitions</a></li>
+<li class="chapter" data-level="2.1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#general-statistics-1"><i class="fa fa-check"></i><b>2.1.9</b> General Statistics</a></li>
+<li class="chapter" data-level="2.1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#home-vs.-away"><i class="fa fa-check"></i><b>2.1.10</b> Home Vs. Away</a></li>
+<li class="chapter" data-level="2.1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#risk-ratios-and-odd-ratios"><i class="fa fa-check"></i><b>2.1.11</b> Risk Ratios and Odd Ratios</a></li>
+<li class="chapter" data-level="2.1.12" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#wins-per-season"><i class="fa fa-check"></i><b>2.1.12</b> Wins Per Season</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlations"><i class="fa fa-check"></i><b>2.2</b> Correlations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-positively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.1</b> The most positively correlated variables to wins</a></li>
+<li class="chapter" data-level="2.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#the-most-negatively-correlated-variables-to-wins"><i class="fa fa-check"></i><b>2.2.2</b> The most negatively correlated variables to wins</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="player-analysis.html"><a href="player-analysis.html"><i class="fa fa-check"></i><b>3</b> Player Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="player-analysis.html"><a href="player-analysis.html#dataset"><i class="fa fa-check"></i><b>3.1</b> Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="player-analysis.html"><a href="player-analysis.html#the-goal"><i class="fa fa-check"></i><b>3.2</b> The Goal</a></li>
+<li class="chapter" data-level="3.3" data-path="player-analysis.html"><a href="player-analysis.html#data-preparation"><i class="fa fa-check"></i><b>3.3</b> Data Preparation</a></li>
+<li class="chapter" data-level="3.4" data-path="player-analysis.html"><a href="player-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>3.4</b> K-Means Clustering</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="player-analysis.html"><a href="player-analysis.html#k-means-results"><i class="fa fa-check"></i><b>3.4.1</b> K-Means Results</a></li>
+<li class="chapter" data-level="3.4.2" data-path="player-analysis.html"><a href="player-analysis.html#season"><i class="fa fa-check"></i><b>3.4.2</b> 2015-16 Season</a></li>
+<li class="chapter" data-level="3.4.3" data-path="player-analysis.html"><a href="player-analysis.html#season-1"><i class="fa fa-check"></i><b>3.4.3</b> 2016-17 Season</a></li>
+<li class="chapter" data-level="3.4.4" data-path="player-analysis.html"><a href="player-analysis.html#season-2"><i class="fa fa-check"></i><b>3.4.4</b> 2017-18 Season</a></li>
+<li class="chapter" data-level="3.4.5" data-path="player-analysis.html"><a href="player-analysis.html#season-3"><i class="fa fa-check"></i><b>3.4.5</b> 2018-19 Season</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="player-analysis.html"><a href="player-analysis.html#conclusion-1"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="classification-of-wins.html"><a href="classification-of-wins.html"><i class="fa fa-check"></i><b>4</b> Classification of Wins</a><ul>
+<li class="chapter" data-level="4.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#random-forests"><i class="fa fa-check"></i><b>4.1</b> Random Forests</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-1"><i class="fa fa-check"></i><b>4.1.1</b> Model 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model-2"><i class="fa fa-check"></i><b>4.1.2</b> Model 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#logistic-regression"><i class="fa fa-check"></i><b>4.2</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="classification-of-wins.html"><a href="classification-of-wins.html#model"><i class="fa fa-check"></i><b>4.2.1</b> Model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classification-of-wins.html"><a href="classification-of-wins.html#assists"><i class="fa fa-check"></i><b>4.2.2</b> Assists</a></li>
+<li class="chapter" data-level="4.2.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#why-are-assists-so-important"><i class="fa fa-check"></i><b>4.2.3</b> Why are Assists so important?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classification-of-wins.html"><a href="classification-of-wins.html#conclusion-2"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="carleton.html"><a href="carleton.html"><i class="fa fa-check"></i><b>5</b> Carleton</a><ul>
+<li class="chapter" data-level="5.1" data-path="carleton.html"><a href="carleton.html#dave-smart-effect"><i class="fa fa-check"></i><b>5.1</b> Dave Smart Effect</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="carleton.html"><a href="carleton.html#comparing-play-types"><i class="fa fa-check"></i><b>5.1.1</b> Comparing Play Types</a></li>
+<li class="chapter" data-level="5.1.2" data-path="carleton.html"><a href="carleton.html#comparing-pace"><i class="fa fa-check"></i><b>5.1.2</b> Comparing Pace</a></li>
+<li class="chapter" data-level="5.1.3" data-path="carleton.html"><a href="carleton.html#comparing-shot-types"><i class="fa fa-check"></i><b>5.1.3</b> Comparing Shot Types</a></li>
+<li class="chapter" data-level="5.1.4" data-path="carleton.html"><a href="carleton.html#comparing-bench-points"><i class="fa fa-check"></i><b>5.1.4</b> Comparing Bench Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="carleton.html"><a href="carleton.html#decision-tree"><i class="fa fa-check"></i><b>5.2</b> Decision Tree</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="carleton.html"><a href="carleton.html#play-types-decision-tree"><i class="fa fa-check"></i><b>5.2.1</b> Play Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.2" data-path="carleton.html"><a href="carleton.html#shot-types-decision-tree"><i class="fa fa-check"></i><b>5.2.2</b> Shot Types Decision Tree</a></li>
+<li class="chapter" data-level="5.2.3" data-path="carleton.html"><a href="carleton.html#combined-variables-decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Combined Variables Decision Tree</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="carleton.html"><a href="carleton.html#carletons-shot-taking"><i class="fa fa-check"></i><b>5.3</b> Carleton’s Shot Taking</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="carleton.html"><a href="carleton.html#shooting-efficiency"><i class="fa fa-check"></i><b>5.3.1</b> 2018-2019 Shooting Efficiency</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="carleton.html"><a href="carleton.html#carletons-play-types"><i class="fa fa-check"></i><b>5.4</b> Carleton’s Play Types</a></li>
+<li class="chapter" data-level="5.5" data-path="carleton.html"><a href="carleton.html#why-is-carleton-so-successful"><i class="fa fa-check"></i><b>5.5</b> Why is Carleton so successful?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#data-scraping-functions"><i class="fa fa-check"></i><b>7.1</b> Data Scraping Functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendix.html"><a href="appendix.html#oua-webscraper"><i class="fa fa-check"></i><b>7.1.1</b> OUA webscraper</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendix.html"><a href="appendix.html#oua-player-stats-scraper"><i class="fa fa-check"></i><b>7.1.2</b> OUA Player Stats Scraper</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendix.html"><a href="appendix.html#synergy-data-scraper"><i class="fa fa-check"></i><b>7.1.3</b> Synergy Data Scraper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Men’s U-Sports Basketball Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="player-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Player Analysis</h1>
+<div id="dataset" class="section level2">
+<h2><span class="header-section-number">3.1</span> Dataset</h2>
+<p>The data aggregated is scraped from the OUA website. Every box score per game per season is collected and aggregated so that there are player statistics for every season from 2014-15 to 2018-19 (this is because the Player Statistics came from the OUA website which has 2014-15 data).</p>
+</div>
+<div id="the-goal" class="section level2">
+<h2><span class="header-section-number">3.2</span> The Goal</h2>
+<p>The goal is to use player statistics to gather insights on how players contribute to the game and how to categorize players using unsupervised learning.</p>
+</div>
+<div id="data-preparation" class="section level2">
+<h2><span class="header-section-number">3.3</span> Data Preparation</h2>
+<p>The data is a subset of the player data with certain filters on the number of games played and the minutes per game. There are dataframes for every season from 2014-15 to 2018-19 with players that have played at least 15 games of at least 20 minutes per game. The games are regular season games from the U Sports division, Ontario University Athletics conference. All the variables are totals for the season except for PPG (Points per game) and MPG (Minutes per game)</p>
+</div>
+<div id="k-means-clustering" class="section level2">
+<h2><span class="header-section-number">3.4</span> K-Means Clustering</h2>
+<p>First the data will be normalized in order to prepare the data for k-means clustering. This is helpful because some statistics have very different ranges e.g. the number of points compared to the number of steals. Therefore the variables will be comparable.</p>
+<p>K-Means Clustering is a popular unsupervised machine learning algorithm. The goal of K-Means is to group similar data points in a dataset of unlabeled data. It does this by dividing the data into k clusters where each observation belongs to the cluster closest to the mean (cluster centroid) by using a distance metric (most usually Euclidean distance).</p>
+<p>Since K-Means clustering is an unsupervised algorithm, this means that the number of clusters is not known. However, there are techniques that can be used to find an optimal number of clusters such as the gap method, silhouette method, within-cluster sum of squares method, D - index, etc. Different techniques and configurations of the techniques will be used for each season’s clustering for finding the optimal number of clusters.</p>
+<div id="k-means-results" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> K-Means Results</h3>
+<p>The technique that will be used to find the optimal number of clusters for the 2014-2015 season is the D-index method (Lebart et al. 2000). The D-index is based on clustering gain on intra-cluster inertia [8]. Intra-cluster inertia can be deﬁned as:</p>
+<div class="figure"><span id="fig:inertia"></span>
+<img src="images/inertia.PNG" alt="" />
+<p class="caption">Figure 3.1:  Intra-cluster Inertia formula.</p>
+</div>
+<p>The clustering gain should be minimized. The optimal cluster conﬁguration can be identiﬁed by the sharp knee that corresponds to a signiﬁcant decrease of the ﬁrst differences of clustering gain versus the number of clusters. This knee or great jump of gain values can be identiﬁed by a signiﬁcant peak in second differences of clustering gain.</p>
+<div class="figure"><span id="fig:dindex1"></span>
+<img src="images/Dindex.png" alt="" />
+<p class="caption">Figure 3.2:  Finding the Optimal Cluster using D-index for the 2014-15 season.</p>
+</div>
+<p>In the plot of D-index, we seek a significant knee (the significant peak in D-index second differences plot) around 8, that corresponds to a significant increase of the value of measure.
+The number of clusters that the method suggests is 8 clusters.</p>
+<div class="figure"><span id="fig:unnamed-chunk-32"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-32-1.png" alt="Cluster Plot for 2014-15 Season. The axes are the Principal Components where Dim1 is the first PC and Dim2 is the second PC. The first PC explains 35.5% of the data and the second PC explains 18.5%." width="672" />
+<p class="caption">
+Figure 3.3: Cluster Plot for 2014-15 Season. The axes are the Principal Components where Dim1 is the first PC and Dim2 is the second PC. The first PC explains 35.5% of the data and the second PC explains 18.5%.
+</p>
+</div>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-33">Table 3.1: </span>Average of each variable for each cluster for the 2014-15 season
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cluster 1
+</th>
+<th style="text-align:right;">
+Cluster 2
+</th>
+<th style="text-align:right;">
+Cluster 3
+</th>
+<th style="text-align:right;">
+Cluster 4
+</th>
+<th style="text-align:right;">
+Cluster 5
+</th>
+<th style="text-align:right;">
+Cluster 6
+</th>
+<th style="text-align:right;">
+Cluster 7
+</th>
+<th style="text-align:right;">
+Cluster 8
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3PointMade
+</td>
+<td style="text-align:right;">
+31.47
+</td>
+<td style="text-align:right;">
+40.14
+</td>
+<td style="text-align:right;">
+12.77
+</td>
+<td style="text-align:right;">
+19.57
+</td>
+<td style="text-align:right;">
+2.25
+</td>
+<td style="text-align:right;">
+17.25
+</td>
+<td style="text-align:right;">
+23.50
+</td>
+<td style="text-align:right;">
+19.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3PointAttempted
+</td>
+<td style="text-align:right;">
+81.40
+</td>
+<td style="text-align:right;">
+112.57
+</td>
+<td style="text-align:right;">
+37.86
+</td>
+<td style="text-align:right;">
+64.29
+</td>
+<td style="text-align:right;">
+8.92
+</td>
+<td style="text-align:right;">
+46.75
+</td>
+<td style="text-align:right;">
+74.00
+</td>
+<td style="text-align:right;">
+56.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assists
+</td>
+<td style="text-align:right;">
+38.07
+</td>
+<td style="text-align:right;">
+56.14
+</td>
+<td style="text-align:right;">
+22.50
+</td>
+<td style="text-align:right;">
+47.71
+</td>
+<td style="text-align:right;">
+22.17
+</td>
+<td style="text-align:right;">
+36.50
+</td>
+<td style="text-align:right;">
+59.00
+</td>
+<td style="text-align:right;">
+35.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blocks
+</td>
+<td style="text-align:right;">
+4.33
+</td>
+<td style="text-align:right;">
+6.29
+</td>
+<td style="text-align:right;">
+3.64
+</td>
+<td style="text-align:right;">
+5.86
+</td>
+<td style="text-align:right;">
+15.25
+</td>
+<td style="text-align:right;">
+21.25
+</td>
+<td style="text-align:right;">
+4.50
+</td>
+<td style="text-align:right;">
+4.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DefensiveRebounds
+</td>
+<td style="text-align:right;">
+59.60
+</td>
+<td style="text-align:right;">
+64.86
+</td>
+<td style="text-align:right;">
+44.18
+</td>
+<td style="text-align:right;">
+81.86
+</td>
+<td style="text-align:right;">
+79.83
+</td>
+<td style="text-align:right;">
+128.75
+</td>
+<td style="text-align:right;">
+94.00
+</td>
+<td style="text-align:right;">
+58.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalMade
+</td>
+<td style="text-align:right;">
+84.87
+</td>
+<td style="text-align:right;">
+118.43
+</td>
+<td style="text-align:right;">
+42.91
+</td>
+<td style="text-align:right;">
+87.29
+</td>
+<td style="text-align:right;">
+78.50
+</td>
+<td style="text-align:right;">
+132.50
+</td>
+<td style="text-align:right;">
+149.00
+</td>
+<td style="text-align:right;">
+50.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalAttempted
+</td>
+<td style="text-align:right;">
+194.00
+</td>
+<td style="text-align:right;">
+278.14
+</td>
+<td style="text-align:right;">
+104.55
+</td>
+<td style="text-align:right;">
+209.29
+</td>
+<td style="text-align:right;">
+157.50
+</td>
+<td style="text-align:right;">
+264.75
+</td>
+<td style="text-align:right;">
+304.50
+</td>
+<td style="text-align:right;">
+135.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsMade
+</td>
+<td style="text-align:right;">
+44.80
+</td>
+<td style="text-align:right;">
+58.57
+</td>
+<td style="text-align:right;">
+20.86
+</td>
+<td style="text-align:right;">
+55.71
+</td>
+<td style="text-align:right;">
+40.50
+</td>
+<td style="text-align:right;">
+64.25
+</td>
+<td style="text-align:right;">
+99.50
+</td>
+<td style="text-align:right;">
+29.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsAttempted
+</td>
+<td style="text-align:right;">
+59.87
+</td>
+<td style="text-align:right;">
+73.57
+</td>
+<td style="text-align:right;">
+32.59
+</td>
+<td style="text-align:right;">
+75.00
+</td>
+<td style="text-align:right;">
+62.83
+</td>
+<td style="text-align:right;">
+94.75
+</td>
+<td style="text-align:right;">
+137.50
+</td>
+<td style="text-align:right;">
+40.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Minutes
+</td>
+<td style="text-align:right;">
+502.93
+</td>
+<td style="text-align:right;">
+579.86
+</td>
+<td style="text-align:right;">
+387.45
+</td>
+<td style="text-align:right;">
+619.14
+</td>
+<td style="text-align:right;">
+450.75
+</td>
+<td style="text-align:right;">
+547.25
+</td>
+<td style="text-align:right;">
+694.00
+</td>
+<td style="text-align:right;">
+500.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffensiveRebounds
+</td>
+<td style="text-align:right;">
+25.67
+</td>
+<td style="text-align:right;">
+16.86
+</td>
+<td style="text-align:right;">
+19.00
+</td>
+<td style="text-align:right;">
+25.86
+</td>
+<td style="text-align:right;">
+44.50
+</td>
+<td style="text-align:right;">
+52.50
+</td>
+<td style="text-align:right;">
+26.50
+</td>
+<td style="text-align:right;">
+16.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PersonalFouls
+</td>
+<td style="text-align:right;">
+39.40
+</td>
+<td style="text-align:right;">
+35.43
+</td>
+<td style="text-align:right;">
+39.50
+</td>
+<td style="text-align:right;">
+50.71
+</td>
+<td style="text-align:right;">
+46.17
+</td>
+<td style="text-align:right;">
+33.50
+</td>
+<td style="text-align:right;">
+44.50
+</td>
+<td style="text-align:right;">
+44.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points
+</td>
+<td style="text-align:right;">
+246.00
+</td>
+<td style="text-align:right;">
+335.57
+</td>
+<td style="text-align:right;">
+119.45
+</td>
+<td style="text-align:right;">
+249.86
+</td>
+<td style="text-align:right;">
+199.75
+</td>
+<td style="text-align:right;">
+346.50
+</td>
+<td style="text-align:right;">
+421.00
+</td>
+<td style="text-align:right;">
+149.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rebounds
+</td>
+<td style="text-align:right;">
+85.27
+</td>
+<td style="text-align:right;">
+81.71
+</td>
+<td style="text-align:right;">
+63.18
+</td>
+<td style="text-align:right;">
+107.71
+</td>
+<td style="text-align:right;">
+124.33
+</td>
+<td style="text-align:right;">
+181.25
+</td>
+<td style="text-align:right;">
+120.50
+</td>
+<td style="text-align:right;">
+74.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steals
+</td>
+<td style="text-align:right;">
+19.60
+</td>
+<td style="text-align:right;">
+21.86
+</td>
+<td style="text-align:right;">
+13.00
+</td>
+<td style="text-align:right;">
+23.57
+</td>
+<td style="text-align:right;">
+12.50
+</td>
+<td style="text-align:right;">
+16.75
+</td>
+<td style="text-align:right;">
+27.50
+</td>
+<td style="text-align:right;">
+20.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turnovers
+</td>
+<td style="text-align:right;">
+34.47
+</td>
+<td style="text-align:right;">
+40.14
+</td>
+<td style="text-align:right;">
+28.55
+</td>
+<td style="text-align:right;">
+48.43
+</td>
+<td style="text-align:right;">
+30.50
+</td>
+<td style="text-align:right;">
+47.25
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+<td style="text-align:right;">
+34.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+9.53
+</td>
+<td style="text-align:right;">
+9.00
+</td>
+<td style="text-align:right;">
+9.27
+</td>
+<td style="text-align:right;">
+9.14
+</td>
+<td style="text-align:right;">
+9.50
+</td>
+<td style="text-align:right;">
+9.50
+</td>
+<td style="text-align:right;">
+10.50
+</td>
+<td style="text-align:right;">
+9.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GamesPlayed
+</td>
+<td style="text-align:right;">
+18.73
+</td>
+<td style="text-align:right;">
+18.29
+</td>
+<td style="text-align:right;">
+18.00
+</td>
+<td style="text-align:right;">
+19.00
+</td>
+<td style="text-align:right;">
+18.92
+</td>
+<td style="text-align:right;">
+18.75
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:right;">
+18.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointsPerGame
+</td>
+<td style="text-align:right;">
+13.15
+</td>
+<td style="text-align:right;">
+18.39
+</td>
+<td style="text-align:right;">
+6.64
+</td>
+<td style="text-align:right;">
+13.19
+</td>
+<td style="text-align:right;">
+10.59
+</td>
+<td style="text-align:right;">
+18.47
+</td>
+<td style="text-align:right;">
+21.05
+</td>
+<td style="text-align:right;">
+7.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MinutesPerGame
+</td>
+<td style="text-align:right;">
+26.85
+</td>
+<td style="text-align:right;">
+31.74
+</td>
+<td style="text-align:right;">
+21.53
+</td>
+<td style="text-align:right;">
+32.60
+</td>
+<td style="text-align:right;">
+23.81
+</td>
+<td style="text-align:right;">
+29.20
+</td>
+<td style="text-align:right;">
+34.70
+</td>
+<td style="text-align:right;">
+26.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3P%
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG%
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FT%
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TrueShooting%
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-35">Table 3.2: </span>Players from 2014-15 season with assigned clusters.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Player
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Cluster
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+15-Zachary Angelini
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Connor Wood
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Philip Scrubb
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Aaron Redpath
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32-Joe Rocca
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Caleb Agada
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Aaron Best
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Adika Peter-McNeilly
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9-M Sahota
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Anthony Spiridis
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Mitch Farrell
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Alex Campbell
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Khalid Abdel-Gabar
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3-Richard Iheadindu
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8-Nathan Culbreath
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Johneil Simpson
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Ryan Bennett
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Will Coulthard
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Johnny Berhanemeskel
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Greg Faulkner
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-Jahmal Jones
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-J Clarke
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2-Jamal Mucket-Sobers
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3-AJ Andre Barder
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4-Thomas Chalmers
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6-Adam Benrabah
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-J.e Pierre-Charles
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jonathan Wallace
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Michel Clark
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Jamar Coke
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Luke Allin
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4-Joey Puddister
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5-Marvin Ngonadi
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-Jerron Rhodes
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01-Vikas Gill
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Mehdi Tihani
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Matt Plunkett
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Cy Samuels
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Ryall Stroud
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8-D Ankrah
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jedson Tavernier
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Nidun Chandrakumar
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4-Phillip Cunningham-Gillen
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5-Gene Spagnuolo
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33-Matt Marshall
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Daniel Dooley
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Dwayne Harvey
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Tychon Carter-Newman
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44-Sam Hirst
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5-Jaspreet Gill
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Quinn Henderson
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31-Guillaume Boucard
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Trevor Thompson
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Anthony McIntosh
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Bacarius Dinkins
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Aiddian Walters
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Kyrie Coleman
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Taylor Black
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Rohan Boney
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Marcos Clennon
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Gabriel Gonthier-Dubue
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Kadeem Green
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Evan Matthews
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Thomas Scrubb
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-D Johnson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Rotimi Osuntola
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Nick Tufegdzich
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6-Myles Charvis
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Greg Morrow
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Sean Clendinning
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5-Brett Zufelt
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Gavin Resch
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Alex Robichaud
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-David Aromolaran
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-James Agyeman
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Garrison Thomas
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Adam Presutti
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6-Jordon Campbell
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Tanner Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5-S Usher
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3-Jon Ravenhorst
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-Ben Davis
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Tom Filgiano
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Mike Rocca
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+<p>Each cluster can be categorized as a type of player.</p>
+<p>Cluster 1: Efficient Playmakers &amp; Scorers
+This cluster of players have the most assists and the second most points per game. They have a big defensive impact through the number of steals they get and can control the tempo well and score.</p>
+<p>Cluster 2: All-Around Players
+These players can get rebounds, pass and score well.</p>
+<p>Cluster 3: Dominant Big Men
+These players are the most dominant big men in the league with the most rebounds (defensive and offensive), blocks, and points.</p>
+<p>Cluster 4: Smart Catch &amp; Shoot Players
+These players make the best decisions and turnover the ball the fewest. They do not dribble the ball much and are the most efficient shooters.</p>
+<p>Cluster 5: Aggressive Defenders
+These players are aggressive and foul the most out of all the other clusters. They have a bigger impact on defense since they do not shoot well.</p>
+<p>Cluster 6: Role Players
+These players contribute to many plays and work both offensively and defensively.</p>
+<p>Cluster 7: Second Tier Playmakers
+These players are less dominant playmakers that can still score efficiently.</p>
+<p>Cluster 8: Second Tier Small Players
+These players play small but do not shoot as efficiently as the other players or create as many plays.</p>
+</div>
+<div id="season" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> 2015-16 Season</h3>
+<p>For this season, the elbow method [9] will be used to find the optimal number of clusters. The elbow method looks at the percentage of variance explained as a function of the number of clusters: One should choose a number of clusters so that adding another cluster does not give much better modeling of the data. More precisely, if one plots the percentage of variance explained by the clusters against the number of clusters, the first clusters will add much information (explain a lot of variance), but at some point the marginal gain will drop, giving an angle in the graph. The number of clusters is chosen at this point, hence the “elbow criterion”. This “elbow” cannot always be unambiguously identified.</p>
+<div class="figure"><span id="fig:unnamed-chunk-36"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-36-1.png" alt="Elbow Method for finding the optimal number of clusters for the 2015-16 season " width="672" />
+<p class="caption">
+Figure 3.4: Elbow Method for finding the optimal number of clusters for the 2015-16 season
+</p>
+</div>
+<p>The number of clusters that will be used for this season is 6 for this season. Below are tables to show the average statistics for each cluster and also which players belong to which cluster.</p>
+<div class="figure"><span id="fig:unnamed-chunk-37"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-37-1.png" alt="Cluster Plot of 2015-16 Season" width="672" />
+<p class="caption">
+Figure 3.5: Cluster Plot of 2015-16 Season
+</p>
+</div>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-38">Table 3.3: </span>Average of each variable for each cluster for the 2015-16 season
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cluster 1
+</th>
+<th style="text-align:right;">
+Cluster 2
+</th>
+<th style="text-align:right;">
+Cluster 3
+</th>
+<th style="text-align:right;">
+Cluster 4
+</th>
+<th style="text-align:right;">
+Cluster 5
+</th>
+<th style="text-align:right;">
+Cluster 6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3PointMade
+</td>
+<td style="text-align:right;">
+14.85
+</td>
+<td style="text-align:right;">
+22.62
+</td>
+<td style="text-align:right;">
+18.75
+</td>
+<td style="text-align:right;">
+13.16
+</td>
+<td style="text-align:right;">
+31.75
+</td>
+<td style="text-align:right;">
+44.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3PointAttempted
+</td>
+<td style="text-align:right;">
+48.15
+</td>
+<td style="text-align:right;">
+67.88
+</td>
+<td style="text-align:right;">
+55.75
+</td>
+<td style="text-align:right;">
+41.84
+</td>
+<td style="text-align:right;">
+86.00
+</td>
+<td style="text-align:right;">
+133.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assists
+</td>
+<td style="text-align:right;">
+39.38
+</td>
+<td style="text-align:right;">
+57.12
+</td>
+<td style="text-align:right;">
+43.25
+</td>
+<td style="text-align:right;">
+24.91
+</td>
+<td style="text-align:right;">
+40.62
+</td>
+<td style="text-align:right;">
+52.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blocks
+</td>
+<td style="text-align:right;">
+7.85
+</td>
+<td style="text-align:right;">
+4.75
+</td>
+<td style="text-align:right;">
+13.50
+</td>
+<td style="text-align:right;">
+7.41
+</td>
+<td style="text-align:right;">
+6.44
+</td>
+<td style="text-align:right;">
+3.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DefensiveRebounds
+</td>
+<td style="text-align:right;">
+72.00
+</td>
+<td style="text-align:right;">
+72.50
+</td>
+<td style="text-align:right;">
+111.25
+</td>
+<td style="text-align:right;">
+51.62
+</td>
+<td style="text-align:right;">
+63.56
+</td>
+<td style="text-align:right;">
+68.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalMade
+</td>
+<td style="text-align:right;">
+101.38
+</td>
+<td style="text-align:right;">
+56.25
+</td>
+<td style="text-align:right;">
+150.50
+</td>
+<td style="text-align:right;">
+48.56
+</td>
+<td style="text-align:right;">
+85.62
+</td>
+<td style="text-align:right;">
+111.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalAttempted
+</td>
+<td style="text-align:right;">
+236.23
+</td>
+<td style="text-align:right;">
+150.62
+</td>
+<td style="text-align:right;">
+317.75
+</td>
+<td style="text-align:right;">
+119.72
+</td>
+<td style="text-align:right;">
+196.88
+</td>
+<td style="text-align:right;">
+290.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsMade
+</td>
+<td style="text-align:right;">
+59.38
+</td>
+<td style="text-align:right;">
+28.75
+</td>
+<td style="text-align:right;">
+99.00
+</td>
+<td style="text-align:right;">
+23.69
+</td>
+<td style="text-align:right;">
+32.88
+</td>
+<td style="text-align:right;">
+55.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsAttempted
+</td>
+<td style="text-align:right;">
+83.46
+</td>
+<td style="text-align:right;">
+40.12
+</td>
+<td style="text-align:right;">
+130.25
+</td>
+<td style="text-align:right;">
+34.47
+</td>
+<td style="text-align:right;">
+43.44
+</td>
+<td style="text-align:right;">
+74.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Minutes
+</td>
+<td style="text-align:right;">
+564.00
+</td>
+<td style="text-align:right;">
+620.00
+</td>
+<td style="text-align:right;">
+631.50
+</td>
+<td style="text-align:right;">
+419.31
+</td>
+<td style="text-align:right;">
+490.81
+</td>
+<td style="text-align:right;">
+639.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffensiveRebounds
+</td>
+<td style="text-align:right;">
+30.77
+</td>
+<td style="text-align:right;">
+25.75
+</td>
+<td style="text-align:right;">
+44.50
+</td>
+<td style="text-align:right;">
+21.50
+</td>
+<td style="text-align:right;">
+18.19
+</td>
+<td style="text-align:right;">
+14.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PersonalFouls
+</td>
+<td style="text-align:right;">
+44.92
+</td>
+<td style="text-align:right;">
+48.88
+</td>
+<td style="text-align:right;">
+47.25
+</td>
+<td style="text-align:right;">
+39.56
+</td>
+<td style="text-align:right;">
+38.44
+</td>
+<td style="text-align:right;">
+35.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points
+</td>
+<td style="text-align:right;">
+277.00
+</td>
+<td style="text-align:right;">
+163.88
+</td>
+<td style="text-align:right;">
+418.75
+</td>
+<td style="text-align:right;">
+133.97
+</td>
+<td style="text-align:right;">
+235.88
+</td>
+<td style="text-align:right;">
+322.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rebounds
+</td>
+<td style="text-align:right;">
+102.77
+</td>
+<td style="text-align:right;">
+98.25
+</td>
+<td style="text-align:right;">
+155.75
+</td>
+<td style="text-align:right;">
+73.12
+</td>
+<td style="text-align:right;">
+81.75
+</td>
+<td style="text-align:right;">
+83.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steals
+</td>
+<td style="text-align:right;">
+23.85
+</td>
+<td style="text-align:right;">
+25.00
+</td>
+<td style="text-align:right;">
+30.25
+</td>
+<td style="text-align:right;">
+15.72
+</td>
+<td style="text-align:right;">
+18.88
+</td>
+<td style="text-align:right;">
+24.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turnovers
+</td>
+<td style="text-align:right;">
+49.46
+</td>
+<td style="text-align:right;">
+40.50
+</td>
+<td style="text-align:right;">
+58.00
+</td>
+<td style="text-align:right;">
+26.00
+</td>
+<td style="text-align:right;">
+34.50
+</td>
+<td style="text-align:right;">
+49.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+9.69
+</td>
+<td style="text-align:right;">
+9.62
+</td>
+<td style="text-align:right;">
+9.75
+</td>
+<td style="text-align:right;">
+9.31
+</td>
+<td style="text-align:right;">
+9.25
+</td>
+<td style="text-align:right;">
+9.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GamesPlayed
+</td>
+<td style="text-align:right;">
+19.08
+</td>
+<td style="text-align:right;">
+19.38
+</td>
+<td style="text-align:right;">
+19.00
+</td>
+<td style="text-align:right;">
+18.38
+</td>
+<td style="text-align:right;">
+18.25
+</td>
+<td style="text-align:right;">
+19.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointsPerGame
+</td>
+<td style="text-align:right;">
+14.58
+</td>
+<td style="text-align:right;">
+8.47
+</td>
+<td style="text-align:right;">
+22.02
+</td>
+<td style="text-align:right;">
+7.34
+</td>
+<td style="text-align:right;">
+12.99
+</td>
+<td style="text-align:right;">
+16.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MinutesPerGame
+</td>
+<td style="text-align:right;">
+29.60
+</td>
+<td style="text-align:right;">
+31.98
+</td>
+<td style="text-align:right;">
+33.18
+</td>
+<td style="text-align:right;">
+22.87
+</td>
+<td style="text-align:right;">
+26.96
+</td>
+<td style="text-align:right;">
+32.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3P%
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG%
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FT%
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TrueShooting%
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-40">Table 3.4: </span>Players from 2015-16 season with assigned clusters.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Player
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Cluster
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+10-Sean Clendinning
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Bacarius Dinkins
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-David Aromolaran
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44-Sam Hirst
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Matt Chesson
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Leon Alexander
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Aaron Redpath
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Marcus Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Adika Peter-McNeilly
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Ben Davis
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Peter Scholtes
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Anthony Spiridis
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Nathan Culbreath
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33-Matt Marshall
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Nick Burke
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Alexandre Robichaud
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Simon Mikre
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Joey Puddister
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Dylan Phillips
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Tom Filgiano
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Mike Rocca
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Dani Elgadi
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Devin Johnson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Greg Morrow
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Alex Campbell
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Brett Zufelt
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Nathan Riley
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Reng Gum
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Tyler Brown
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Drew Walford
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31-Jack Beatty
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Nick Simon
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32-Joseph Sykes
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Garrison Thomas
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Trevon McNeil
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-David McCulloch
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Rohan Boney
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Marvin Ngonadi
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jerron Rhodes
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Kalil Langston
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01-Vikas Gill
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Mehdi Tihani
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Matt Plunkett
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Nathan McCarthy
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Sammy Ayisi
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Ryall Stroud
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Roshane Roberts
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Juwon Grannum
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Sage Usher
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Manny Sahota
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Daniel Johansson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Alex Coote
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jedson Tavernier
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Micah Kirubel
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Tyler Persaud
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Philip Gillen
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Gene Spagnuolo
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Andre Barber
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Ryan Bennett
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Gavin Resch
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Connor Wood
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31-Guillaume Boucard
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41-Kaza Kajami-Keane
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Daniel Dooley
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jonathan Wallace
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Taylor Boers
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Troy Joseph
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Tanner Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Ammanuel Diressa
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Aaron Best
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Devon Williams
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Marko Kovac
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Tommy Hobbs
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Johneil Simpson
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Henry Tan
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Anthony Iacoe
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Will Coulthard
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Mike L’Africain
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Jon Ravenhorst
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Isiah Osborne
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="season-1" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> 2016-17 Season</h3>
+<div class="figure"><span id="fig:unnamed-chunk-41"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-41-1.png" alt="Silhouette Method for finding the optimal number of clusters for the 2016-17 season " width="672" />
+<p class="caption">
+Figure 3.6: Silhouette Method for finding the optimal number of clusters for the 2016-17 season
+</p>
+</div>
+<p>The Silhouette method suggests 2 as the optimal number of clusters for this season. This is possibly separating the players into forwards/centers and guards. Below are tables to show the average statistics for each cluster and also which players belong to which cluster.</p>
+<div class="figure"><span id="fig:unnamed-chunk-42"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-42-1.png" alt="Cluster Plot of 2016-17 Season" width="672" />
+<p class="caption">
+Figure 3.7: Cluster Plot of 2016-17 Season
+</p>
+</div>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-43">Table 3.5: </span>Average of each variable for each cluster for the 2016-17 season
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cluster 1
+</th>
+<th style="text-align:right;">
+Cluster 2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3PointMade
+</td>
+<td style="text-align:right;">
+16.67
+</td>
+<td style="text-align:right;">
+25.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3PointAttempted
+</td>
+<td style="text-align:right;">
+51.80
+</td>
+<td style="text-align:right;">
+73.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assists
+</td>
+<td style="text-align:right;">
+30.02
+</td>
+<td style="text-align:right;">
+42.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blocks
+</td>
+<td style="text-align:right;">
+4.92
+</td>
+<td style="text-align:right;">
+9.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DefensiveRebounds
+</td>
+<td style="text-align:right;">
+53.12
+</td>
+<td style="text-align:right;">
+83.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalMade
+</td>
+<td style="text-align:right;">
+55.86
+</td>
+<td style="text-align:right;">
+101.97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalAttempted
+</td>
+<td style="text-align:right;">
+136.37
+</td>
+<td style="text-align:right;">
+234.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsMade
+</td>
+<td style="text-align:right;">
+24.86
+</td>
+<td style="text-align:right;">
+50.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsAttempted
+</td>
+<td style="text-align:right;">
+37.14
+</td>
+<td style="text-align:right;">
+71.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Minutes
+</td>
+<td style="text-align:right;">
+452.90
+</td>
+<td style="text-align:right;">
+559.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffensiveRebounds
+</td>
+<td style="text-align:right;">
+20.53
+</td>
+<td style="text-align:right;">
+30.91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PersonalFouls
+</td>
+<td style="text-align:right;">
+35.53
+</td>
+<td style="text-align:right;">
+44.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points
+</td>
+<td style="text-align:right;">
+153.24
+</td>
+<td style="text-align:right;">
+279.91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rebounds
+</td>
+<td style="text-align:right;">
+73.65
+</td>
+<td style="text-align:right;">
+114.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steals
+</td>
+<td style="text-align:right;">
+16.88
+</td>
+<td style="text-align:right;">
+23.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turnovers
+</td>
+<td style="text-align:right;">
+28.86
+</td>
+<td style="text-align:right;">
+47.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+9.14
+</td>
+<td style="text-align:right;">
+9.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GamesPlayed
+</td>
+<td style="text-align:right;">
+18.43
+</td>
+<td style="text-align:right;">
+19.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointsPerGame
+</td>
+<td style="text-align:right;">
+8.34
+</td>
+<td style="text-align:right;">
+14.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MinutesPerGame
+</td>
+<td style="text-align:right;">
+24.59
+</td>
+<td style="text-align:right;">
+29.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3P%
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG%
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FT%
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TrueShooting%
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-45">Table 3.6: </span>Players from 2016-17 season with assigned clusters.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Player
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Cluster
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+06-Nathan Riley
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Reng Gum
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Daniel Cayer
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Ryan Bennett
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Tyler Brown
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Marcus Anderson
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Eddie Ekiyor
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Daniel Dooley
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jonathan Wallace
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Taylor Boers
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Drew Walford
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44-Ahmed Haroon
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Nick Burke
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Henry Tan
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Alexandre Robichaud
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44-OJ Watson
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Matthew Minutillo
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Chuder Teny
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Vlad Matovic
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Owen Coulthard
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Elliot Ormond
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44-Lazar Kojovic
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Jordon Campbell
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jerron Rhodes
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Ismael Kaba
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Justin Shaver
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Jaaden Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Matt Plunkett
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Brandon Robinson
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Brody Maracle
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Adam Presutti
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Isse Ibrahim
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Jesse Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Sammy Ayisi
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Keevon Small
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Myles Charvis
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Juwon Grannum
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Reilly Reid
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Sage Usher
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Daniel Johansson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Ben Davis
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Eric McDonald
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jedson Tavernier
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Cam Morris
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Ian Smart
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Nikola Farkic
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Lucas Orlita
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Tyler Persaud
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Nidun Chandrakumar
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Sean Clendinning
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Jermaine Lyle
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Johneil Simpson
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Dani Elgadi
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Connor Wood
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41-Kaza Kajami-Keane
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Bacarius Dinkins
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Kadre Gray
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-David Aromolaran
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Nelson Yengue
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Matt Chesson
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Tevaun Kokko
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Connor Gilmore
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-David McCulloch
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Rohan Boney
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Marcus Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jean Emmanuel Pierre-Charles
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Caleb Agada
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Tanner Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Ammanuel Diressa
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Adika Peter-McNeilly
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Devin Johnson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Jon Ravenhorst
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Simon Petrov
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Mike Pereira
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Justin Hardy
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Nedim Hodzic
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Eriq Jenkins
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Omar Shiddo
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Micqueel Martin
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Mike Rocca
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Jayden Frederick
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Brandon Ramirez
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="season-2" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> 2017-18 Season</h3>
+<div class="figure"><span id="fig:dindex2"></span>
+<img src="images/dindex2.png" alt="" />
+<p class="caption">Figure 3.8:  Finding the Optimal Cluster using D-index for the 2017-18 season.</p>
+</div>
+<p>The optimal number of clusters suggested by the D-index method is 5 for this season. This is possibly separating the players into the actual posistions (Point Guard, Shooting Guard, Small Forward, Power Forward, and Center). Below are tables to show the average statistics for each cluster and also which players belong to which cluster.</p>
+<div class="figure"><span id="fig:unnamed-chunk-46"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-46-1.png" alt="Cluster Plot of 2017-18 Season" width="672" />
+<p class="caption">
+Figure 3.9: Cluster Plot of 2017-18 Season
+</p>
+</div>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-47">Table 3.7: </span>Average of each variable for each cluster for the 2017-18 season
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cluster 1
+</th>
+<th style="text-align:right;">
+Cluster 2
+</th>
+<th style="text-align:right;">
+Cluster 3
+</th>
+<th style="text-align:right;">
+Cluster 4
+</th>
+<th style="text-align:right;">
+Cluster 5
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3PointMade
+</td>
+<td style="text-align:right;">
+46.75
+</td>
+<td style="text-align:right;">
+16.23
+</td>
+<td style="text-align:right;">
+23.72
+</td>
+<td style="text-align:right;">
+28.11
+</td>
+<td style="text-align:right;">
+29.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3PointAttempted
+</td>
+<td style="text-align:right;">
+127.75
+</td>
+<td style="text-align:right;">
+49.32
+</td>
+<td style="text-align:right;">
+71.44
+</td>
+<td style="text-align:right;">
+85.00
+</td>
+<td style="text-align:right;">
+86.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assists
+</td>
+<td style="text-align:right;">
+57.92
+</td>
+<td style="text-align:right;">
+33.95
+</td>
+<td style="text-align:right;">
+41.36
+</td>
+<td style="text-align:right;">
+64.17
+</td>
+<td style="text-align:right;">
+85.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blocks
+</td>
+<td style="text-align:right;">
+3.83
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:right;">
+10.04
+</td>
+<td style="text-align:right;">
+11.06
+</td>
+<td style="text-align:right;">
+11.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DefensiveRebounds
+</td>
+<td style="text-align:right;">
+70.17
+</td>
+<td style="text-align:right;">
+60.45
+</td>
+<td style="text-align:right;">
+74.40
+</td>
+<td style="text-align:right;">
+93.22
+</td>
+<td style="text-align:right;">
+137.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalMade
+</td>
+<td style="text-align:right;">
+133.00
+</td>
+<td style="text-align:right;">
+53.00
+</td>
+<td style="text-align:right;">
+81.40
+</td>
+<td style="text-align:right;">
+109.00
+</td>
+<td style="text-align:right;">
+156.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalAttempted
+</td>
+<td style="text-align:right;">
+309.83
+</td>
+<td style="text-align:right;">
+129.64
+</td>
+<td style="text-align:right;">
+189.52
+</td>
+<td style="text-align:right;">
+255.67
+</td>
+<td style="text-align:right;">
+340.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsMade
+</td>
+<td style="text-align:right;">
+58.42
+</td>
+<td style="text-align:right;">
+20.86
+</td>
+<td style="text-align:right;">
+36.56
+</td>
+<td style="text-align:right;">
+55.17
+</td>
+<td style="text-align:right;">
+117.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsAttempted
+</td>
+<td style="text-align:right;">
+75.50
+</td>
+<td style="text-align:right;">
+33.68
+</td>
+<td style="text-align:right;">
+52.52
+</td>
+<td style="text-align:right;">
+77.28
+</td>
+<td style="text-align:right;">
+144.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Minutes
+</td>
+<td style="text-align:right;">
+606.67
+</td>
+<td style="text-align:right;">
+496.41
+</td>
+<td style="text-align:right;">
+571.40
+</td>
+<td style="text-align:right;">
+703.78
+</td>
+<td style="text-align:right;">
+750.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffensiveRebounds
+</td>
+<td style="text-align:right;">
+22.17
+</td>
+<td style="text-align:right;">
+23.73
+</td>
+<td style="text-align:right;">
+26.32
+</td>
+<td style="text-align:right;">
+30.72
+</td>
+<td style="text-align:right;">
+40.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PersonalFouls
+</td>
+<td style="text-align:right;">
+49.33
+</td>
+<td style="text-align:right;">
+44.00
+</td>
+<td style="text-align:right;">
+47.08
+</td>
+<td style="text-align:right;">
+52.89
+</td>
+<td style="text-align:right;">
+54.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points
+</td>
+<td style="text-align:right;">
+371.17
+</td>
+<td style="text-align:right;">
+143.09
+</td>
+<td style="text-align:right;">
+223.08
+</td>
+<td style="text-align:right;">
+301.28
+</td>
+<td style="text-align:right;">
+459.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rebounds
+</td>
+<td style="text-align:right;">
+92.33
+</td>
+<td style="text-align:right;">
+84.18
+</td>
+<td style="text-align:right;">
+100.72
+</td>
+<td style="text-align:right;">
+123.94
+</td>
+<td style="text-align:right;">
+177.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steals
+</td>
+<td style="text-align:right;">
+26.50
+</td>
+<td style="text-align:right;">
+17.73
+</td>
+<td style="text-align:right;">
+19.88
+</td>
+<td style="text-align:right;">
+31.11
+</td>
+<td style="text-align:right;">
+27.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turnovers
+</td>
+<td style="text-align:right;">
+48.58
+</td>
+<td style="text-align:right;">
+31.09
+</td>
+<td style="text-align:right;">
+34.00
+</td>
+<td style="text-align:right;">
+49.33
+</td>
+<td style="text-align:right;">
+65.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+11.25
+</td>
+<td style="text-align:right;">
+11.36
+</td>
+<td style="text-align:right;">
+11.44
+</td>
+<td style="text-align:right;">
+11.56
+</td>
+<td style="text-align:right;">
+11.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GamesPlayed
+</td>
+<td style="text-align:right;">
+22.25
+</td>
+<td style="text-align:right;">
+22.50
+</td>
+<td style="text-align:right;">
+22.72
+</td>
+<td style="text-align:right;">
+23.22
+</td>
+<td style="text-align:right;">
+23.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointsPerGame
+</td>
+<td style="text-align:right;">
+16.82
+</td>
+<td style="text-align:right;">
+6.44
+</td>
+<td style="text-align:right;">
+9.88
+</td>
+<td style="text-align:right;">
+13.00
+</td>
+<td style="text-align:right;">
+19.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MinutesPerGame
+</td>
+<td style="text-align:right;">
+27.36
+</td>
+<td style="text-align:right;">
+22.11
+</td>
+<td style="text-align:right;">
+25.22
+</td>
+<td style="text-align:right;">
+30.34
+</td>
+<td style="text-align:right;">
+32.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3P%
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG%
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FT%
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TrueShooting%
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-49">Table 3.8: </span>Players from 2017-18 season with assigned clusters.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Player
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Cluster
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+10-Ian Nash
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Johneil Simpson
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35-Cassidy Ryan
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Yasiin Joseph
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Mor Menashe
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Ali Sow
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Tevaun Kokko
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Miles Seward
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Jaz Bains
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Manny Diressa
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Marko Kovac
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Omar Shiddo
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Pedro Costa
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Kascius Small-Martin
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Marcus Anderson
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Drew Walford
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Darnell Curtin
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Litha Ncanisa
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Ntore Habimana
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Andre Toic
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Marvin Ngonadi
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jerron Rhodes
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Ismael Kaba
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Gage Sabean
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Brody Maracle
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Harry Range
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Filip Vujadinovic
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Nikola Farkic
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Damian Persaud
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Lucas Wood
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Gene Spagnuolo
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Prince Kamunga
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Nana Adu-Poku
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Ricky Hudson
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Cailum White
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Reng Gum
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Jermaine Lyle
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Daniel Cayer
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Tyler Brown
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Munis Tutu
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Eddie Ekiyor
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jonathan Wallace
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Taylor Boers
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Anthony Iacoe
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Matt Minutillo
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Matt Quiring
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Sean Stoqua
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Calvin Epistola
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jean Emmanuel Pierre-Charles
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Mike Shoveller
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Quinton Gray
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Roshane Roberts
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Christopher Barrett
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Daniel Johansson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Nikola Paradina
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-David Ramon Prados
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Henry Tan
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Anthony Zrvnar
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Gianmarco Luciani
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Nathan Riley
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Daniel Dooley
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Nick Burke
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-David Aromolaran
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Nelson Yengue
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Kareem Collins
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Marcus Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Jaaden Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Brandon Robinson
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Tanner Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Myles Charvis
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Jean-Victor Mukama
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Reilly Reid
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Sage Usher
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Justin Hardy
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Eriq Jenkins
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Marcus Jones
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Lucas Orlita
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Dani Elgadi
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Kadre Gray
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-David McCulloch
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Simon Petrov
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Nedim Hodzic
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Mike Rocca
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="season-3" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> 2018-19 Season</h3>
+<div class="figure"><span id="fig:dindex3"></span>
+<img src="images/dindex3.png" alt="" />
+<p class="caption">Figure 3.10:  Finding the Optimal Cluster using D-index for the 2018-19 season.</p>
+</div>
+<p>The optimal number of clusters suggested for the 2018-19 season is 4. Below are tables to show the average statistics for each cluster and also which players belong to which cluster.</p>
+<div class="figure"><span id="fig:unnamed-chunk-50"></span>
+<img src="Basketball-Analysis_files/figure-html/unnamed-chunk-50-1.png" alt="Cluster Plot of 2018-19 Season" width="672" />
+<p class="caption">
+Figure 3.11: Cluster Plot of 2018-19 Season
+</p>
+</div>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-51">Table 3.9: </span>Average of each variable for each cluster for the 2018-19 season
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cluster 1
+</th>
+<th style="text-align:right;">
+Cluster 2
+</th>
+<th style="text-align:right;">
+Cluster 3
+</th>
+<th style="text-align:right;">
+Cluster 4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3PointMade
+</td>
+<td style="text-align:right;">
+25.24
+</td>
+<td style="text-align:right;">
+75.50
+</td>
+<td style="text-align:right;">
+18.74
+</td>
+<td style="text-align:right;">
+38.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3PointAttempted
+</td>
+<td style="text-align:right;">
+79.55
+</td>
+<td style="text-align:right;">
+205.75
+</td>
+<td style="text-align:right;">
+58.26
+</td>
+<td style="text-align:right;">
+106.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assists
+</td>
+<td style="text-align:right;">
+51.12
+</td>
+<td style="text-align:right;">
+70.75
+</td>
+<td style="text-align:right;">
+29.81
+</td>
+<td style="text-align:right;">
+53.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blocks
+</td>
+<td style="text-align:right;">
+9.03
+</td>
+<td style="text-align:right;">
+4.25
+</td>
+<td style="text-align:right;">
+6.85
+</td>
+<td style="text-align:right;">
+11.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DefensiveRebounds
+</td>
+<td style="text-align:right;">
+83.12
+</td>
+<td style="text-align:right;">
+96.00
+</td>
+<td style="text-align:right;">
+60.33
+</td>
+<td style="text-align:right;">
+114.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalMade
+</td>
+<td style="text-align:right;">
+91.48
+</td>
+<td style="text-align:right;">
+192.75
+</td>
+<td style="text-align:right;">
+62.52
+</td>
+<td style="text-align:right;">
+132.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FieldGoalAttempted
+</td>
+<td style="text-align:right;">
+215.67
+</td>
+<td style="text-align:right;">
+435.75
+</td>
+<td style="text-align:right;">
+150.70
+</td>
+<td style="text-align:right;">
+308.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsMade
+</td>
+<td style="text-align:right;">
+40.79
+</td>
+<td style="text-align:right;">
+105.00
+</td>
+<td style="text-align:right;">
+28.93
+</td>
+<td style="text-align:right;">
+81.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FreeThrowsAttempted
+</td>
+<td style="text-align:right;">
+58.48
+</td>
+<td style="text-align:right;">
+130.75
+</td>
+<td style="text-align:right;">
+40.74
+</td>
+<td style="text-align:right;">
+108.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Minutes
+</td>
+<td style="text-align:right;">
+613.58
+</td>
+<td style="text-align:right;">
+775.25
+</td>
+<td style="text-align:right;">
+478.74
+</td>
+<td style="text-align:right;">
+708.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OffensiveRebounds
+</td>
+<td style="text-align:right;">
+28.67
+</td>
+<td style="text-align:right;">
+22.00
+</td>
+<td style="text-align:right;">
+20.56
+</td>
+<td style="text-align:right;">
+36.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PersonalFouls
+</td>
+<td style="text-align:right;">
+52.00
+</td>
+<td style="text-align:right;">
+48.50
+</td>
+<td style="text-align:right;">
+40.37
+</td>
+<td style="text-align:right;">
+50.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points
+</td>
+<td style="text-align:right;">
+249.00
+</td>
+<td style="text-align:right;">
+566.00
+</td>
+<td style="text-align:right;">
+172.70
+</td>
+<td style="text-align:right;">
+383.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rebounds
+</td>
+<td style="text-align:right;">
+111.79
+</td>
+<td style="text-align:right;">
+118.00
+</td>
+<td style="text-align:right;">
+80.89
+</td>
+<td style="text-align:right;">
+151.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steals
+</td>
+<td style="text-align:right;">
+24.64
+</td>
+<td style="text-align:right;">
+31.00
+</td>
+<td style="text-align:right;">
+15.96
+</td>
+<td style="text-align:right;">
+24.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turnovers
+</td>
+<td style="text-align:right;">
+37.42
+</td>
+<td style="text-align:right;">
+68.00
+</td>
+<td style="text-align:right;">
+29.00
+</td>
+<td style="text-align:right;">
+50.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home
+</td>
+<td style="text-align:right;">
+11.55
+</td>
+<td style="text-align:right;">
+11.50
+</td>
+<td style="text-align:right;">
+10.33
+</td>
+<td style="text-align:right;">
+11.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GamesPlayed
+</td>
+<td style="text-align:right;">
+22.73
+</td>
+<td style="text-align:right;">
+23.00
+</td>
+<td style="text-align:right;">
+20.52
+</td>
+<td style="text-align:right;">
+22.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointsPerGame
+</td>
+<td style="text-align:right;">
+11.00
+</td>
+<td style="text-align:right;">
+24.88
+</td>
+<td style="text-align:right;">
+8.65
+</td>
+<td style="text-align:right;">
+16.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MinutesPerGame
+</td>
+<td style="text-align:right;">
+27.05
+</td>
+<td style="text-align:right;">
+33.72
+</td>
+<td style="text-align:right;">
+23.51
+</td>
+<td style="text-align:right;">
+30.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3P%
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FG%
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FT%
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TrueShooting%
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-53">Table 3.10: </span>Players from 2018-19 season with assigned clusters.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Player
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Cluster
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+03-Elijah Butler
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-David Bokanga
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Daniel Cayer
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25-Tyler Brown
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Tj Lall
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Munis Tutu
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Eddie Ekiyor
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Rasheed Weekes
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Lock Lam
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Nick Burke
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Anthony Iacoe
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Matt Minutillo
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Ntore Habimana
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Jackson Mayers
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Justin Hill
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Calvin Epistola
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Mackenzie Morrison
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Brandon Robinson
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Quinton Gray
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Jayden Frederick
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Evan Shadkami
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Christopher Barrett
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Daniel Johansson
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Nikola Paradina
+</td>
+<td style="text-align:left;">
+Toronto
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Eriq Jenkins
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Julian Walker
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Nikola Farkic
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Chris Poloniato
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Telloy Simon
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Thomas Kennedy
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20-Lucas Orlita
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02-Chevon Brown
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-DeAndrae Pierre
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Johneil Simpson
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Kadre Gray
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Ali Sow
+</td>
+<td style="text-align:left;">
+Laurier
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Omar Shiddo
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Michael Vos Otin
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Marcus Anderson
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Yasiin Joseph
+</td>
+<td style="text-align:left;">
+Carleton
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Aaron Nugent
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-Davarius Wright
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22-Josis Mikia-Thomas
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24-Litha Ncanisa
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32-Gaetan Chamand
+</td>
+<td style="text-align:left;">
+Laurentian
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Sefa Otchere
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32-Jordan Henry
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Marvin Ngonadi
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Jordan Roberts
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Quintin Ashitei
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Harry Range
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Yusuf Ali
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Filip Vujadinovic
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14-Keevon Small
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Simon Petrov
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+05-Colin Connors
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Jeff Baradziej
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-David Ramon Prados
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23-Justin Malnerich
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+09-Marko Kovac
+</td>
+<td style="text-align:left;">
+Western
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Anthony Zrvnar
+</td>
+<td style="text-align:left;">
+Windsor
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+04-Prince Kamunga
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-Gianmarco Luciani
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-Gene Spagnuolo
+</td>
+<td style="text-align:left;">
+York
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+06-Nathan Riley
+</td>
+<td style="text-align:left;">
+Algoma
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35-Cassidy Ryan
+</td>
+<td style="text-align:left;">
+Brock
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15-Malcolm Glanville
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32-Tommy Yanchus
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40-Banky Alade
+</td>
+<td style="text-align:left;">
+Guelph
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01-Isaiah Traylor
+</td>
+<td style="text-align:left;">
+Lakehead
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11-Connor Gilmore
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21-David McCulloch
+</td>
+<td style="text-align:left;">
+McMaster
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13-Marcus Lewis
+</td>
+<td style="text-align:left;">
+Nipissing
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Gage Sabean
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41-Guillaume Pepin
+</td>
+<td style="text-align:left;">
+Ottawa
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+03-Jaz Bains
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12-Tanner Graham
+</td>
+<td style="text-align:left;">
+Queen’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+07-Myles Charvis
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08-JV Mukama
+</td>
+<td style="text-align:left;">
+Ryerson
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42-Nedim Hodzic
+</td>
+<td style="text-align:left;">
+Waterloo
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="conclusion-1" class="section level2">
+<h2><span class="header-section-number">3.5</span> Conclusion</h2>
+<p>Unsupervised learning used on basketball data can be very helpful. It can be used to categorize players and to see what their style of play is. It can also be used for match-ups and for predicting important players. For instance, if you find that a player was in the same cluster as the catch and shoot players, a coach can assign an appropriate defender. Knowing the style of play for your opponents is very useful for defensive purposes. In my opinion the higher the number of clusters assigned, the better because it would distinguish the type of player more.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exploratory-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="classification-of-wins.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Basketball-Analysis.pdf", "Basketball-Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

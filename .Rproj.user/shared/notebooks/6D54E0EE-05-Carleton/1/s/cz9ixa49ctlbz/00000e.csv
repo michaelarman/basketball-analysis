@@ -1,0 +1,3 @@
+"0","par(mfrow=c(1,2))"
+"0","carleton.tree<-rpart(Win ~  ShortJumpShots + MediumJumpShots + GuardedJumpShots + LongJumpShots + AllFreeThrows, data = carleton.2015, ,control=rpart.control(minsplit=2, minbucket=1, cp=0.001))"
+"0","rpart.plot(carleton.tree, main=""Classification Tree for Wins for only 2015-2016 Season"",cex.main = .6, box.palette = 0)"
